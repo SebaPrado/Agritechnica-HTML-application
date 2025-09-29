@@ -15,7 +15,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.5.0/mapbox-gl-draw.css" type="text/css" />
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <style>
       :root {
@@ -610,8 +610,9 @@
 
       /* Estilos para todos los modales */
       #mapModal,
-      #energyStatusModal,
-      #vehicleListModal {
+      #energyStatusModal
+      /* #vehicleListModal */
+       {
         animation: fadeIn 0.3s ease-out;
       }
 
@@ -624,10 +625,30 @@
         z-index: 50;
       }
 
-      /* Asegurar que los modales no interfieran con la navegación */
+      /* Clase para controlar la visibilidad del modal */
+      .modal-visible {
+        display: flex !important;
+        animation: fadeIn 0.3s ease-out forwards;
+      }
+
+      /* Aseguramos que la animación funcione correctamente */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Estado oculto del modal */
       .modal-backdrop.hidden {
+        display: none;
         z-index: -1;
         pointer-events: none;
+        /* opacity: 0; ya no es necesaria porque display: none oculta el elemento */
       }
 
       /* Animación de entrada para el contenido del modal */
@@ -1125,6 +1146,50 @@
         background-color: var(--azul-oscuro);
         opacity: 0.8;
       }
+
+      /* Animaciones para el reloj - hover en el card completo */
+      .animated-clock {
+        transition: all 0.3s ease;
+      }
+
+      .clock-card:hover .animated-clock {
+        animation: clock-pulse 2s ease-in-out infinite;
+      }
+
+      .clock-hands {
+        transform-origin: 128px 128px;
+        transition: all 0.3s ease;
+      }
+
+      .clock-card:hover .animated-clock .clock-hands {
+        animation: clock-tick 2s linear infinite;
+      }
+
+      @keyframes clock-pulse {
+        0%, 100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes clock-tick {
+        0% {
+          stroke-dasharray: 0 200;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 100 100;
+          stroke-dashoffset: -50;
+        }
+        100% {
+          stroke-dasharray: 0 200;
+          stroke-dashoffset: -200;
+        }
+      }
     </style>
   </head>
   <body class="sidebar-colapsado">
@@ -1259,7 +1324,7 @@
                   </button>
                 </div>
 
-                <!-- Botón flotante de Vehicle List (lado izquierdo, debajo del Energy Status) -->
+                <!-- Botón flotante de Vehicle Fleet Status (lado izquierdo, debajo del Energy Status) -->
                 <div class="absolute top-20 left-4 z-30">
                   <button 
                     onclick="openVehicleStatusModal()" 
@@ -1403,23 +1468,44 @@
                       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
                           <p class="text-white text-sm slide-text-fade-in">Total Capacity</p>
-                          <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">160 kWh</p>
+                          <p class="text-white text-2xl font-bold slide-text-fade-in flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" class="me-2">
+                              <rect width="24" height="24" fill="none"/>
+                              <rect x="16" y="64" width="200" height="128" rx="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                              <line x1="176" y1="96" x2="176" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                              <line x1="136" y1="96" x2="136" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                              <line x1="96" y1="96" x2="96" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                              <line x1="56" y1="96" x2="56" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                              <line x1="248" y1="96" x2="248" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                            </svg>
+                          <span id="energy-total-capacity">160 kWh</span>
                           <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">0-100%</p>
                         </div>
                         <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[var(--turqueza)] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
                           <p class="text-white text-sm slide-text-fade-in">Available Energy</p>
-                          <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-available">107 kWh</p>
+                          <p class="text-white text-2xl font-bold slide-text-fade-in flex items-center justify-center gap-2">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" class="me-2">
+                               <rect width="256" height="256" fill="none"/>
+                               <rect x="16" y="64" width="200" height="128" rx="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                               <line x1="96" y1="96" x2="96" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                               <line x1="56" y1="96" x2="56" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                               <line x1="248" y1="96" x2="248" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                             </svg>
+                          
+                          <span id="energy-available">107 kWh</span>
                           <div class="flex flex-row justify-center">
                             <p class="text-[var(--turqueza)] text-sm slide-text-fade-in" id="energy-available-percent">66%</p>
                             <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">&nbsp;of Capacity</p>
                           </div>
                         </div>
-                        <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[var(--turqueza)] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                          <p class="text-white text-sm slide-text-fade-in">Weekly</p>
+                        <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[var(--turqueza)] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 clock-card">
+                          <p class="text-white text-sm slide-text-fade-in">This week</p>
                           <p class="text-white text-2xl font-bold slide-text-fade-in flex items-center justify-center gap-2" id="energy-operational-range">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
-                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/>
-                          </svg>
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" class="animated-clock">
+                               <rect width="256" height="256" fill="none"/>
+                               <circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                               <polyline points="128 72 128 128 184 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" class="clock-hands"/>
+                             </svg>
                           23 hours worked
                           </p>
                           <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">196 kWh consumed</p>
@@ -1509,7 +1595,7 @@
                             
                             <!-- Zetrabot 3 -->
                             <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center bg-[#181d35] hover:border-[var(--turqueza)] hover:bg-[#1f2438] hover:scale-105 transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-[var(--turqueza)]/30 cursor-pointer group">
-                              <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 3</p>
+                              <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 2</p>
                               <div class="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                                 <div class="relative w-24 h-12">
                                   <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50 transition-all duration-300" viewBox="0 0 100 50">
@@ -1523,21 +1609,7 @@
                               </div>
                               <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-zetrabot3-kwh">32.0 kWh</p>
                             </div>
-                            <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center bg-[#181d35] hover:border-[var(--turqueza)] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
-                              <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 2</p>
-                              <div class="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                                <div class="relative w-24 h-12 ">
-                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50 transition-all duration-300" viewBox="0 0 100 50">
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="#1a2040" stroke-width="8" fill="none" stroke-linecap="round" ></path>
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="98.5" class=" transition-colors duration-300" ></path>
-                                  </svg>
-                                  <div class="absolute inset-0 flex flex-col items-center justify-center mt-2">
-                                    <p class="text-white text-lg font-bold mt-6 battery-value-change slide-text-fade-in  transition-colors duration-300" id="energy-zetrabot2-percent">23%</p>
-                                  </div>
-                                </div>
-                              </div>
-                              <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-zetrabot2-kwh">9.2 kWh</p>
-                            </div>
+                            
                             
                             <!-- Battery Station -->
                             <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center bg-[#181d35] hover:border-[var(--turqueza)] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
@@ -1553,7 +1625,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-battery-station-kwh">40.0 kWh</p>
+                              <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-battery-station-kwh">20.0 kWh</p>
                             </div>
                           </div>
                           
@@ -1581,8 +1653,7 @@
                 </div>
               </div>
 
-              <!-- Modal de Vehicle List -->
-              <div id="vehicleListModal" class="modal-backdrop fixed inset-0 z-50 hidden flex items-center justify-center">
+              <!-- Modal de Vehicle List MOVED OUTSIDE VIEW -->
                 <div class="modal-content bg-[var(--azul-oscuro)] border border-[#4ABBBD]/50 rounded-lg shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto relative">
                   <!-- Header del modal -->
                   <div class="flex items-center justify-around p-6 border-b border-[#4ABBBD]/50">
@@ -1684,325 +1755,331 @@
                           </div>
                         </div>
 
-          <!-- --------------------          Slide 1: Zetrabot 1      -------------------- -->
-           
-                      <div class="vehicle-slide hidden" id="vehicle-001">
-                        <!-- Header con icono del vehículo y gráfico circular -->
-                        <div class="flex items-center justify-center mb-10">
-                          <div class="relative">
-                            <!-- Gráfico circular de carga -->
-                            <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
-                              <!-- Fondo del círculo -->
-                              <path
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                fill="none"
-                                stroke="#2f396a"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                              />
-                              <!-- Círculo de progreso (65.46% de Zetrabot 1) -->
-                              <path
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                fill="none"
-                                stroke="var(--turqueza)"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-dasharray="65.46, 100"
-                                class="progress-circle-animate"
-                              />
-                            </svg>
-                            
-                            <!-- Icono del vehículo centrado -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                              <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
-                                  <g>
-                                    <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
-                                    <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
-                                  </g>
-                                </svg>
+
+                        <!-- Slide 1: Zetrabot 1 -->
+                        <div class="vehicle-slide hidden" id="vehicle-001">
+                          <!-- Header con icono del vehículo y gráfico circular -->
+                          <div class="flex items-center justify-center mb-10">
+                            <div class="relative">
+                              <!-- Gráfico circular de carga -->
+                              <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
+                                <!-- Fondo del círculo -->
+                                <path
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none"
+                                  stroke="#2f396a"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                />
+                                <!-- Círculo de progreso (65.46% de Zetrabot 1) -->
+                                <path
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none"
+                                  stroke="var(--turqueza)"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-dasharray="65.46, 100"
+                                  class="progress-circle-animate"
+                                />
+                              </svg>
+                              
+                              <!-- Icono del vehículo centrado -->
+                              <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
+                                    <g>
+                                      <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
+                                      <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
+                                    </g>
+                                  </svg>
+                                </div>
+                              </div>
+                              
+                              <!-- Porcentaje de carga superpuesto -->
+                              <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
+                                <span class="text-white text-lg font-bold">65.46%</span>
                               </div>
                             </div>
-                            
-                            <!-- Porcentaje de carga superpuesto -->
-                            <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
-                              <span class="text-white text-lg font-bold">65.46%</span>
+                          </div>
+                          
+                          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
+                            <!-- Swappable Pack -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[white] text-sm">Swappable Pack</p>
+                              <p class="text-white text-lg font-bold">50%</p>
+                              <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 50%"></div>
+                              </div>
+                              <p class="text-[white] text-sm">25.5 kWh available</p>
+                            </div>
+
+                            <!-- Fixed Pack -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[white] text-sm">Fixed Pack</p>
+                              <p class="text-white text-lg font-bold">80%</p>
+                              <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 80%"></div>
+                              </div>
+                              <p class="text-[white] text-sm">35.5 kWh available</p>
+                            </div>
+
+                            <!-- Availability -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-white text-sm">Availability</p>
+                              <p class="text-white text-lg font-bold">59 kWh</p>
+                              <p class="text-white text-sm">Operational capacity</p>
+                            </div>
+
+                            <!-- Minimum Battery Threshold -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-white text-sm">Battery Min</p>
+                              <p class="text-white text-lg font-bold" id="threshold-value">20%</p>
+                              <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 20%"></div>
+                                <!-- Círculo arrastrable -->
+                                <div class="absolute top-1/2 transform -translate-y-1/2 w-5 h-5 bg-[var(--turqueza)] rounded-full cursor-grab shadow-lg threshold-handle" 
+                                     style="left: 20%; margin-left: -10px;" 
+                                     id="threshold-handle">
+                                  <!-- Punto central para mejor agarre -->
+                                  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full opacity-80"></div>
+                                </div>
+                              </div>
+                              <p class="text-white text-sm">Critical level warning</p>
                             </div>
                           </div>
                         </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                          <!-- Swappable Pack -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[white] text-sm">Swappable Pack</p>
-                            <p class="text-white text-lg font-bold">50%</p>
-                            <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                              <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 50%"></div>
-                            </div>
-                            <p class="text-[white] text-sm">25.5 kWh available</p>
-                          </div>
 
-                          <!-- Fixed Pack -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[white] text-sm">Fixed Pack</p>
-                            <p class="text-white text-lg font-bold">80%</p>
-                            <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                              <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 80%"></div>
-                            </div>
-                            <p class="text-[white] text-sm">35.5 kWh available</p>
-                          </div>
-
-                          <!-- Availability -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-white text-sm">Availability</p>
-                            <p class="text-white text-lg font-bold">59 kWh</p>
-                            <p class="text-white text-sm">Operational capacity</p>
-                          </div>
-
-                          <!-- Minimum Battery Threshold -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-white text-sm">Battery Min</p>
-                            <p class="text-white text-lg font-bold" id="threshold-value">20%</p>
-                            <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
-                              <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 20%"></div>
-                              <!-- Círculo arrastrable -->
-                              <div class="absolute top-1/2 transform -translate-y-1/2 w-5 h-5 bg-[var(--turqueza)] rounded-full cursor-grab shadow-lg threshold-handle" 
-                                   style="left: 20%; margin-left: -10px;" 
-                                   id="threshold-handle">
-                                <!-- Punto central para mejor agarre -->
-                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full opacity-80"></div>
+                        <!-- Slide 2: Zetrabot 2 -->
+                        <div class="vehicle-slide hidden" id="vehicle-002">
+                          <!-- Header con icono del vehículo y gráfico circular -->
+                          <div class="flex items-center justify-center mb-10">
+                            <div class="relative">
+                              <!-- Gráfico circular de carga -->
+                              <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
+                                <!-- Fondo del círculo -->
+                                <path
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none"
+                                  stroke="#2f396a"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                />
+                                <!-- Círculo de progreso (22% de Zetrabot 2) -->
+                                <path
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none"
+                                  stroke="var(--turqueza)"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-dasharray="22, 100"
+                                  class="progress-circle-animate-22"
+                                />
+                              </svg>
+                              
+                              <!-- Icono del vehículo centrado -->
+                              <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
+                                    <g>
+                                      <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
+                                      <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
+                                    </g>
+                                  </svg>
+                                </div>
+                              </div>
+                              
+                              <!-- Porcentaje de carga superpuesto -->
+                              <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
+                                <span class="text-white text-lg font-bold">22%</span>
                               </div>
                             </div>
-                            <p class="text-white text-sm">Critical level warning</p>
+                          </div>
+                          
+                          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
+                            <!-- Swappable Pack -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
+                              <p class="text-white text-lg font-bold">12%</p>
+                              <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 12%"></div>
+                              </div>
+                              <p class="text-[var(--turqueza)] text-sm">9.7 kWh available</p>
+                            </div>
+
+                            <!-- Fixed Pack -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
+                              <p class="text-white text-lg font-bold">10%</p>
+                              <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 10%"></div>
+                              </div>
+                              <p class="text-[var(--turqueza)] text-sm">8.6 kWh available</p>
+                            </div>
+
+                            <!-- Availability -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Availability</p>
+                              <p class="text-white text-lg font-bold">17.1 kWh</p>
+                              <p class="text-[var(--turqueza)] text-sm">Operational capacity</p>
+                            </div>
+
+                            <!-- Minimum Battery Threshold -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Battery Min</p>
+                              <p class="text-white text-lg font-bold" id="threshold-value-2">20%</p>
+                              <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 20%"></div>
+                                <!-- Círculo arrastrable -->
+                                <div class="absolute top-1/2 transform -translate-y-1/2 w-5 h-5 bg-[var(--turqueza)] rounded-full cursor-grab shadow-lg threshold-handle" 
+                                     style="left: 20%; margin-left: -10px;" 
+                                     id="threshold-handle-2">
+                                  <!-- Punto central para mejor agarre -->
+                                  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full opacity-80"></div>
+                                </div>
+                              </div>
+                              <p class="text-[var(--turqueza)] text-sm">Critical level warning</p>
+                            </div>
                           </div>
                         </div>
+
+                        <!-- Slide 3: Zetrabot 3 -->
+                        <div class="vehicle-slide hidden" id="vehicle-003">
+                          <!-- Header con icono del vehículo y gráfico circular -->
+                          <div class="flex items-center justify-center mb-10">
+                            <div class="relative">
+                              <!-- Gráfico circular de carga -->
+                              <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
+                                <!-- Fondo del círculo -->
+                                <path
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none"
+                                  stroke="#2f396a"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                />
+                                <!-- Círculo de progreso (80% de Zetrabot 3) -->
+                                <path
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none"
+                                  stroke="var(--turqueza)"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-dasharray="80, 100"
+                                  class="progress-circle-animate-80"
+                                />
+                              </svg>
+                              
+                              <!-- Icono del vehículo centrado -->
+                              <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD"  viewBox="384 282 32 32">
+                                    <g>
+                                      <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
+                                      <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
+                                    </g>
+                                  </svg>
+                                </div>
+                              </div>
+                              
+                              <!-- Porcentaje de carga superpuesto -->
+                              <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
+                                <span class="text-white text-lg font-bold">80%</span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
+                            <!-- Swappable Pack -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
+                              <p class="text-white text-lg font-bold">90%</p>
+                              <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 90%"></div>
+                              </div>
+                              <p class="text-[var(--turqueza)] text-sm">42.5 kWh available</p>
+                            </div>
+
+                            <!-- Fixed Pack -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
+                              <p class="text-white text-lg font-bold">100%</p>
+                              <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 44%"></div>
+                              </div>
+                              <p class="text-[var(--turqueza)] text-sm">44 kWh available</p>
+                            </div>
+
+                            <!-- Availability -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Availability</p>
+                              <p class="text-white text-lg font-bold">86.5 kWh</p>
+                              <p class="text-[var(--turqueza)] text-sm">Operational capacity</p>
+                            </div>
+
+                            <!-- Minimum Battery Threshold -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Battery Min</p>
+                              <p class="text-white text-lg font-bold" id="threshold-value-3">20%</p>
+                              <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 20%"></div>
+                                <!-- Círculo arrastrable -->
+                                <div class="absolute top-1/2 transform -translate-y-1/2 w-5 h-5 bg-[var(--turqueza)] rounded-full cursor-grab shadow-lg threshold-handle" 
+                                     style="left: 20%; margin-left: -10px;" 
+                                     id="threshold-handle-3">
+                                  <!-- Punto central para mejor agarre -->
+                                  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full opacity-80"></div>
+                                </div>
+                              </div>
+                              <p class="text-[var(--turqueza)] text-sm">Critical level warning</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Slide 4: Trailer -->
+                        <div class="vehicle-slide hidden" id="vehicle-004">
+                          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                            <!-- Swappable Pack -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
+                              <p class="text-white text-2xl font-bold">85%</p>
+                              <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-3 mb-2">
+                                <div class="bg-[var(--turqueza)] h-3 rounded-full progress-bar progress-bar-animate" style="width: 85%"></div>
+                              </div>
+                              <p class="text-[var(--turqueza)] text-sm">38.7 kWh available</p>
+                            </div>
+
+                            <!-- Fixed Pack -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
+                              <p class="text-white text-2xl font-bold">95%</p>
+                              <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-3 mb-2">
+                                <div class="bg-[var(--turqueza)] h-3 rounded-full progress-bar progress-bar-animate" style="width: 95%"></div>
+                              </div>
+                              <p class="text-white text-sm">41.8 kWh available</p>
+                            </div>
+
+                            <!-- Availability -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Availability</p>
+                              <p class="text-white text-2xl font-bold">80.5 kWh</p>
+                              <p class="text-[var(--turqueza)] text-sm">Total operational capacity</p>
+                            </div>
+
+                            <!-- Minimum Battery Threshold -->
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <p class="text-[var(--turqueza)] text-sm">Minimum Battery Threshold</p>
+                              <p class="text-white text-2xl font-bold">15%</p>
+                              <p class="text-[var(--turqueza)] text-sm">Optimal performance level</p>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <!-- --------------------         Slide 2: Zetrabot 2       -------------------------->
-                      <div class="vehicle-slide hidden" id="vehicle-002">
-                        <!-- Header con icono del vehículo y gráfico circular -->
-                        <div class="flex items-center justify-center mb-10">
-                          <div class="relative">
-                            <!-- Gráfico circular de carga -->
-                            <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
-                              <!-- Fondo del círculo -->
-                              <path
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                fill="none"
-                                stroke="#2f396a"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                              />
-                              <!-- Círculo de progreso (22% de Zetrabot 2) -->
-                              <path
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                fill="none"
-                                stroke="var(--turqueza)"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-dasharray="22, 100"
-                                class="progress-circle-animate-22"
-                              />
-                            </svg>
-                            
-                            <!-- Icono del vehículo centrado -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                              <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
-                                  <g>
-                                    <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
-                                    <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
-                                  </g>
-                                </svg>
-                              </div>
-                            </div>
-                            
-                            <!-- Porcentaje de carga superpuesto -->
-                            <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
-                              <span class="text-white text-lg font-bold">22%</span>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                          <!-- Swappable Pack -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
-                            <p class="text-white text-lg font-bold">12%</p>
-                            <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                              <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 12%"></div>
-                            </div>
-                            <p class="text-[var(--turqueza)] text-sm">9.7 kWh available</p>
-                          </div>
-
-                          <!-- Fixed Pack -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
-                            <p class="text-white text-lg font-bold">10%</p>
-                            <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                              <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 10%"></div>
-                            </div>
-                            <p class="text-[var(--turqueza)] text-sm">8.6 kWh available</p>
-                          </div>
-
-                          <!-- Availability -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Availability</p>
-                            <p class="text-white text-lg font-bold">17.1 kWh</p>
-                            <p class="text-[var(--turqueza)] text-sm">Operational capacity</p>
-                          </div>
-
-                          <!-- Minimum Battery Threshold -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Battery Min</p>
-                            <p class="text-white text-lg font-bold" id="threshold-value-2">20%</p>
-                            <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
-                              <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 20%"></div>
-                              <!-- Círculo arrastrable -->
-                              <div class="absolute top-1/2 transform -translate-y-1/2 w-5 h-5 bg-[var(--turqueza)] rounded-full cursor-grab shadow-lg threshold-handle" 
-                                   style="left: 20%; margin-left: -10px;" 
-                                   id="threshold-handle-2">
-                                <!-- Punto central para mejor agarre -->
-                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full opacity-80"></div>
-                              </div>
-                            </div>
-                            <p class="text-[var(--turqueza)] text-sm">Critical level warning</p>
-                          </div>
-                        </div>
-                      </div>
-
-        <!-- --------------------         Slide 3: Zetrabot 3       -------------------------->
-
-                      <div class="vehicle-slide hidden" id="vehicle-003">
-                        <!-- Header con icono del vehículo y gráfico circular -->
-                        <div class="flex items-center justify-center mb-10">
-                          <div class="relative">
-                            <!-- Gráfico circular de carga -->
-                            <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
-                              <!-- Fondo del círculo -->
-                              <path
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                fill="none"
-                                stroke="#2f396a"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                              />
-                              <!-- Círculo de progreso (80% de Zetrabot 3) -->
-                              <path
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                fill="none"
-                                stroke="var(--turqueza)"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-dasharray="80, 100"
-                                class="progress-circle-animate-80"
-                              />
-                            </svg>
-                            
-                            <!-- Icono del vehículo centrado -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                              <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD"  viewBox="384 282 32 32">
-                                  <g>
-                                    <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
-                                    <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
-                                  </g>
-                                </svg>
-                              </div>
-                            </div>
-                            
-                            <!-- Porcentaje de carga superpuesto -->
-                            <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
-                              <span class="text-white text-lg font-bold">80%</span>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                          <!-- Swappable Pack -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
-                            <p class="text-white text-lg font-bold">90%</p>
-                            <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                              <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 90%"></div>
-                            </div>
-                            <p class="text-[var(--turqueza)] text-sm">42.5 kWh available</p>
-                          </div>
-
-                          <!-- Fixed Pack -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
-                            <p class="text-white text-lg font-bold">100%</p>
-                            <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                              <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 44%"></div>
-                            </div>
-                            <p class="text-[var(--turqueza)] text-sm">44 kWh available</p>
-                          </div>
-
-                          <!-- Availability -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Availability</p>
-                            <p class="text-white text-lg font-bold">86.5 kWh</p>
-                            <p class="text-[var(--turqueza)] text-sm">Operational capacity</p>
-                          </div>
-
-                          <!-- Minimum Battery Threshold -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Battery Min</p>
-                            <p class="text-white text-lg font-bold" id="threshold-value-3">20%</p>
-                            <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
-                              <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 20%"></div>
-                              <!-- Círculo arrastrable -->
-                              <div class="absolute top-1/2 transform -translate-y-1/2 w-5 h-5 bg-[var(--turqueza)] rounded-full cursor-grab shadow-lg threshold-handle" 
-                                   style="left: 20%; margin-left: -10px;" 
-                                   id="threshold-handle-3">
-                                <!-- Punto central para mejor agarre -->
-                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full opacity-80"></div>
-                              </div>
-                            </div>
-                            <p class="text-[var(--turqueza)] text-sm">Critical level warning</p>
-                          </div>
-                        </div>
-                      </div>
-
-                                            <!-- Slide 4: Trailer -->
-                      <div class="vehicle-slide hidden" id="vehicle-004">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-                          <!-- Swappable Pack -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
-                            <p class="text-white text-2xl font-bold">85%</p>
-                            <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-3 mb-2">
-                              <div class="bg-[var(--turqueza)] h-3 rounded-full progress-bar progress-bar-animate" style="width: 85%"></div>
-                            </div>
-                            <p class="text-[var(--turqueza)] text-sm">38.7 kWh available</p>
-                          </div>
-
-                          <!-- Fixed Pack -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
-                            <p class="text-white text-2xl font-bold">95%</p>
-                            <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-3 mb-2">
-                              <div class="bg-[var(--turqueza)] h-3 rounded-full progress-bar progress-bar-animate" style="width: 95%"></div>
-                            </div>
-                            <p class="text-white text-sm">41.8 kWh available</p>
-                          </div>
-
-                          <!-- Availability -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Availability</p>
-                            <p class="text-white text-2xl font-bold">80.5 kWh</p>
-                            <p class="text-[var(--turqueza)] text-sm">Total operational capacity</p>
-                          </div>
-
-                          <!-- Minimum Battery Threshold -->
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                            <p class="text-[var(--turqueza)] text-sm">Minimum Battery Threshold</p>
-                            <p class="text-white text-2xl font-bold">15%</p>
-                            <p class="text-[var(--turqueza)] text-sm">Optimal performance level</p>
-                          </div>
-                        </div>
-                      </div>
 
                       <!-- Slide 5: Prueba -->
                       <div class="vehicle-slide hidden" id="vehicle-prueba">
@@ -4347,24 +4424,58 @@
 
       // Función para contraer el sidebar automáticamente
       function collapseSidebar() {
+        console.log('╔═══════════════════════════════════════════════════════╗');
+        console.log('║  🔽 collapseSidebar() INICIADA                        ║');
+        console.log('╚═══════════════════════════════════════════════════════╝');
+        console.log('   → Timestamp:', new Date().toISOString());
+        
         const sidebar = document.querySelector('.sidebar');
         const body = document.querySelector('body');
         
-        // Solo contraer si no está ya contraído
-        if (!sidebar.classList.contains('collapsed')) {
-          sidebar.classList.add('collapsed');
-          body.classList.add('sidebar-colapsado');
+        console.log('📌 [SIDEBAR] Encontrado:', sidebar ? 'SÍ' : 'NO');
+        console.log('📌 [BODY] Encontrado:', body ? 'SÍ' : 'NO');
+        
+        if (sidebar) {
+          const yaEstabaColapsado = sidebar.classList.contains('collapsed');
+          console.log('   → ¿Ya estaba collapsed?', yaEstabaColapsado);
           
-          // Redimensionar el mapa después de la transición
-          setTimeout(() => {
-            if (currentView === 'live-monitoring' && window.map) {
-              window.map.resize();
-            }
-            if (currentView === 'live-monitoring-2' && window.map3Instance) {
-              window.map3Instance.resize();
-            }
-          }, 500);
+          if (!yaEstabaColapsado) {
+            console.log('   → Agregando clase "collapsed" al sidebar');
+            sidebar.classList.add('collapsed');
+            
+            console.log('   → Agregando clase "sidebar-colapsado" al body');
+            body.classList.add('sidebar-colapsado');
+            
+            // Verificar el currentView
+            console.log('🗺️  [MAPA] currentView:', currentView);
+            console.log('   → ¿Es live-monitoring-2?', currentView === 'live-monitoring-2');
+            console.log('   → ¿Existe map3Instance?', window.map3Instance ? 'SÍ' : 'NO');
+            
+            // Redimensionar el mapa después de la transición
+            console.log('⏱️  [TIMER] Programando resize del mapa en 500ms');
+            setTimeout(() => {
+              console.log('╔═══════════════════════════════════════════════════════╗');
+              console.log('║  🗺️  EJECUTANDO RESIZE DEL MAPA (después de 500ms)   ║');
+              console.log('╚═══════════════════════════════════════════════════════╝');
+              console.log('   → Timestamp:', new Date().toISOString());
+              
+              if (currentView === 'live-monitoring' && window.map) {
+                console.log('   → Llamando a map.resize()');
+                window.map.resize();
+                console.log('   → Resize completado');
+              }
+              if (currentView === 'live-monitoring-2' && window.map3Instance) {
+                console.log('   → Llamando a map3Instance.resize()');
+                window.map3Instance.resize();
+                console.log('   → Resize completado');
+              }
+            }, 500);
+          } else {
+            console.log('   → Sidebar ya estaba collapsed, no se hace nada');
+          }
         }
+        
+        console.log('🏁 [FIN] collapseSidebar() completada');
       }
 
       // Funciones para el modal del mapa
@@ -4392,20 +4503,46 @@
 
       // Funciones para el modal de Energy Status
       function openEnergyStatusModal() {
+        console.log('⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡');
+        console.log('⚡ openEnergyStatusModal() LLAMADA');
+        console.log('⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡');
+        console.log('   → Timestamp:', new Date().toISOString());
+        
         const modal = document.getElementById('energyStatusModal');
+        console.log('📦 [MODAL] Elemento encontrado:', modal ? 'SÍ' : 'NO');
+        
         if (modal) {
+          // Verificar clases ANTES de modificar
+          console.log('📋 [MODAL] Clases ANTES:', modal.className);
+          console.log('   → ¿Está hidden?', modal.classList.contains('hidden'));
+          console.log('   → ¿Está flex?', modal.classList.contains('flex'));
+          
           modal.classList.remove('hidden');
           modal.classList.add('flex');
+          
+          // Verificar clases DESPUÉS de modificar
+          console.log('📋 [MODAL] Clases DESPUÉS:', modal.className);
+          console.log('   → ¿Está hidden?', modal.classList.contains('hidden'));
+          console.log('   → ¿Está flex?', modal.classList.contains('flex'));
+          
           // Prevenir scroll del body cuando el modal está abierto
           document.body.style.overflow = 'hidden';
+          console.log('🚫 [BODY] Scroll bloqueado');
+          
           // Contraer el sidebar automáticamente
+          console.log('🔽 [ACCION] Llamando a collapseSidebar()');
           collapseSidebar();
           
           // Ejecutar la animación de contador solo cuando se abre el modal
+          console.log('⏱️  [TIMER] Programando updateEnergySummary en 100ms');
           setTimeout(() => {
+            console.log('✅ [EJECUTANDO] updateEnergySummary(true)');
             updateEnergySummary(true); // true = con animación
           }, 100); // Pequeño delay para asegurar que el modal esté visible
         }
+        
+        console.log('🏁 [FIN] openEnergyStatusModal completada');
+        console.log('⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡');
       }
 
       function closeEnergyStatusModal() {
@@ -4419,60 +4556,151 @@
       }
 
       // Funciones para el modal de Vehicle List
-      function openVehicleStatusModal(vehicleIndex = null) {
-        const modal = document.getElementById('vehicleListModal');
-        if (modal) {
-          modal.classList.remove('hidden');
-          modal.classList.add('flex');
-          // Prevenir scroll del body cuando el modal está abierto
-          document.body.style.overflow = 'hidden';
-          
-          // Ocultar todos los slides inmediatamente al abrir el modal
-          // Ocultar todos los slides
-          for (let i = 1; i <= 4; i++) {
-            const slide = document.getElementById(`vehicle-00${i}`);
-            if (slide) {
-              slide.classList.remove('active', 'prev', 'next');
-              slide.classList.add('hidden');
-            }
-          }
-          
-          // Ocultar el slide de prueba
-          const pruebaSlide = document.getElementById('vehicle-prueba');
-          if (pruebaSlide) {
-            pruebaSlide.classList.remove('active', 'prev', 'next');
-            pruebaSlide.classList.add('hidden');
-          }
-          
-          // Ocultar el slide general
-          const generalSlide = document.getElementById('vehicle-general');
-          if (generalSlide) {
-            generalSlide.classList.remove('active', 'prev', 'next');
-            generalSlide.classList.add('hidden');
-          }
-          
-          // Si se especifica un vehículo, inicializar directamente con ese vehículo
-          if (vehicleIndex !== null) {
-            setTimeout(() => {
-              initializeVehicleSliderWithVehicle(vehicleIndex);
-            }, 50); // Reducido de 100ms a 50ms
-          } else {
-            // Inicializar el slider de vehículos normalmente (slide General)
-            setTimeout(initializeVehicleSlider, 50); // Reducido de 100ms a 50ms
-          }
-          
-          // Contraer el sidebar automáticamente
-          collapseSidebar();
-        }
+     //--------------------------------------------------------------------------------------------
+
+     function openVehicleStatusModal(vehicleIndex = null) {
+  console.log('═══════════════════════════════════════════════════════');
+  console.log('🚀 [INICIO] openVehicleStatusModal llamada');
+  console.log('   → vehicleIndex:', vehicleIndex);
+  
+  const modal = document.getElementById('vehicleListModal');
+  console.log('📦 [MODAL] Elemento encontrado:', modal ? 'SÍ' : 'NO');
+  
+  if (!modal) {
+    console.log('❌ [ERROR] Modal no encontrado');
+    return;
+  }
+  
+  console.log('📋 [MODAL] Clases ANTES:', modal.className);
+  
+  // Paso 1: Remover hidden y agregar flex
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  console.log('✅ [PASO 1] Clases modificadas');
+  
+  // Paso 2: Forzar opacidad inicial a 0 CON !important
+  modal.style.setProperty('opacity', '0', 'important');
+  modal.style.setProperty('transform', 'scale(0.95)', 'important');
+  console.log('✅ [PASO 2] Opacidad inicial a 0 con !important');
+  
+  // Paso 3: Esperar un frame
+  console.log('⏳ [PASO 3] Esperando requestAnimationFrame...');
+  requestAnimationFrame(() => {
+    console.log('🎬 [FRAME] requestAnimationFrame ejecutado');
+    
+    // Paso 4: Animar a opacidad 1 CON !important
+    modal.style.setProperty('transition', 'opacity 0.3s ease-out, transform 0.3s ease-out', 'important');
+    modal.style.setProperty('opacity', '1', 'important');
+    modal.style.setProperty('transform', 'scale(1)', 'important');
+    
+    console.log('✅ [PASO 4] Animación iniciada con !important');
+    console.log('   → modal.style.opacity:', modal.style.opacity);
+    console.log('   → modal.style.transform:', modal.style.transform);
+    
+    // Verificar después de la animación
+    setTimeout(() => {
+      const computedStyles = window.getComputedStyle(modal);
+      console.log('🎨 [VERIFICACIÓN] Estilos después de 350ms:');
+      console.log('   → opacity computada:', computedStyles.opacity);
+      console.log('   → display computado:', computedStyles.display);
+      console.log('   → transform computado:', computedStyles.transform);
+      console.log('   → visibility computada:', computedStyles.visibility);
+      console.log('   → z-index computado:', computedStyles.zIndex);
+      
+      // Verificar si el modal es visible en el viewport
+      const rect = modal.getBoundingClientRect();
+      console.log('🎨 [VERIFICACIÓN] Posición del modal:');
+      console.log('   → top:', rect.top);
+      console.log('   → left:', rect.left);
+      console.log('   → width:', rect.width);
+      console.log('   → height:', rect.height);
+      
+      // Verificar si hay contenido dentro del modal
+      const modalContent = modal.querySelector('.modal-content');
+      console.log('🎨 [VERIFICACIÓN] Contenido del modal:');
+      console.log('   → modal-content encontrado:', modalContent ? 'SÍ' : 'NO');
+      if (modalContent) {
+        const contentRect = modalContent.getBoundingClientRect();
+        console.log('   → contenido width:', contentRect.width);
+        console.log('   → contenido height:', contentRect.height);
       }
+    }, 350);
+  });
+  
+  document.body.style.overflow = 'hidden';
+  console.log('🚫 [BODY] Scroll bloqueado');
+  
+  // Ocultar slides
+  console.log('🎬 [SLIDES] Ocultando slides...');
+  for (let i = 1; i <= 4; i++) {
+    const slide = document.getElementById(`vehicle-00${i}`);
+    if (slide) {
+      slide.classList.remove('active', 'prev', 'next');
+      slide.classList.add('hidden');
+    }
+  }
+  
+  const pruebaSlide = document.getElementById('vehicle-prueba');
+  if (pruebaSlide) {
+    pruebaSlide.classList.remove('active', 'prev', 'next');
+    pruebaSlide.classList.add('hidden');
+  }
+  
+  const generalSlide = document.getElementById('vehicle-general');
+  if (generalSlide) {
+    generalSlide.classList.remove('active', 'prev', 'next');
+    generalSlide.classList.add('hidden');
+  }
+  
+  // Inicializar slider
+  if (vehicleIndex !== null) {
+    console.log('⏱️  [TIMER] Programando initializeVehicleSliderWithVehicle');
+    setTimeout(() => {
+      console.log('✅ [EJECUTANDO] initializeVehicleSliderWithVehicle');
+      initializeVehicleSliderWithVehicle(vehicleIndex);
+    }, 50);
+  } else {
+    console.log('⏱️  [TIMER] Programando initializeVehicleSlider');
+    setTimeout(() => {
+      console.log('✅ [EJECUTANDO] initializeVehicleSlider');
+      initializeVehicleSlider();
+    }, 50);
+  }
+  
+  console.log('🔽 [ACCIÓN] Llamando a collapseSidebar()');
+  collapseSidebar();
+  
+  console.log('🏁 [FIN] openVehicleStatusModal completada');
+  console.log('═══════════════════════════════════════════════════════');
+}
+
+     //----------------------------------------------------------------------------------------------------
+     
+
 
       function closeVehicleListModal() {
         const modal = document.getElementById('vehicleListModal');
         if (modal) {
-          modal.classList.add('hidden');
-          modal.classList.remove('flex');
-          // Restaurar scroll del body
-          document.body.style.overflow = 'auto';
+          console.log('🔒 [CLOSE] Cerrando modal de vehículos');
+          
+          // Animar a opacity 0
+          modal.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+          modal.style.opacity = '0';
+          modal.style.transform = 'scale(0.95)';
+          
+          // Después de la animación, ocultar completamente
+          setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            // Limpiar estilos inline
+            modal.style.opacity = '';
+            modal.style.transform = '';
+            modal.style.transition = '';
+            console.log('✅ [CLOSE] Modal ocultado completamente');
+          }, 300);
+          
+          // Restaurar scroll
+          document.body.style.overflow = '';
         }
       }
 
@@ -4483,6 +4711,7 @@
 
       // Función para mostrar un vehículo específico con transiciones suaves
       function showVehicle(index) {
+        console.log('🎬 [SHOW] showVehicle llamada con índice:', index);
         // Ocultar todos los slides con transición suave
         for (let i = 1; i <= 4; i++) {
           const slide = document.getElementById(`vehicle-00${i}`);
@@ -4501,9 +4730,12 @@
         
         // Ocultar el slide general
         const generalSlide = document.getElementById('vehicle-general');
+        console.log('🎬 [SHOW] Slide general encontrado:', generalSlide ? 'SÍ' : 'NO');
         if (generalSlide) {
+          console.log('🎬 [SHOW] Clases ANTES de ocultar:', generalSlide.className);
           generalSlide.classList.remove('active', 'prev', 'next');
           generalSlide.classList.add('hidden');
+          console.log('🎬 [SHOW] Clases DESPUÉS de ocultar:', generalSlide.className);
         }
 
         // Transición inmediata para evitar flash
@@ -4522,8 +4754,13 @@
           }
           
           if (currentSlide) {
+            console.log('🎬 [SHOW] Slide actual encontrado:', currentSlide.id);
+            console.log('🎬 [SHOW] Clases ANTES de mostrar:', currentSlide.className);
             currentSlide.classList.remove('hidden', 'prev', 'next');
             currentSlide.classList.add('active');
+            console.log('🎬 [SHOW] Clases DESPUÉS de mostrar:', currentSlide.className);
+          } else {
+            console.log('🎬 [SHOW] ERROR: No se encontró el slide actual');
           }
 
           // Actualizar el contador con transición suave
@@ -4617,15 +4854,19 @@
 
       // Función para inicializar el slider cuando se abre el modal
       function initializeVehicleSlider() {
+        console.log('🎬 [INIT] initializeVehicleSlider iniciada');
         currentVehicleIndex = 0;
         showVehicle(0);
         updateSlideIndicators();
         
         // Asegurar que el slide general esté visible inicialmente
         const generalSlide = document.getElementById('vehicle-general');
+        console.log('🎬 [INIT] Slide general encontrado:', generalSlide ? 'SÍ' : 'NO');
         if (generalSlide) {
+          console.log('🎬 [INIT] Clases ANTES:', generalSlide.className);
           generalSlide.classList.remove('hidden');
           generalSlide.classList.add('active');
+          console.log('🎬 [INIT] Clases DESPUÉS:', generalSlide.className);
         }
         
         // Ajustar altura inicial después de un pequeño delay
@@ -6486,18 +6727,18 @@ map3.on('mouseleave', 'paddock-fill', () => {
           // Actualizar las tarjetas principales
           const energyTotalCapacity = document.getElementById('energy-total-capacity');
           const energyAvailable = document.getElementById('energy-available');
-          const energyAvailablePercent = document.getElementById('energy-available-percent');
+          // const energyAvailablePercent = document.getElementById('energy-available-percent'); // Ya no se usa
           // const energyOperationalRange = document.getElementById('energy-operational-range'); // Ya no se usa
           
           if (energyTotalCapacity) energyTotalCapacity.textContent = totalCapacity + ' kWh';
           if (energyAvailable) energyAvailable.textContent = Math.round(totalAvailable) + ' kWh';
-          if (energyAvailablePercent) {
-            if (animate) {
-              animateCounter(energyAvailablePercent, 0, averagePercent, '%', 1500);
-            } else {
-              energyAvailablePercent.textContent = averagePercent.toFixed(1) + '%';
-            }
-          }
+          // if (energyAvailablePercent) {
+          //   if (animate) {
+          //     animateCounter(energyAvailablePercent, 0, averagePercent, '%', 1500);
+          //   } else {
+          //     energyAvailablePercent.textContent = averagePercent.toFixed(1) + '%';
+          //   }
+          // }
           // if (energyOperationalRange) energyOperationalRange.textContent = Math.round(operationalRange) + ' kWh';
           
           console.log('Energy Summary updated:', {

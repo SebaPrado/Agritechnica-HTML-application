@@ -92,6 +92,7 @@
       #main-content {
         margin-left: 250px;
         transition: margin-left 0.5s ease;
+        /* background-color: green; */
         /* padding-top: 1.25rem; */
         /* padding-bottom: 1.25rem; */
       }
@@ -1305,9 +1306,85 @@
 
             <!-- Main Content Area -->
           <div id="main-content" class="flex flex-col flex-1">
-               <!-- ===================================================================================================================== -->
-               <!-- ============                                LIVE MONITORING 2 VIEW (Map View)                          =============== -->
-               <!-- ===================================================================================================================== -->
+            <!-- ================================================================== -->
+            <!-- =                  Battery as a service VIEW                      = -->
+            <!-- ================================================================== -->
+            <div id="reservation-view" class="view hidden w-full">
+              <div class="flex flex-wrap justify-between gap-3 p-4">
+                <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Battery as a Service</p>
+              </div>
+              <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Reservation Management</h2>
+              <div class="flex flex-wrap gap-4 p-4">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                  <p class="text-white text-base font-medium leading-normal">Active Reservations</p>
+                  <p class="text-white tracking-light text-2xl font-bold leading-tight">0</p>
+                </div>
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                  <p class="text-white text-base font-medium leading-normal">Pending Reservations</p>
+                  <p class="text-white tracking-light text-2xl font-bold leading-tight">1</p>
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="bg-[#181d35] rounded p-6">
+                  <h3 class="text-white text-lg mb-4">Make a Reservation</h3>
+                  <div class="grid grid-cols-1 gap-4">
+                    <div>
+                      <label class="block text-white text-sm font-medium mb-2">Vehicle</label>
+                      <select id="reservationVehicle" class="w-full p-2 rounded bg-[var(--turqueza)]/20 text-white border border-[#4a5578]">
+                        <option value="" disabled selected>Select vehicle</option>
+                        <option value="zetrabot1">Zetrabot-001</option>
+                        <option value="zetrabot2">Zetrabot-002</option>
+                        <option value="zetrabot3">Zetrabot-003</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-white text-sm font-medium mb-2">Number of packs</label>
+                      <select id="reservationPacks" class="w-full p-2 rounded bg-[var(--turqueza)]/20 text-white border border-[#4a5578]">
+                        <option value="" disabled selected>select the amount of packs</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-white text-sm font-medium mb-2">Start Time</label>
+                      <input id="reservationStart" type="datetime-local" class="w-full p-2 rounded bg-[var(--turqueza)]/20 text-white border border-[#4a5578]">
+                    </div>
+                    <div>
+                      <label class="block text-white text-sm font-medium mb-2">End Time</label>
+                      <input id="reservationEnd" type="datetime-local" class="w-full p-2 rounded bg-[var(--turqueza)]/20 text-white border border-[#4a5578]">
+                    </div>
+                  </div>
+                  <button onclick="requestReservation()" class="mt-4 bg-[var(--turqueza)] text-white px-6 py-2 rounded hover:bg-[#4f6bdb] transition-colors">
+                    Request Reservation
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-white text-lg mb-4">Reservations List</h3>
+                <div class="overflow-x-auto">
+                  <table class="w-full">
+                    <thead>
+                      <tr class="text-left">
+                        <th class="text-white text-sm font-medium p-2">Vehicle</th>
+                        <th class="text-white text-sm font-medium p-2">Number of Packs</th>
+                        <th class="text-white text-sm font-medium p-2">Start Time</th>
+                        <th class="text-white text-sm font-medium p-2">End Time</th>
+                        <th class="text-white text-sm font-medium p-2">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="reservationsList">
+                      <!-- Las reservas se agregarán aquí dinámicamente -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===================================================================================================================== -->
+            <!-- ============                                LIVE MONITORING 2 VIEW (Map View)                          =============== -->
+            <!-- ===================================================================================================================== -->
            
             <div id="live-monitoring-2-view" class="view hidden h-full">
                <!-- ================================================================== -->
@@ -1665,7 +1742,7 @@
 
 
 
-                      <!-- Slide 5: Prueba -->
+                    
                      
               </div> 
               <!--  -->
@@ -2670,7 +2747,7 @@
             <!-- ================================================================== -->
             <!-- =                  2)   Battery as a service VIEW                = -->
             <!-- ================================================================== -->
-            <div id="Battery as a service -view" class="view hidden w-full">
+            <!-- <div id="reservation-view" class="view hidden w-full">
               <div class="flex flex-wrap justify-between gap-3 p-4">
                 <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Battery as a Service</p>
               </div>
@@ -2723,7 +2800,6 @@
                 </div>
               </div>
 
-              <!-- Lista de reservaciones -->
               <div class="px-4 py-3">
                 <h3 class="text-white text-lg mb-4">Reservations List</h3>
                 <div class="flex overflow-hidden rounded border border-[#2f396a] bg-[var(--azul-oscuro)] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
@@ -2738,17 +2814,16 @@
                       </tr>
                     </thead>
                     <tbody id="reservationList">
-                      <!-- Las reservaciones se agregarán aquí dinámicamente -->
                     </tbody>
                   </table>
                 </div>
               </div>
-            </div>
+            </div> -->
 
               <!-- ================================================================== -->
             <!-- =                     3) Consumption History VIEW                  = -->
             <!-- ================================================================== -->
-            <div id="Consumption History -view" class="view hidden w-full">
+            <div id="history-view" class="view hidden w-full">
               <div class="flex flex-wrap justify-between gap-3 p-4">
                 <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Consumption History</p>
               </div>
@@ -3799,7 +3874,7 @@
              <!-- ================================================================== -->
             <!-- =                     MISSIONS VIEW                               = -->
             <!-- ================================================================== -->
-            <div id="Missions & Tasks -view" class="view hidden">
+            <div id="missions-view" class="view hidden">
               <div class="flex flex-wrap justify-between gap-3 p-4">
                 <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Missions & Tasks</p>
               </div>
@@ -3901,7 +3976,7 @@
             <!-- ================================================================== -->
             <!-- =                     SETTINGS VIEW                                = -->
             <!-- ================================================================== -->
-            <div id="Settings-view" class="view hidden">
+            <div id="settings-view" class="view hidden">
               <div class="flex flex-wrap justify-between gap-3 p-4">
                 <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Settings</p>
               </div>

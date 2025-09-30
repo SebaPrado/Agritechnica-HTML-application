@@ -378,7 +378,8 @@
 
       /* Estilos para el modal de baterías */
       .modal-backdrop {
-        background-color: rgba(0, 0, 0, 0.8);
+        /* background-color: rgba(0, 0, 0, 0.8); */
+        background-color: green;
         backdrop-filter: blur(4px);
       }
 
@@ -879,7 +880,7 @@
         display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center;
       }
       #json-modal-content-wrapper {
-        background:var(--azul-oscuro); border-radius:8px; padding:24px 18px 18px 18px; min-width:320px; max-width:90vw; max-height:80vh; overflow:auto; position:relative; box-shadow:0 4px 24px #0003; border: 1px solid #2f396a;
+        background:var(--turqueza); border-radius:8px; padding:24px 18px 18px 18px; min-width:320px; max-width:90vw; max-height:80vh; overflow:auto; position:relative; box-shadow:0 4px 24px #0003; border: 1px solid #2f396a;
       }
       #close-json-modal {
         position:absolute; top:8px; right:12px; background:none; border:none; font-size:22px; cursor:pointer; color: #8e99cc;
@@ -1581,14 +1582,14 @@
                           </div>
                         </div>
                         <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[var(--turqueza)] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 clock-card">
-                          <p class="text-white text-sm slide-text-fade-in">This week</p>
+                          <p class="text-white text-sm slide-text-fade-in">Current Consumption</p>
                           <p class="text-white text-2xl font-bold slide-text-fade-in flex items-center justify-center gap-2" id="energy-operational-range">
-                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" class="animated-clock">
+                             <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" class="animated-clock">
                                <rect width="256" height="256" fill="none"/>
                                <circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
                                <polyline points="128 72 128 128 184 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" class="clock-hands"/>
-                             </svg>
-                          23 hours worked
+                             </svg> -->
+                          8 kWh / hr
                           </p>
                           <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">196 kWh consumed</p>
                         </div>
@@ -1617,29 +1618,29 @@
                            
                            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 pt-4">
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Fixed-Z1</p>
+                               <p class="text-white text-sm slide-text-fade-in">Fixed-Z426</p>
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
                                <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">f-866-zt</p>
                              </div>
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Fixed-Z2</p>
+                               <p class="text-white text-sm slide-text-fade-in">Fixed-Z45</p>
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
                                <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">f-866-zt</p>
                              </div>
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Swap-S1</p>
+                               <p class="text-white text-sm slide-text-fade-in">Swap-S15</p>
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
                                <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">s-866-zt</p>
                              </div>
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Swap-S2</p>
+                               <p class="text-white text-sm slide-text-fade-in">Swap-S36</p>
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
                                <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">s-866-zt</p>
                              </div>
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Swap-S3</p>
+                               <p class="text-white text-sm slide-text-fade-in">Station-38</p>
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
-                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">s-866-zt</p>
+                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">bt-866-zt</p>
                              </div>
                            </div>
                          </div>
@@ -1654,47 +1655,87 @@
                       <h4 class="text-white text-lg font-medium border-b border-[#4ABBBD]/50 pb-3">Current Energy Distribution</h4>
                       <div class=" rounded-lg">
                         <!-- Flexbox de tres divs hijos -->
-                        <div class="flex flex-row">
+                        <div class="flex flex-row" >
                           <!-- Div hijo 1: Flex padre de dos hijos, dirección columna -->
                             <div class="flex flex-row gap-3 flex-1 items-center">
-                            <!-- Zetrabot 1 -->
-                            <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center bg-[#181d35] hover:border-[var(--turqueza)] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
+              <!--    Zetrabot 1    -->
+                            <div class="flex-1 p-6 flex-row rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
                               <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 1</p>
-                              <div class="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                              <div class="flex items-center justify-between   mb-3 group-hover:scale-110 transition-transform duration-300">
                                 <div class="relative w-24 h-12">
                                   <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50 transition-all duration-300" viewBox="0 0 100 50">
                                     <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="48.9" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
+                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="25.132" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
                                   </svg>
                                   <div class="absolute inset-0 flex flex-col items-center justify-center mt-2">
-                                    <p class="text-white text-lg font-bold mt-6 battery-value-change slide-text-fade-in transition-colors duration-300" id="energy-zetrabot1-percent">61%</p>
+                                    <p class="text-white text-lg font-bold mt-6 battery-value-change slide-text-fade-in transition-colors duration-300" id="energy-zetrabot1-fixed-percent">80% <span class="text-[var(--turqueza)] text-xs">/10 kWh</span></p>
+                                  </div>
+                                </div>
+                                <div class="relative w-44 h-12 " >
+                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50 transition-all duration-300" viewBox="0 0 100 50">
+                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
+                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="62.83" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
+                                  </svg>
+                                  <div class="absolute inset-0 flex flex-col items-center justify-center mt-2 " style="margin-left: 48px;">
+                                    <p class="text-white text-lg font-bold mt-6 battery-value-change slide-text-fade-in transition-colors duration-300" id="energy-zetrabot1-swappable-percent">50%   <span class="text-[var(--turqueza)] text-xs">/10 kWh</span></p>
                                   </div>
                                 </div>
                               </div>
-                              <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-zetrabot1-kwh">24.4 kWh</p>
+                              <div class="flex items-center justify-center gap-8 mb-2 text-xs text-white/80">
+                                <div class="text-center">
+                                  <p>Fixed</p>
+                                  <p><span class="text-[var(--turqueza)]">f-866-zt</span></p>
+                                  <p>35.5 kWh</p>
+                                </div>
+                                <div class="text-center">
+                                  <p>Swappable</p>
+                                  <p></p>
+                                
+                                </div>
+                              </div>
+                              <p class="text-white text-xs text-center opacity-80"> 65.46%</p>
+                              <!-- <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-zetrabot1-kwh">24.4 kWh</p> -->
                               <!-- <p class="text-[var(--turqueza)] text-xs">Working</p> -->
                             </div>
                             
-                            <!-- Zetrabot 3 -->
-                            <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center bg-[#181d35] hover:border-[var(--turqueza)] hover:bg-[#1f2438] hover:scale-105 transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-[var(--turqueza)]/30 cursor-pointer group">
-                              <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 2</p>
-                              <div class="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <!-- Zetrabot 2 -->
+                            <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] hover:scale-105 transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-[var(--turqueza)]/30 cursor-pointer group">
+                              <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300 opacity-80">Zetrabot 2</p>
+                              <div class="flex items-center justify-center gap-4 mb-3 group-hover:scale-110 transition-transform duration-300">
                                 <div class="relative w-24 h-12">
                                   <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50 transition-all duration-300" viewBox="0 0 100 50">
                                     <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="25.1" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
+                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="25.132" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
                                   </svg>
                                   <div class="absolute inset-0 flex flex-col items-center justify-center mt-2">
                                     <p class="text-white text-lg font-bold mt-6 slide-text-fade-in  transition-colors duration-300" id="energy-zetrabot3-percent">80%</p>
                                   </div>
                                 </div>
+                                <div class="relative w-24 h-22">
+                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50 transition-all duration-300" viewBox="0 0 100 50">
+                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
+                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="113.094" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
+                                  </svg>
+                                  <div class="absolute inset-0 flex flex-col items-center justify-center mt-2">
+                                    <p class="text-white text-lg font-bold mt-6 slide-text-fade-in  transition-colors duration-300" id="energy-zetrabot3-percent">10%</p>
+                                  </div>
+                                </div>
                               </div>
-                              <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-zetrabot3-kwh">32.0 kWh</p>
+                              <div class="flex items-center justify-center gap-8 mb-2 text-xs text-white/80">
+                                <div class="text-center">
+                                  <p>Swappable</p>
+                                </div>
+                                <div class="text-center">
+                                  <p>Fixed </p>
+                                  <p>8.6 kWh</p>
+                                </div>
+                              </div>
+                              <p class="text-white text-center text-lg font-bold "> 22%</p>
                             </div>
                             
                             
-                            <!-- Battery Station -->
-                            <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center bg-[#181d35] hover:border-[var(--turqueza)] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
+                      <!-- Battery Station -->
+                             <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center hover:border-[var(--turqueza)] hover:bg-[#1f2438] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group"> 
                               <p class="text-white text-sm mb-3 slide-text-fade-in font-medium transition-colors duration-300">Battery Station</p>
                               <div class="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                                 <div class="relative w-24 h-12">
@@ -1708,7 +1749,7 @@
                                 </div>
                               </div>
                               <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-battery-station-kwh">20.0 kWh</p>
-                            </div>
+                            </div> 
                           </div>
                           
                           <!-- Div hijo 3: Flex padre de dos hijos, dirección columna -->
@@ -1896,25 +1937,29 @@
                           </div>
                           
                           <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                            <!-- Swappable Pack -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
-                              <p class="text-[white] text-sm">Swappable Pack</p>
-                              <p class="text-white text-lg font-bold">50%</p>
-                              <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 50%"></div>
-                              </div>
-                              <p class="text-[white] text-sm">25.5 kWh available</p>
-                            </div>
+                          
 
                             <!-- Fixed Pack -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
                               <p class="text-[white] text-sm">Fixed Pack</p>
+                              <p style="color: var(--turqueza) ; font-size: 14px; "> f-866-zt</p>
                               <p class="text-white text-lg font-bold">80%</p>
                               <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
                                 <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 80%"></div>
                               </div>
-                              <p class="text-[white] text-sm">35.5 kWh available</p>
+                              <p class="text-[white] text-sm">35.5 kWh</p>
                             </div>
+
+                              <!-- Swappable Pack -->
+                              <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                                <p class="text-[white] text-sm">Swappable Pack</p>
+                                <p style="color: var(--turqueza) ; font-size: 14px; "> s-866-zt</p>
+                                <p class="text-white text-lg font-bold">50%</p>
+                                <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
+                                  <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 50%"></div>
+                                </div>
+                                <p class="text-[white] text-sm">25.5 kWh</p>
+                              </div>
 
                             <!-- Availability -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
@@ -2180,7 +2225,7 @@
                   <div class="slide-indicator" onclick="goToSlide(5)" style="background-color: var(--turqueza)"></div>
                 </div>
                   </div>
-              </div>
+                </div>
               </div>
 
               <!--  -->
@@ -6825,4 +6870,5 @@ map3.on('mouseleave', 'paddock-fill', () => {
     
     </script>
   </body>
+</html>
 </html>

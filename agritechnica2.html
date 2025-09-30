@@ -4169,6 +4169,16 @@
         
         // Mostrar solo la vista seleccionada
         const targetView = document.getElementById(viewName + '-view');
+        // Mover la vista dentro de #main-content si aún no lo está
+        const mainContent = document.getElementById('main-content');
+        if (targetView && mainContent && !mainContent.contains(targetView)) {
+          try {
+            mainContent.appendChild(targetView);
+            console.log('Moved view into #main-content:', targetView.id);
+          } catch (err) {
+            console.error('Error moving view into #main-content:', err);
+          }
+        }
         if (targetView) {
           targetView.classList.remove('hidden');
           console.log('Showing view:', targetView.id);

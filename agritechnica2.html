@@ -1366,8 +1366,8 @@
               <!-- <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em]   px-10">Reservation Management</h2> -->
               <div class="flex flex-wrap gap-4 px-10 py-5">
                 <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                  <p class="text-white text-base font-medium leading-normal">Active Reservations</p>
-                  <p class="text-white tracking-light text-2xl font-bold leading-tight">0</p>
+                  <p class="text-white text-base font-medium leading-normal">Confirmed Reservations</p>
+                  <p class="text-white tracking-light text-2xl font-bold leading-tight">1</p>
                 </div>
                 <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Pending Reservations</p>
@@ -1381,10 +1381,10 @@
                   <table class="w-full">
                     <thead>
                       <tr class="text-left">
-                        <th class="text-white text-sm font-medium p-2">Pack Id</th>
+                        <th class="text-white text-sm font-medium p-2">Reservation Id</th>
                         <th class="text-white text-sm font-medium p-2">Start Time</th>
                         <th class="text-white text-sm font-medium p-2">End Time</th>
-                        <th class="text-white text-sm font-medium p-2">Consumo kvh</th>
+                        <th class="text-white text-sm font-medium p-2">Consumption kvh</th>
                         <th class="text-white text-sm font-medium p-2">Status</th>
                       </tr>
                     </thead>
@@ -1397,7 +1397,14 @@
               </div>
               <div class="p-4">
                 <div class="rounded p-6  transition-all duration-300 border-opacity-50">
-                  <h3 class="text-white text-lg mb-4">Make a Reservation</h3>
+                   <h3 class="text-white text-lg mb-6 text-center flex items-center justify-center gap-2">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)] me-3">
+                       <rect width="256" height="256" fill="none"/>
+                       <path d="M224,200v8a32,32,0,0,1-32,32H136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                       <path d="M224,128H192a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16h32V128a96,96,0,1,0-192,0v56a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V144a16,16,0,0,0-16-16H32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                     </svg>
+                     Make a Reservation
+                   </h3>
                   
                   <!-- Toggle Switch -->
                   <div class="flex items-center justify-center mb-6">
@@ -6041,15 +6048,15 @@
       let reservationList = [
         {
           packId: 'zetrabot1-Pack(1)',
-          startTime: new Date('2025-11-20T08:00:00').toLocaleString(),
-          endTime: new Date('2025-12-10T18:00:00').toLocaleString(),
+          startTime: '20/11/2025, 08:00',
+          endTime: '10/12/2025, 18:00',
           consumoKvh: '145.50',
           status: 'Confirmed'
         },
         {
           packId: 'zetrabot2-Pack(1)',
-          startTime: new Date('2025-11-27T08:00:00').toLocaleString(),
-          endTime: new Date('2025-12-10T18:00:00').toLocaleString(),
+          startTime: '27/11/2025, 08:00',
+          endTime: '10/12/2025, 18:00',
           consumoKvh: '165.50',
           status: 'Pending'
         }
@@ -6102,8 +6109,15 @@
           return;
         }
 
-        // Validar que la fecha de inicio no sea anterior a la fecha actual
-        if (startDate < new Date()) {
+        // Ajustar la validación de fecha considerando timezone
+        const now = new Date();
+        const userTimezoneOffset = now.getTimezoneOffset() * 60000;
+        const localNow = new Date(now.getTime() - userTimezoneOffset);
+        
+        // Remover la parte del timezone de la fecha de inicio para comparación justa
+        const localStartDate = new Date(startDate.getTime() - userTimezoneOffset);
+        
+        if (localStartDate.toISOString().split('T')[0] < localNow.toISOString().split('T')[0]) {
           showNotification('Start date cannot be before current date', 'error');
           return;
         }
@@ -6111,8 +6125,20 @@
         // Agregar reservación a la lista
         const newReservation = {
           packId: currentReservationType === 'pack' ? `${vehicle}-Pack${numPacks}` : `Battery-Station-${numPacks}`,
-          startTime: new Date(startTime).toLocaleString(),
-          endTime: new Date(endTime).toLocaleString(),
+          startTime: new Date(new Date(startTime).getTime() - userTimezoneOffset).toLocaleString('es-ES', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+          }),
+          endTime: new Date(new Date(endTime).getTime() - userTimezoneOffset).toLocaleString('es-ES', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+          }),
           consumoKvh: '0.00', // Este valor se actualizará cuando haya consumo real
           status: 'Pending'
         };
@@ -6139,10 +6165,10 @@
           row.className = 'border-t border-t-[#4ABBBD]/50';
           const isInitialReservation = reservation.packId === 'zetrabot1-Pack2';
           row.innerHTML = `
-            <td class="px-4 py-3 ${isInitialReservation ? 'text-[var(--turqueza)]' : 'text-white'} text-sm">${reservation.packId}</td>
-            <td class="px-4 py-3 ${isInitialReservation ? 'text-[var(--turqueza)]' : 'text-white'} text-sm">${reservation.startTime}</td>
-            <td class="px-4 py-3 ${isInitialReservation ? 'text-[var(--turqueza)]' : 'text-white'} text-sm">${reservation.endTime}</td>
-            <td class="px-4 py-3 ${isInitialReservation ? 'text-[var(--turqueza)]' : 'text-white'} text-sm">${reservation.consumoKvh} kWh</td>
+            <td class="px-4 py-3 text-[var(--turqueza)] text-sm">${reservation.packId}</td>
+            <td class="px-4 py-3 text-[var(--turqueza)] text-sm">${reservation.startTime}</td>
+            <td class="px-4 py-3 text-[var(--turqueza)] text-sm">${reservation.endTime}</td>
+            <td class="px-4 py-3 text-[var(--turqueza)] text-sm">${reservation.consumoKvh} kWh</td>
             <td class="px-4 py-3">
               <span class="status-badge px-2 py-1 text-xs font-medium rounded-full ${
                 reservation.status === 'Confirmed' ? 'bg-green-500' : 'bg-[var(--turqueza)]'

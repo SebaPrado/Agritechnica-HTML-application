@@ -1295,6 +1295,14 @@
                     </div>
                     <p class="nav-text text-white text-xs font-medium leading-normal">Battery as a Service</p>
                   </div>
+                  <div onclick="navigateTo('work')" class="nav-tooltip nav-item flex items-center gap-3 px-3 py-2 cursor-pointer" data-view="work" data-tooltip="Energy Master">
+                    <div class="text-white" data-icon="Briefcase" data-size="20px" data-weight="regular" style="padding-left: 2px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="18px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M152,80V56a16,16,0,0,0-16-16H120a16,16,0,0,0-16,16V80H40a16,16,0,0,0-16,16v80a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V96a16,16,0,0,0-16-16ZM120,56h16V80H120ZM216,176H40V96H216v80Z"></path>
+                      </svg>
+                    </div>
+                    <p class="nav-text text-white text-xs font-medium leading-normal">Energy Planner</p>
+                  </div>
                   <div onclick="navigateTo('history')" class="nav-tooltip nav-item flex items-center gap-3 px-3 py-2 cursor-pointer" data-view="history" data-tooltip="Consumption History">
                     <div class="text-white" data-icon="ChartLine" data-size="20px" data-weight="regular" style="padding-left: 2px;">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="18px" fill="currentColor" viewBox="0 0 256 256">
@@ -1302,14 +1310,6 @@
                       </svg>
                     </div>
                     <p class="nav-text text-white text-xs font-medium leading-normal">Consumption History</p>
-                  </div>
-                  <div onclick="navigateTo('work')" class="nav-tooltip nav-item flex items-center gap-3 px-3 py-2 cursor-pointer" data-view="work" data-tooltip="Energy Planner">
-                    <div class="text-white" data-icon="Briefcase" data-size="20px" data-weight="regular" style="padding-left: 2px;">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="18px" fill="currentColor" viewBox="0 0 256 256">
-                        <path d="M152,80V56a16,16,0,0,0-16-16H120a16,16,0,0,0-16,16V80H40a16,16,0,0,0-16,16v80a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V96a16,16,0,0,0-16-16ZM120,56h16V80H120ZM216,176H40V96H216v80Z"></path>
-                      </svg>
-                    </div>
-                    <p class="nav-text text-white text-xs font-medium leading-normal">Energy Planner</p>
                   </div>
                   </div>
                 </div>
@@ -3975,7 +3975,7 @@
             <!-- ================================================================== -->
             <div id="work-view" class="view hidden">
               <div class="flex flex-wrap justify-between gap-3 p-4">
-                <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Energy Planner</p>
+                <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Energy Master</p>
               </div>
               
               <!-- Lista de trabajos -->
@@ -6044,21 +6044,72 @@
           quantityLabel.textContent = 'Number of Battery Stations';
         }
       }
-
+  // 
       let reservationList = [
+       {
+          packId: 'swap-886-zt',
+          startTime: '05/11/2025',
+          endTime: '25/12/2025',
+          consumoKvh: '180.50',
+          status: 'In progress'
+        },
         {
           packId: 'zetrabot1-Pack(1)',
-          startTime: '20/11/2025, 08:00',
-          endTime: '10/12/2025, 18:00',
-          consumoKvh: '145.50',
+          startTime: '20/11/2025',
+          endTime: '10/12/2025',
+          consumoKvh: '',
           status: 'Confirmed'
         },
         {
           packId: 'zetrabot2-Pack(1)',
-          startTime: '27/11/2025, 08:00',
-          endTime: '10/12/2025, 18:00',
-          consumoKvh: '165.50',
+          startTime: '27/11/2025 ',
+          endTime: '10/12/2025 ',
+          consumoKvh: '',
           status: 'Pending'
+        },
+        {
+          packId: 'swap-545-zt',
+          startTime: '20/10/2025',
+          endTime: '05/11/2025',
+          consumoKvh: '180.50',
+          status: 'Finished'
+        },
+        {
+          packId: 'swap-334-zt',
+          startTime: '12/09/2025',
+          endTime: '30/09/2025',
+          consumoKvh: '220.0',
+          status: 'Finished'
+        },{
+          packId: 'swap-555-zt',
+          startTime: '28/08/2025',
+          endTime: '15/09/2025',
+          consumoKvh: '200.0',
+          status: 'Finished'
+        },{
+          packId: 'station-088-bt',
+          startTime: '28/08/2025',
+          endTime: '15/09/2025',
+          consumoKvh: '450.5',
+          status: 'Finished'
+        },{
+          packId: 'swap-777-zt',
+          startTime: '18/06/2025',
+          endTime: '05/07/2025',
+          consumoKvh: '100.5',
+          status: 'Finished'
+        },{
+          packId: 'swap-886-zt',
+          startTime: '23/05/2025',
+          endTime: '05/06/2025',
+          consumoKvh: '130.5',
+          status: 'Finished'
+        },{
+          packId: 'swap-999-zt',
+          startTime: '18/04/2025',
+          endTime: '05/05/2025',
+          consumoKvh: '190.0',
+          status: 'Finished'
         }
       ];
 

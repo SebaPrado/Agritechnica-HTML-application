@@ -51,6 +51,11 @@
         animation: slideOut 0.3s ease forwards;
       }
 
+      /* Estilos para los badges de estado */
+      .status-badge {
+        transition: all 0.3s ease;
+      }
+
       :root {
         /* Variables globales de colores */
         --azul-oscuro: #253544;
@@ -556,7 +561,7 @@
         padding: 4px;
         border-radius: 50%;
         background-color: rgba(16, 19, 35, 0.8);
-        border: 1px solid #2f396a;
+        border: 1px solid var(--turqueza);
       }
 
       .vehicle-icon-label {
@@ -590,7 +595,7 @@
         padding: 15px;
         text-align: center;
         border-radius: 6px;
-        border: 1px solid #2f396a;
+        border: 1px solid var(--turqueza);
         color: #8e99cc;
         z-index: 20;
       }
@@ -612,7 +617,7 @@
         width: 250px;
         z-index: 20;
         background: rgba(16, 19, 35, 0.9);
-        border: 1px solid #2f396a;
+        border: 1px solid var(--turqueza);
         border-radius: 6px;
         padding: 10px;
         font-family: 'Montserrat', 'Be Vietnam Pro', 'Noto Sans', sans-serif;
@@ -913,7 +918,7 @@
         display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center;
       }
       #json-modal-content-wrapper {
-        background:var(--turqueza); border-radius:8px; padding:24px 18px 18px 18px; min-width:320px; max-width:90vw; max-height:80vh; overflow:auto; position:relative; box-shadow:0 4px 24px #0003; border: 1px solid #2f396a;
+        background:var(--turqueza); border-radius:8px; padding:24px 18px 18px 18px; min-width:320px; max-width:90vw; max-height:80vh; overflow:auto; position:relative; box-shadow:0 4px 24px #0003; border: 1px solid var(--turqueza);
       }
       #close-json-modal {
         position:absolute; top:8px; right:12px; background:none; border:none; font-size:22px; cursor:pointer; color: #8e99cc;
@@ -933,7 +938,7 @@
         border: none !important;
       }
        .mapboxgl-ctrl-group button:not(:last-child){
-         border-bottom: 1px solid #2f396a !important;
+         border-bottom: 1px solid var(--turqueza) !important;
        }
       .mapboxgl-ctrl-group button:hover {
         background-color: #2f396a !important;
@@ -962,7 +967,7 @@
         color: white !important;
         border-radius: 6px !important;
         padding: 12px 15px !important;
-        border: 1px solid #2f396a !important;
+        border: 1px solid var(--turqueza) !important;
         box-shadow: 0 2px 10px rgba(0,0,0,0.5) !important;
       }
       .mapboxgl-popup-tip {
@@ -1243,7 +1248,7 @@
   <!-- ================================================================================ -->
 
   <!--  Sidebar Navigation  -->
-          <div class="sidebar collapsed shadow-[#2f396a]/50 flex-col mt-4">
+          <div class="sidebar collapsed shadow-[var(--turqueza)]/50/50 flex-col mt-4">
                     <div class="flex h-full flex-col justify-between p-4">
               <div class="flex flex-col h-full justify-between">
                 <!-- Grupo Superior -->
@@ -1299,7 +1304,7 @@
                 </div>
                 
                 <!-- Grupo Inferior -->
-                <div class="flex flex-col gap-2 mt-auto pt-4 pb-8 border-t border-[#2f396a]">
+                <div class="flex flex-col gap-2 mt-auto pt-4 pb-8 border-t border-[var(--turqueza)] border-opacity-50">
                   <div onclick="navigateTo('battery')" class="nav-tooltip nav-item flex items-center gap-3 px-3 py-2 cursor-pointer" data-view="battery" data-tooltip="Battery System Health">
                     <div class="text-white flex items-center justify-center text-lg font-bold" style="width: 20px; height: 18px;">
                       1
@@ -1344,22 +1349,23 @@
             <!-- =                  Battery as a service VIEW                      = -->
             <!-- ================================================================== -->
             <div id="reservation-view" class="view hidden w-full">
-              <div class="flex flex-wrap justify-between gap-3 p-4">
-                <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Battery as a Service</p>
+              <div class="flex flex-wrap justify-between gap-3 px-10 py-5">
+                <p class="text-white tracking-light text-[28px]  leading-tight min-w-72">Battery as a Service</p>
               </div>
-              <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Reservation Management</h2>
-              <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+              <!-- <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em]   px-10">Reservation Management</h2> -->
+              <div class="flex flex-wrap gap-4 px-10 py-5">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Active Reservations</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">0</p>
                 </div>
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Pending Reservations</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">1</p>
                 </div>
               </div>
-              <div class="p-4">
-                <h3 class="text-white text-lg mb-4">Reservations List</h3>
+              <div class="p-10">
+                
+                <h3 class="text-white text-lg mb-4"> My Reservations</h3>
                 <div class="overflow-x-auto">
                   <table class="w-full">
                     <thead>
@@ -1375,13 +1381,27 @@
                       <!-- Las reservas se agregarán aquí dinámicamente -->
                     </tbody>
                   </table>
-                </div>
+                
+               </div>
               </div>
               <div class="p-4">
-                <div class="rounded p-6 border border-[#2f396a]">
+                <div class="rounded p-6  transition-all duration-300 border-opacity-50">
                   <h3 class="text-white text-lg mb-4">Make a Reservation</h3>
-                  <div class="grid grid-cols-1 gap-4">
-                    <div>
+                  
+                  <!-- Toggle Switch -->
+                  <div class="flex items-center justify-center mb-6">
+                    <div class="flex items-center space-x-4 bg-[var(--azul-oscuro)]/50 p-2 rounded-full border border-[#4ABBBD]/30">
+                      <button id="packToggle" onclick="toggleReservationType('pack')" class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-[var(--turqueza)] text-white">
+                        Pack
+                      </button>
+                      <button id="stationToggle" onclick="toggleReservationType('station')" class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[var(--turqueza)]">
+                        Battery Station
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 gap-4 p-10  border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70" style="border-radius: 8px;">
+                    <div id="vehicleSection">
                       <label class="block text-white text-sm font-medium mb-2">Vehicle</label>
                       <select id="reservationVehicle" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
                         <option value="" disabled selected class="bg-transparent text-[var(--turqueza)]">Select vehicle</option>
@@ -1391,9 +1411,9 @@
                       </select>
                     </div>
                     <div>
-                      <label class="block text-white text-sm font-medium mb-2">Number of packs</label>
+                      <label id="quantityLabel" class="block text-white text-sm font-medium mb-2">Number of packs</label>
                       <select id="reservationPacks" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
-                        <option value="" disabled selected class="bg-transparent text-[var(--turqueza)]">select the amount of packs</option>
+                        <option value="" disabled selected class="bg-transparent text-[var(--turqueza)]">select the amount</option>
                         <option value="1" class="bg-transparent text-[var(--turqueza)]">1</option>
                         <option value="2" class="bg-transparent text-[var(--turqueza)]">2</option>
                         <option value="3" class="bg-transparent text-[var(--turqueza)]">3</option>
@@ -1408,10 +1428,11 @@
                       <label class="block text-white text-sm font-medium mb-2">End Time</label>
                       <input id="reservationEnd" type="datetime-local" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
                     </div>
+                    <button onclick="requestReservation()" class="mt-4 bg-[var(--turqueza)] text-white px-6 py-2 rounded hover:scale-105 transition-all duration-300">
+                      Request Reservation
+                    </button>
                   </div>
-                  <button onclick="requestReservation()" class="mt-4 bg-[var(--turqueza)] text-white px-6 py-2 rounded hover:bg-[#4f6bdb] transition-colors">
-                    Request Reservation
-                  </button>
+                  
                 </div>
               </div>
             </div>
@@ -1424,7 +1445,7 @@
                <!-- ================================================================== -->
                <!-- =                        MAP view                                = -->
                <!-- ================================================================== -->
-              <div class="bg-[white] rounded-lg relative border border-[#2f396a]" style="height: 95vh;">
+              <div class="bg-[white] rounded-lg relative border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50" style="height: 95vh;">
                 <div id="map3"></div>
                 
                 <!-- Botón flotante de Energy Status (lado izquierdo 1/3 ) -->
@@ -1487,9 +1508,9 @@
 
               <!-- Modal del mapa -->
               <div id="mapModal" class="modal-backdrop fixed inset-0 z-50 hidden flex items-center justify-center">
-                <div class="modal-content bg-[var(--azul-oscuro)] border border-[#2f396a] rounded-lg shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                <div class="modal-content bg-[var(--azul-oscuro)] border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 rounded-lg shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
                   <!-- Header del modal -->
-                  <div class="flex items-center justify-between p-6 border-b border-[#2f396a]">
+                  <div class="flex items-center justify-between p-6 border-b border-[var(--turqueza)] border-opacity-50">
                     <h3 class="text-white text-xl font-semibold">Notifications </h3>
                     <button 
                       onclick="closeMapModal()" 
@@ -1596,7 +1617,7 @@
                   <div class="p-10 space-y-8">
                     <!-- Resumen de energía del sistema -->
                     <div class="space-y-6">
-                      <!-- <h4 class="text-white text-lg font-medium border-b border-[#2f396a] pb-2">System Energy Summary</h4> -->
+                      <!-- <h4 class="text-white text-lg font-medium border-b border-[var(--turqueza)] border-opacity-50 pb-2">System Energy Summary</h4> -->
                       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
                           <p class="text-white text-sm slide-text-fade-in">Total Capacity</p>
@@ -1659,7 +1680,7 @@
                       <h4 class="text-white text-lg font-medium pb-1">Packs</h4>
                       <!-- Resumen de energía del sistema -->
                       <div class="">
-                        <!-- <h4 class="text-white text-lg font-medium border-b border-[#2f396a] pb-2">System Energy Summary</h4> -->
+                        <!-- <h4 class="text-white text-lg font-medium border-b border-[var(--turqueza)] border-opacity-50 pb-2">System Energy Summary</h4> -->
                          <div class="relative">
                            <!-- Líneas horizontales como techos -->
                            <div class="absolute top-0 left-0 h-px bg-[#4ABBBD]/50" style="width: calc(40% - 0.5rem);"></div>
@@ -1773,11 +1794,11 @@
                                   </div>             
                             </div> -->
                   
-                               <!-- <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] hover:scale-105 transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-[var(--turqueza)]/30 cursor-pointer group">
+                               <!-- <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] hover:scale-105 transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-[var(--turqueza)]/50/30 cursor-pointer group">
                               <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300 opacity-80">Zetrabot 2</p>
                               <div class="flex items-center justify-center gap-4 mb-3 group-hover:scale-110 transition-transform duration-300">
                                 <div class="relative w-24 h-12">
-                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50 transition-all duration-300" viewBox="0 0 100 50">
+                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50/50 transition-all duration-300" viewBox="0 0 100 50">
                                     <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
                                     <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="25.132" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
                                   </svg>
@@ -1786,7 +1807,7 @@
                                   </div>
                                 </div>
                                 <div class="relative w-24 h-22">
-                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50 transition-all duration-300" viewBox="0 0 100 50">
+                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50/50 transition-all duration-300" viewBox="0 0 100 50">
                                     <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
                                     <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="113.094" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
                                   </svg>
@@ -1816,7 +1837,7 @@
                               <p class="text-white text-sm mb-3 slide-text-fade-in font-medium transition-colors duration-300">Battery Station</p>
                               <div class="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                                 <div class="relative w-24 h-12">
-                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50 transition-all duration-300" viewBox="0 0 100 50">
+                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50/50 transition-all duration-300" viewBox="0 0 100 50">
                                     <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
                                     <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="0" class=" transition-colors duration-300"></path>
                                   </svg>
@@ -1831,7 +1852,7 @@
                           <!-- Nueva fila para cuadro de vehiculos -->
                              <div>
                                <div class=" py-3 @container">
-                                <div class="flex overflow-hidden rounded border border-[#2f396a] bg-[var(--azul-oscuro)] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                                    <table class="flex-1">
                                      <thead>
                                        <tr class="bg-[var(--turqueza)]">
@@ -1843,7 +1864,7 @@
                                        </tr>
                                      </thead>
                                      <tbody>
-                                       <tr class="border-t border-t-[#2f396a]">
+                                       <tr class="border-t border-t-[#4ABBBD]/50">
                                          <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[300px] text-white text-sm font-normal leading-normal">Zetrabot 1</td>
                                          <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                                            <p class="text-white text-base">72.5% <span class="text-[var(--turqueza)] text-sm">/ 62.8 kWh</span></p>
@@ -1868,7 +1889,7 @@
                                            On duty
                                          </td> -->
                                        </tr>
-                                       <tr class="border-t border-t-[#2f396a]">
+                                       <tr class="border-t border-t-[#4ABBBD]/50">
                                          <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[300px] text-white text-sm font-normal leading-normal">Zetrabot 2</td>
                                          <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                                            <p class="text-white text-base">67.5% <span class="text-[var(--turqueza)] text-sm">/ 58.9 kWh</span></p>
@@ -1893,7 +1914,7 @@
                                            Available
                                          </td> -->
                                        </tr>
-                                       <!-- <tr class="border-t border-t-[#2f396a]">
+                                       <!-- <tr class="border-t border-t-[#4ABBBD]/50">
                                          <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-sm font-normal leading-normal">Zetrabot-003</td>
                                          <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                                            <div class="flex items-center gap-4">
@@ -1915,7 +1936,7 @@
                                            Charging
                                          </td>
                                        </tr> -->
-                                       <tr class="border-t border-t-[#2f396a]">
+                                       <tr class="border-t border-t-[#4ABBBD]/50">
                                          <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[300px] text-white text-sm font-normal leading-normal">Battery Station</td>
                                          <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                                            <p class="text-white text-base">100% <span class="text-[var(--turqueza)] text-sm">/ 88 kWh</span></p>
@@ -1987,7 +2008,7 @@
                   </div>
 
                   <!-- Footer del modal -->
-                  <!-- <div class="flex justify-end p-6 border-t border-[#2f396a]">
+                  <!-- <div class="flex justify-end p-6 border-t border-[var(--turqueza)] border-opacity-50">
                     <button 
                       onclick="closeEnergyStatusModal()" 
                       class="bg-[var(--turqueza)] hover:bg-[#4c63d2] text-white py-2 px-6 rounded-lg transition-colors duration-200"
@@ -2141,7 +2162,7 @@
                               
                               <!-- Icono del vehículo centrado -->
                               <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                                <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
                                     <g>
                                       <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
@@ -2162,7 +2183,7 @@
                           
 
                             <!-- Fixed Pack -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[white] text-sm">Fixed Pack</p>
                               <p style="color: var(--turqueza) ; font-size: 14px; "> f-866-zt</p>
                               <p class="text-white text-lg font-bold">80%</p>
@@ -2173,7 +2194,7 @@
                             </div>
 
                               <!-- Swappable Pack -->
-                              <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                              <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                                 <p class="text-[white] text-sm">Swappable Pack</p>
                                 <p style="color: var(--turqueza) ; font-size: 14px; "> s-866-zt</p>
                                 <p class="text-white text-lg font-bold">50%</p>
@@ -2184,14 +2205,14 @@
                               </div>
 
                             <!-- Availability -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-white text-sm">Availability</p>
                               <p class="text-white text-lg font-bold">59 kWh</p>
                               <p class="text-white text-sm">Operational capacity</p>
                             </div>
 
                             <!-- Minimum Battery Threshold -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-white text-sm">Battery Min</p>
                               <p class="text-white text-lg font-bold" id="threshold-value">20%</p>
                               <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
@@ -2238,7 +2259,7 @@
                               
                               <!-- Icono del vehículo centrado -->
                               <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                                <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
                                     <g>
                                       <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
@@ -2257,7 +2278,7 @@
                           
                           <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
                             <!-- Swappable Pack -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
                               <p class="text-white text-lg font-bold">12%</p>
                               <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
@@ -2267,7 +2288,7 @@
                             </div>
 
                             <!-- Fixed Pack -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
                               <p class="text-white text-lg font-bold">10%</p>
                               <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
@@ -2277,14 +2298,14 @@
                             </div>
 
                             <!-- Availability -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Availability</p>
                               <p class="text-white text-lg font-bold">17.1 kWh</p>
                               <p class="text-[var(--turqueza)] text-sm">Operational capacity</p>
                             </div>
 
                             <!-- Minimum Battery Threshold -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Battery Min</p>
                               <p class="text-white text-lg font-bold" id="threshold-value-2">20%</p>
                               <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
@@ -2331,7 +2352,7 @@
                               
                               <!-- Icono del vehículo centrado -->
                               <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                                <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD"  viewBox="384 282 32 32">
                                     <g>
                                       <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
@@ -2350,7 +2371,7 @@
                           
                           <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
                             <!-- Swappable Pack -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
                               <p class="text-white text-lg font-bold">90%</p>
                               <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
@@ -2360,7 +2381,7 @@
                             </div>
 
                             <!-- Fixed Pack -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
                               <p class="text-white text-lg font-bold">100%</p>
                               <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
@@ -2370,14 +2391,14 @@
                             </div>
 
                             <!-- Availability -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Availability</p>
                               <p class="text-white text-lg font-bold">86.5 kWh</p>
                               <p class="text-[var(--turqueza)] text-sm">Operational capacity</p>
                             </div>
 
                             <!-- Minimum Battery Threshold -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Battery Min</p>
                               <p class="text-white text-lg font-bold" id="threshold-value-3">20%</p>
                               <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
@@ -2399,7 +2420,7 @@
                         <div class="vehicle-slide hidden" id="vehicle-004">
                           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                             <!-- Swappable Pack -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
                               <p class="text-white text-2xl font-bold">85%</p>
                               <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-3 mb-2">
@@ -2409,7 +2430,7 @@
                             </div>
 
                             <!-- Fixed Pack -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
                               <p class="text-white text-2xl font-bold">95%</p>
                               <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-3 mb-2">
@@ -2419,14 +2440,14 @@
                             </div>
 
                             <!-- Availability -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Availability</p>
                               <p class="text-white text-2xl font-bold">80.5 kWh</p>
                               <p class="text-[var(--turqueza)] text-sm">Total operational capacity</p>
                             </div>
 
                             <!-- Minimum Battery Threshold -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Minimum Battery Threshold</p>
                               <p class="text-white text-2xl font-bold">15%</p>
                               <p class="text-[var(--turqueza)] text-sm">Optimal performance level</p>
@@ -2469,18 +2490,18 @@
               <div class="flex flex-wrap gap-4 p-4">
                 <!-- Columna 1: Datos en bruto -->
                 <div class="flex flex-col gap-4 flex-1 min-w-[280px]">
-                    <div class="flex flex-col gap-2 rounded p-6 border border-[#2f396a] bg-[var(--azul-oscuro)] h-full justify-center shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                    <div class="flex flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] h-full justify-center shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                         <p class="text-white text-base font-medium leading-normal">Total Installed Capacity</p>
                         <p class="text-white tracking-light text-2xl font-bold leading-tight">132 kWh</p>
                     </div>
-                    <div class="flex flex-col gap-2 rounded p-6 border border-[#2f396a] bg-[var(--azul-oscuro)] h-full justify-center shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                    <div class="flex flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] h-full justify-center shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                         <p class="text-white text-base font-medium leading-normal">Operational Capacity (20-80%)</p>
                         <p class="text-white tracking-light text-2xl font-bold leading-tight">81.6 kWh</p>
                     </div>
                 </div>
 
                 <!-- Columna 2: Visualización del Medidor -->
-                <div class="flex flex-col items-center justify-center p-6 border border-[#2f396a] rounded-lg bg-[var(--azul-oscuro)] flex-1 min-w-[280px] shadow-lg shadow-[]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex flex-col items-center justify-center p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 rounded-lg bg-[var(--azul-oscuro)] flex-1 min-w-[280px] shadow-lg shadow-[]/50 transition-shadow duration-300 hover:shadow-xl">
                     <h3 class="text-white text-base font-medium leading-normal mb-2">Current System Energy</h3>
                     <div class="relative w-48 h-24">
                         <svg class="w-full h-full" viewBox="0 0 100 50">
@@ -2498,7 +2519,7 @@
               </div>
               <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Fleet Status Overview</h2>
               <div class="px-4 py-3 @container">
-                <div class="flex overflow-hidden rounded border border-[#2f396a] bg-[var(--azul-oscuro)] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <table class="flex-1">
                     <thead>
                       <tr class="bg-[#181d35]">
@@ -2509,7 +2530,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-sm font-normal leading-normal">Zetrabot-001</td>
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                           <div class="flex items-center gap-4">
@@ -2531,7 +2552,7 @@
                           On duty
                         </td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-sm font-normal leading-normal">Zetrabot-002</td>
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                           <div class="flex items-center gap-4">
@@ -2553,7 +2574,7 @@
                           Available
                         </td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-sm font-normal leading-normal">Zetrabot-003</td>
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                           <div class="flex items-center gap-4">
@@ -2575,7 +2596,7 @@
                           Charging
                         </td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-sm font-normal leading-normal">Battery Station</td>
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                           <div class="flex items-center gap-4">
@@ -2630,7 +2651,7 @@
               </div>
               <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"> Individual Vehicle Status </h2>
               <div class="flex flex-col gap-4 px-4 py-6">
-                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#2f396a] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <div class="flex items-center gap-3">
                     <div class="text-white">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" fill="currentColor" viewBox="384 282 32 32">
@@ -2678,7 +2699,7 @@
                     <span id="thresholdValue_zetrabot003" class="text-white text-sm min-w-[3ch]">20%</span>
                   </div>
                 </div>
-                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#2f396a] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <div class="flex items-center gap-3">
                     <div class="text-white">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" fill="currentColor" viewBox="384 282 32 32">
@@ -2726,7 +2747,7 @@
                     <span id="thresholdValue_zetrabot002" class="text-white text-sm min-w-[3ch]">20%</span>
                   </div>
                 </div>
-                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#2f396a] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <div class="flex items-center gap-3">
                     <div class="text-white">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" fill="currentColor" viewBox="384 282 32 32">
@@ -2775,7 +2796,7 @@
                   </div>
                 </div>
                 <!-- Trailer -->
-                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#2f396a] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <div class="flex items-center gap-3">
                     <div class="text-white">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" fill="currentColor" viewBox="0 -64 640 640">
@@ -2818,7 +2839,7 @@
               <!-- <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">My Vehicles - current state of charge ( opcion 2)</h2>
               <p class="text-white px-4 pb-3 pt-5">Esta tabla es solo un ejemplo de visualizacion. No prestar atencion al contenido de esta tabla.</p>
               <div class="px-4 py-3 @container">
-                <div class="flex overflow-hidden rounded border border-[#2f396a] bg-[var(--azul-oscuro)] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <table class="flex-1">
                     <thead>
                       <tr class="bg-[#181d35]">
@@ -2829,7 +2850,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-sm font-normal leading-normal">Zetrabot-001</td>
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                           <div class="flex items-center gap-3">
@@ -2847,7 +2868,7 @@
                           Operational
                         </td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-sm font-normal leading-normal">Zetrabot-002</td>
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                           <div class="flex items-center gap-3">
@@ -2865,7 +2886,7 @@
                           Charging
                         </td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-sm font-normal leading-normal">Zetrabot-003</td>
                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                           <div class="flex items-center gap-3">
@@ -2942,35 +2963,35 @@
               </div>
               <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Fleet Overview</h2>
               <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Total Vehicles</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">3</p>
                 </div>
                 
-                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Active Vehicles</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">1</p>
                 </div>
-                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                     <p class="text-white text-base font-medium leading-normal">Available </p>
                     <p class="text-white tracking-light text-2xl font-bold leading-tight">1</p>
                   </div>
-                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Charging</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">1</p>
                 </div>
-                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                     <p class="text-white text-base font-medium leading-normal">Out of Service</p>
                     <p class="text-white tracking-light text-2xl font-bold leading-tight">0</p>
                   </div>
-                  <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                  <div class="flex min-w-[172px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                     <p class="text-white text-base font-medium leading-normal">Battery Station</p>
                     <p class="text-white tracking-light text-2xl font-bold leading-tight">1</p>
                   </div>
                
               </div>
               <div class="px-4 py-3">
-                <div class="flex overflow-hidden rounded border border-[#2f396a] bg-[var(--azul-oscuro)] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <table class="flex-1">
                     <thead>
                       <tr class="bg-[#181d35]">
@@ -2981,25 +3002,25 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="px-4 py-3 text-white text-sm">Zetrabot-001</td>
                         <td class="px-4 py-3 text-white text-sm">65%</td>
                         <td class="px-4 py-3 text-green-400 text-sm">On duty</td>
                         <td class="px-4 py-3 text-white text-sm">Paddock 3</td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="px-4 py-3 text-white text-sm">Zetrabot-003</td>
                         <td class="px-4 py-3 text-white text-sm">80%</td>
                         <td class="px-4 py-3 text-green-400 text-sm">Available</td>
                         <td class="px-4 py-3 text-white text-sm">Paddock 3</td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="px-4 py-3 text-white text-sm">Zetrabot-002</td>
                         <td class="px-4 py-3 text-white text-sm">22%</td>
                         <td class="px-4 py-3 text-yellow-400 text-sm">Charging</td>
                         <td class="px-4 py-3 text-white text-sm">Warehouse</td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="px-4 py-3 text-white text-sm">Battery station</td>
                         <td class="px-4 py-3 text-white text-sm">80%</td>
                         <td class="px-4 py-3 text-green-400 text-sm">Available</td>
@@ -3020,11 +3041,11 @@
               </div>
               <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Reservation Management</h2>
               <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Active Reservations</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">0</p>
                 </div>
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Pending Reservations</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">1</p>
                 </div>
@@ -3069,7 +3090,7 @@
 
               <div class="px-4 py-3">
                 <h3 class="text-white text-lg mb-4">Reservations List</h3>
-                <div class="flex overflow-hidden rounded border border-[#2f396a] bg-[var(--azul-oscuro)] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <table class="flex-1">
                     <thead>
                       <tr class="bg-[#181d35]">
@@ -3097,15 +3118,15 @@
               
               <!-- Summary Cards -->
               <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Total Energy Used (30 days)</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">2,450 kWh</p>
                 </div>
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Average Daily Usage</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">81.6 kWh</p>
                 </div>
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Average Price </p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">2.5 U$S/kWh</p>
                 </div>
@@ -3114,7 +3135,7 @@
               <!-- Consumption by Vehicle -->
               <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Charging station consumption by Time-of-day rates</h2>
               <div class="px-4 py-3">
-                <div class="flex overflow-hidden rounded border border-[#2f396a] bg-[var(--azul-oscuro)] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <table class="flex-1">
                     <thead>
                       <tr class="bg-[#181d35]">
@@ -3125,19 +3146,19 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="px-4 py-3 text-white text-sm">Peak</td>
                         <td class="px-4 py-3 text-white text-sm">20 %</td>
                         <td class="px-4 py-3 text-white text-sm">280 kWh</td>
                         <td class="px-4 py-3 text-green-400 text-sm">↑ 5%</td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="px-4 py-3 text-white text-sm">Shoulder</td>
                         <td class="px-4 py-3 text-white text-sm">12 %</td>
                         <td class="px-4 py-3 text-white text-sm">294 kWh</td>
                         <td class="px-4 py-3 text-red-400 text-sm">↓ 2%</td>
                       </tr>
-                      <tr class="border-t border-t-[#2f396a]">
+                      <tr class="border-t border-t-[#4ABBBD]/50">
                         <td class="px-4 py-3 text-white text-sm">Off-peak</td>
                         <td class="px-4 py-3 text-white text-sm">68 %</td>
                         <td class="px-4 py-3 text-white text-sm">1680 kWh</td>
@@ -3151,7 +3172,7 @@
               <!-- Monthly Comparison -->
               <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Monthly Comparison</h2>
               <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <div class="flex justify-between items-center mb-4">
                     <p class="text-white text-base font-medium leading-normal">Energy Cost (U$S)</p>
                     <div class="flex gap-4">
@@ -3176,7 +3197,7 @@
                 </div>
               </div>
               <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <div class="flex justify-between items-center mb-4">
                     <p class="text-white text-base font-medium leading-normal">Energy Price (U$S/kWh)</p>
                     <div class="flex gap-4">
@@ -3201,7 +3222,7 @@
                 </div>
               </div>
               <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <div class="flex justify-between items-center mb-4">
                     <p class="text-white text-base font-medium leading-normal">Energy Consumption (kWh)</p>
                     <div class="flex gap-4">
@@ -3246,11 +3267,11 @@
               </div>
               <!-- <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Batteries Analytics</h2> -->
               <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Average health Level</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">87%</p>
                 </div>
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#2f396a]">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Damaged cells</p>
                   <p class="text-white tracking-light text-2xl font-bold leading-tight">115</p>
                 </div>
@@ -3261,7 +3282,7 @@
                 <!-- ------------------------------------------------------- -->
 
 
-                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#2f396a] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex w-full flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <div class="flex items-center gap-3">
                     <div class="text-white">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" fill="currentColor" viewBox="0 0 24 24">
@@ -3384,7 +3405,7 @@
                         
                         <!-- Icono de batería centrado -->
                         <div class="absolute inset-0 flex items-center justify-center">
-                          <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                          <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ff6b6b" viewBox="0 0 256 256">
                               <path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,16,0V152.77l61.17-61.18a8,8,0,0,1,11.31,0L148.1,127.2,215.32,60A8,8,0,0,1,226.63,71.32l-73.54,73.54a8,8,0,0,1-11.31,0L106.17,109.25,40,175.42V200H224A8,8,0,0,1,232,208Z"></path>
                             </svg>
@@ -3400,21 +3421,21 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
                       <!-- Battery ID -->
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Battery ID</p>
                         <p class="text-white text-lg font-bold">ZT-145</p>
                         <p class="text-[var(--turqueza)] text-sm">Unique identifier</p>
                             </div>
 
                       <!-- Nominal Capacity -->
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Nominal Capacity</p>
                         <p class="text-white text-lg font-bold">60 kWh</p>
                         <p class="text-[var(--turqueza)] text-sm">Design capacity</p>
                   </div>
 
                       <!-- Current Capacity -->
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Current Capacity</p>
                         <p class="text-white text-lg font-bold">27 kWh</p>
                         <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2">
@@ -3424,7 +3445,7 @@
               </div>
 
                       <!-- Battery Type -->
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Type</p>
                         <p class="text-white text-lg font-bold">Swappable</p>
                         <p class="text-[var(--turqueza)] text-sm">Removable pack</p>
@@ -3450,7 +3471,7 @@
                         </svg>
                         
                         <div class="absolute inset-0 flex items-center justify-center">
-                          <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                          <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffba21" viewBox="0 0 256 256">
                               <path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,16,0V152.77l61.17-61.18a8,8,0,0,1,11.31,0L148.1,127.2,215.32,60A8,8,0,0,1,226.63,71.32l-73.54,73.54a8,8,0,0,1,11.31,0L106.17,109.25,40,175.42V200H224A8,8,0,0,1,232,208Z"></path>
                             </svg>
@@ -3464,19 +3485,19 @@
                             </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Battery ID</p>
                         <p class="text-white text-lg font-bold">ZT-145</p>
                         <p class="text-[var(--turqueza)] text-sm">Fixed version</p>
                               </div>
 
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Nominal Capacity</p>
                         <p class="text-white text-lg font-bold">60 kWh</p>
                         <p class="text-[var(--turqueza)] text-sm">Design capacity</p>
                             </div>
 
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Current Capacity</p>
                         <p class="text-white text-lg font-bold">42 kWh</p>
                         <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2">
@@ -3485,7 +3506,7 @@
                         <p class="text-[var(--turqueza)] text-sm">70% remaining</p>
                             </div>
 
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Type</p>
                         <p class="text-white text-lg font-bold">Fixed</p>
                         <p class="text-[var(--turqueza)] text-sm">Integrated pack</p>
@@ -3510,7 +3531,7 @@
                         </svg>
                         
                         <div class="absolute inset-0 flex items-center justify-center">
-                          <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                          <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffba21" viewBox="0 0 256 256">
                               <path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,16,0V152.77l61.17-61.18a8,8,0,0,1,11.31,0L148.1,127.2,215.32,60A8,8,0,0,1,226.63,71.32l-73.54,73.54a8,8,0,0,1,11.31,0L106.17,109.25,40,175.42V200H224A8,8,0,0,1,232,208Z"></path>
                             </svg>
@@ -3524,19 +3545,19 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Battery ID</p>
                         <p class="text-white text-lg font-bold">ZT-167</p>
                         <p class="text-[var(--turqueza)] text-sm">Swappable pack</p>
                       </div>
 
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Nominal Capacity</p>
                         <p class="text-white text-lg font-bold">60 kWh</p>
                         <p class="text-[var(--turqueza)] text-sm">Design capacity</p>
                       </div>
 
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Current Capacity</p>
                         <p class="text-white text-lg font-bold">45 kWh</p>
                         <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2">
@@ -3545,7 +3566,7 @@
                         <p class="text-[var(--turqueza)] text-sm">75% remaining</p>
                       </div>
 
-                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                      <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                         <p class="text-[var(--turqueza)] text-sm">Type</p>
                         <p class="text-white text-lg font-bold">Swappable</p>
                         <p class="text-[var(--turqueza)] text-sm">Removable pack</p>
@@ -3574,9 +3595,9 @@
             <!-- =                     Battery List VIEW                             = -->
             <!-- ================================================================== -->
             <div id="batteryListModal" class="modal-backdrop fixed inset-0 z-50 hidden flex items-center justify-center">
-                <div class="modal-content bg-[var(--azul-oscuro)] border border-[#2f396a] rounded-lg shadow-2xl max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                <div class="modal-content bg-[var(--azul-oscuro)] border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 rounded-lg shadow-2xl max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
                   <!-- Header del modal -->
-                  <div class="flex items-center justify-between p-6 border-b border-[#2f396a]">
+                  <div class="flex items-center justify-between p-6 border-b border-[var(--turqueza)] border-opacity-50">
                     <h3 class="text-white text-xl font-semibold">Battery Health Monitor</h3>
                     <button 
                       onclick="closeBatteryListModal()" 
@@ -3627,7 +3648,7 @@
                             </svg>
                             
                             <div class="absolute inset-0 flex items-center justify-center">
-                              <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                              <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ff6b6b" viewBox="0 0 256 256">
                                   <path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8Zm48-80v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM138.81,123.79a8,8,0,0,1,.35,7.79l-16,32a8,8,0,0,1-14.32-7.16L119.06,136H100a8,8,0,0,1-7.16-11.58l16-32a8,8,0,1,1,14.32,7.16L112.94,120H132A8,8,0,0,1,138.81,123.79Z"></path>
                                 </svg>
@@ -3641,19 +3662,19 @@
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Battery ID</p>
                             <p class="text-white text-lg font-bold">ZT-145</p>
                             <p class="text-[var(--turqueza)] text-sm">Unique identifier</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Nominal Capacity</p>
                             <p class="text-white text-lg font-bold">60 kWh</p>
                             <p class="text-[var(--turqueza)] text-sm">Design capacity</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Current Capacity</p>
                             <p class="text-white text-lg font-bold">27 kWh</p>
                             <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2">
@@ -3662,7 +3683,7 @@
                             <p class="text-[var(--turqueza)] text-sm">45% remaining</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Type</p>
                             <p class="text-white text-lg font-bold">Swappable</p>
                             <p class="text-[var(--turqueza)] text-sm">Removable pack</p>
@@ -3687,7 +3708,7 @@
                             </svg>
                             
                             <div class="absolute inset-0 flex items-center justify-center">
-                              <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                              <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffba21" viewBox="0 0 256 256">
                                   <path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8Zm48-80v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM138.81,123.79a8,8,0,0,1,.35,7.79l-16,32a8,8,0,0,1-14.32-7.16L119.06,136H100a8,8,0,0,1-7.16-11.58l16-32a8,8,0,1,1,14.32,7.16L112.94,120H132A8,8,0,0,1,138.81,123.79Z"></path>
                                 </svg>
@@ -3701,19 +3722,19 @@
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Battery ID</p>
                             <p class="text-white text-lg font-bold">ZT-145</p>
                             <p class="text-[var(--turqueza)] text-sm">Fixed version</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Nominal Capacity</p>
                             <p class="text-white text-lg font-bold">60 kWh</p>
                             <p class="text-[var(--turqueza)] text-sm">Design capacity</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Current Capacity</p>
                             <p class="text-white text-lg font-bold">42 kWh</p>
                             <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2">
@@ -3722,7 +3743,7 @@
                             <p class="text-[var(--turqueza)] text-sm">70% remaining</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Type</p>
                             <p class="text-white text-lg font-bold">Fixed</p>
                             <p class="text-[var(--turqueza)] text-sm">Integrated pack</p>
@@ -3747,7 +3768,7 @@
                             </svg>
                             
                             <div class="absolute inset-0 flex items-center justify-center">
-                              <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                              <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffba21" viewBox="0 0 256 256">
                                   <path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8Zm48-80v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM138.81,123.79a8,8,0,0,1,.35,7.79l-16,32a8,8,0,0,1-14.32-7.16L119.06,136H100a8,8,0,0,1-7.16-11.58l16-32a8,8,0,1,1,14.32,7.16L112.94,120H132A8,8,0,0,1,138.81,123.79Z"></path>
                                 </svg>
@@ -3761,19 +3782,19 @@
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Battery ID</p>
                             <p class="text-white text-lg font-bold">ZT-167</p>
                             <p class="text-[var(--turqueza)] text-sm">Swappable pack</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Nominal Capacity</p>
                             <p class="text-white text-lg font-bold">60 kWh</p>
                             <p class="text-[var(--turqueza)] text-sm">Design capacity</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Current Capacity</p>
                             <p class="text-white text-lg font-bold">45 kWh</p>
                             <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2">
@@ -3782,7 +3803,7 @@
                             <p class="text-[var(--turqueza)] text-sm">75% remaining</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Type</p>
                             <p class="text-white text-lg font-bold">Swappable</p>
                             <p class="text-[var(--turqueza)] text-sm">Removable pack</p>
@@ -3807,7 +3828,7 @@
                             </svg>
                             
                             <div class="absolute inset-0 flex items-center justify-center">
-                              <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                              <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ade80" viewBox="0 0 256 256">
                                   <path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8Zm48-80v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM138.81,123.79a8,8,0,0,1,.35,7.79l-16,32a8,8,0,0,1-14.32-7.16L119.06,136H100a8,8,0,0,1-7.16-11.58l16-32a8,8,0,1,1,14.32,7.16L112.94,120H132A8,8,0,0,1,138.81,123.79Z"></path>
                                 </svg>
@@ -3821,19 +3842,19 @@
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Battery ID</p>
                             <p class="text-white text-lg font-bold">ZT-201</p>
                             <p class="text-[var(--turqueza)] text-sm">Swappable pack</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Nominal Capacity</p>
                             <p class="text-white text-lg font-bold">60 kWh</p>
                             <p class="text-[var(--turqueza)] text-sm">Design capacity</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Current Capacity</p>
                             <p class="text-white text-lg font-bold">49.8 kWh</p>
                             <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2">
@@ -3842,7 +3863,7 @@
                             <p class="text-[var(--turqueza)] text-sm">83% remaining</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Type</p>
                             <p class="text-white text-lg font-bold">Swappable</p>
                             <p class="text-[var(--turqueza)] text-sm">Removable pack</p>
@@ -3867,7 +3888,7 @@
                             </svg>
                             
                             <div class="absolute inset-0 flex items-center justify-center">
-                              <div class="bg-[#181d35] rounded-full p-3 border border-[#2f396a] shadow-lg">
+                              <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ade80" viewBox="0 0 256 256">
                                   <path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8Zm48-80v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM138.81,123.79a8,8,0,0,1,.35,7.79l-16,32a8,8,0,0,1-14.32-7.16L119.06,136H100a8,8,0,0,1-7.16-11.58l16-32a8,8,0,1,1,14.32,7.16L112.94,120H132A8,8,0,0,1,138.81,123.79Z"></path>
                                 </svg>
@@ -3881,19 +3902,19 @@
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Battery ID</p>
                             <p class="text-white text-lg font-bold">ZT-156</p>
                             <p class="text-[var(--turqueza)] text-sm">Swappable pack</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Nominal Capacity</p>
                             <p class="text-white text-lg font-bold">60 kWh</p>
                             <p class="text-[var(--turqueza)] text-sm">Design capacity</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Current Capacity</p>
                             <p class="text-white text-lg font-bold">50.4 kWh</p>
                             <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2">
@@ -3902,7 +3923,7 @@
                             <p class="text-[var(--turqueza)] text-sm">84% remaining</p>
                           </div>
 
-                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#2f396a] text-center">
+                          <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                             <p class="text-[var(--turqueza)] text-sm">Type</p>
                             <p class="text-white text-lg font-bold">Swappable</p>
                             <p class="text-[var(--turqueza)] text-sm">Removable pack</p>
@@ -3943,7 +3964,7 @@
               <!-- Lista de trabajos -->
               <div class="px-4 py-5">
                 <h3 class="text-white text-lg mb-4">Work List</h3>
-                <div class="flex overflow-hidden rounded border border-[#2f396a] bg-[var(--azul-oscuro)] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
+                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
                   <table class="flex-1">
                     <thead>
                       <tr class="bg-[#181d35]">
@@ -3957,7 +3978,7 @@
                     </thead>
                     <tbody id="workList">
                       <!-- Ejemplo predefinido de trabajo de fertilización pendiente -->
-                      <tr class="border-t border-[#2f396a]">
+                      <tr class="border-t border-[var(--turqueza)] border-opacity-50">
                         <td class="px-4 py-3 text-white">Mowing-Paddock 4</td>
                         <td class="px-4 py-3 text-white">Zetrabot-1</td>
                         <td class="px-4 py-3 text-white">Paddock 4</td>
@@ -3969,7 +3990,7 @@
                           </span>
                         </td>
                       </tr>
-                      <tr class="border-t border-[#2f396a]">
+                      <tr class="border-t border-[var(--turqueza)] border-opacity-50">
                         <td class="px-4 py-3 text-white">Spraying-Paddock 7</td>
                         <td class="px-4 py-3 text-white">Zetrabot-2</td>
                         <td class="px-4 py-3 text-white">Paddock 7</td>
@@ -3983,7 +4004,7 @@
                       </tr>
                      
                       <!-- Ejemplo predefinido de trabajo de fertilización completado -->
-                      <tr class="border-t border-[#2f396a]">
+                      <tr class="border-t border-[var(--turqueza)] border-opacity-50">
                         <td class="px-4 py-3 text-white">Spraying-Paddock 3</td>
                         <td class="px-4 py-3 text-white">Zetrabot-1</td>
                         <td class="px-4 py-3 text-white">Paddock 3</td>
@@ -4118,19 +4139,19 @@
               <div id="consumptionResults" class="mt-6 bg-[#181d35] rounded p-6 hidden">
                 <h3 class="text-white text-lg mb-4">Consumption Results</h3>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  <div class="flex flex-col gap-2 rounded p-4 border border-[#2f396a]">
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                     <p class="text-white text-base font-medium">Transport to Paddock</p>
                     <p id="transportToCost" class="text-white text-2xl font-bold">-- kWh</p>
                   </div>
-                  <div class="flex flex-col gap-2 rounded p-4 border border-[#2f396a]">
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                     <p class="text-white text-base font-medium">Transport from Paddock</p>
                     <p id="transportFromCost" class="text-white text-2xl font-bold">-- kWh</p>
                   </div>
-                  <div class="flex flex-col gap-2 rounded p-4 border border-[#2f396a]">
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                     <p class="text-white text-base font-medium">Effective Work (per hour)</p>
                     <p id="effectiveWorkCostPerHour" class="text-white text-2xl font-bold">-- kWh</p>
                   </div>
-                  <div class="flex flex-col gap-2 rounded p-4 border border-[#2f396a]">
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                     <p class="text-white text-base font-medium">Effective Work (total hours)</p>
                     <p id="effectiveWorkCostTotal" class="text-white text-2xl font-bold">-- kWh</p>
                   </div>
@@ -4184,7 +4205,7 @@
 
                 <!-- Información de la Snake Line -->
                 <div class="grid grid-cols-1 gap-6">
-                  <div class="bg-[#181d35] rounded-lg border border-[#2f396a] p-6">
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
                     <div class="flex items-start justify-between mb-4">
                       <h4 class="text-white text-lg font-semibold">Snake Line Navigation Route</h4>
                       <span class="bg-[#ffff00]/20 text-[#ffff00] px-3 py-1 rounded-full text-xs font-medium">Active</span>
@@ -4220,19 +4241,19 @@
 
                 <!-- Estadísticas de Misiones -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  <div class="bg-[#181d35] rounded-lg border border-[#2f396a] p-4 text-center">
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-4 text-center">
                     <div class="text-[#4ade80] text-2xl font-bold">3</div>
                     <div class="text-[var(--turqueza)] text-sm">Active Missions</div>
                   </div>
-                  <div class="bg-[#181d35] rounded-lg border border-[#2f396a] p-4 text-center">
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-4 text-center">
                     <div class="text-[#ffba21] text-2xl font-bold">2</div>
                     <div class="text-[var(--turqueza)] text-sm">In Progress</div>
                   </div>
-                  <div class="bg-[#181d35] rounded-lg border border-[#2f396a] p-4 text-center">
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-4 text-center">
                     <div class="text-[#607afb] text-2xl font-bold">8</div>
                     <div class="text-[var(--turqueza)] text-sm">Completed Today</div>
                   </div>
-                  <div class="bg-[#181d35] rounded-lg border border-[#2f396a] p-4 text-center">
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-4 text-center">
                     <div class="text-[#ff6b6b] text-2xl font-bold">1</div>
                     <div class="text-[var(--turqueza)] text-sm">Pending</div>
                   </div>
@@ -4251,7 +4272,7 @@
               <div class="p-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   <!-- General Settings -->
-                  <div class="bg-[#181d35] rounded-lg border border-[#2f396a] p-6">
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
                     <h3 class="text-white text-lg font-semibold mb-4">General Settings</h3>
                     <div class="space-y-4">
                       <div class="flex items-center justify-between">
@@ -4276,7 +4297,7 @@
                   </div>
 
                   <!-- Energy Settings -->
-                  <div class="bg-[#181d35] rounded-lg border border-[#2f396a] p-6">
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
                     <h3 class="text-white text-lg font-semibold mb-4">Energy Settings</h3>
                     <div class="space-y-4">
                       <div>
@@ -4300,7 +4321,7 @@
                   </div>
 
                   <!-- Map Settings -->
-                  <div class="bg-[#181d35] rounded-lg border border-[#2f396a] p-6">
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
                     <h3 class="text-white text-lg font-semibold mb-4">Map Settings</h3>
                     <div class="space-y-4">
                       <div>
@@ -5957,7 +5978,7 @@
         let newWorkRow = '';
         if (lastWork) {
           newWorkRow = `
-            <tr class="border-t border-[#2f396a]">
+            <tr class="border-t border-[var(--turqueza)] border-opacity-50">
               <td class="px-4 py-3 text-white">${lastWork.name}</td>
               <td class="px-4 py-3 text-white">${lastWork.vehicle}</td>
               <td class="px-4 py-3 text-white">${lastWork.paddock}</td>
@@ -5977,7 +5998,45 @@
       }
 
       // Funciones para Extra Packs Hiring
-      let reservationList = [];
+      let currentReservationType = 'pack';
+
+      function toggleReservationType(type) {
+        currentReservationType = type;
+        
+        // Actualizar estilos de los botones
+        const packBtn = document.getElementById('packToggle');
+        const stationBtn = document.getElementById('stationToggle');
+        const vehicleSection = document.getElementById('vehicleSection');
+        const quantityLabel = document.getElementById('quantityLabel');
+        
+        if (type === 'pack') {
+          packBtn.classList.add('bg-[var(--turqueza)]', 'text-white');
+          packBtn.classList.remove('text-[var(--turqueza)]');
+          stationBtn.classList.remove('bg-[var(--turqueza)]', 'text-white');
+          stationBtn.classList.add('text-[var(--turqueza)]');
+          
+          vehicleSection.style.display = 'block';
+          quantityLabel.textContent = 'Number of packs';
+        } else {
+          stationBtn.classList.add('bg-[var(--turqueza)]', 'text-white');
+          stationBtn.classList.remove('text-[var(--turqueza)]');
+          packBtn.classList.remove('bg-[var(--turqueza)]', 'text-white');
+          packBtn.classList.add('text-[var(--turqueza)]');
+          
+          vehicleSection.style.display = 'none';
+          quantityLabel.textContent = 'Number of Battery Stations';
+        }
+      }
+
+      let reservationList = [
+        {
+          packId: 'zetrabot1-Pack2',
+          startTime: new Date('2025-11-20T08:00:00').toLocaleString(),
+          endTime: new Date('2025-12-10T18:00:00').toLocaleString(),
+          consumoKvh: '145.50',
+          status: 'Confirmed'
+        }
+      ];
 
       function showNotification(message, type = 'success') {
         const notification = document.createElement('div');
@@ -6013,7 +6072,7 @@
         const endTime = document.getElementById('reservationEnd').value;
 
         // Validar que todos los campos estén completos
-        if (!vehicle || !numPacks || !startTime || !endTime) {
+        if ((currentReservationType === 'pack' && !vehicle) || !numPacks || !startTime || !endTime) {
           showNotification('Please complete all fields', 'error');
           return;
         }
@@ -6034,7 +6093,7 @@
 
         // Agregar reservación a la lista
         const newReservation = {
-          packId: `${vehicle}-Pack${numPacks}`,
+          packId: currentReservationType === 'pack' ? `${vehicle}-Pack${numPacks}` : `Battery-Station-${numPacks}`,
           startTime: new Date(startTime).toLocaleString(),
           endTime: new Date(endTime).toLocaleString(),
           consumoKvh: '0.00', // Este valor se actualizará cuando haya consumo real
@@ -6060,14 +6119,17 @@
 
         reservationList.forEach(reservation => {
           const row = document.createElement('tr');
-          row.className = 'border-t border-t-[#2f396a]';
+          row.className = 'border-t border-t-[#4ABBBD]/50';
+          const isInitialReservation = reservation.packId === 'zetrabot1-Pack2';
           row.innerHTML = `
-            <td class="px-4 py-3 text-white text-sm">${reservation.packId}</td>
-            <td class="px-4 py-3 text-white text-sm">${reservation.startTime}</td>
-            <td class="px-4 py-3 text-white text-sm">${reservation.endTime}</td>
-            <td class="px-4 py-3 text-white text-sm">${reservation.consumoKvh} kWh</td>
+            <td class="px-4 py-3 ${isInitialReservation ? 'text-[var(--turqueza)]' : 'text-white'} text-sm">${reservation.packId}</td>
+            <td class="px-4 py-3 ${isInitialReservation ? 'text-[var(--turqueza)]' : 'text-white'} text-sm">${reservation.startTime}</td>
+            <td class="px-4 py-3 ${isInitialReservation ? 'text-[var(--turqueza)]' : 'text-white'} text-sm">${reservation.endTime}</td>
+            <td class="px-4 py-3 ${isInitialReservation ? 'text-[var(--turqueza)]' : 'text-white'} text-sm">${reservation.consumoKvh} kWh</td>
             <td class="px-4 py-3">
-              <span class="px-2 py-1 text-xs font-medium rounded-full ${reservation.status === 'Pending' ? 'bg-yellow-500' : 'bg-[var(--turqueza)]'} text-white">
+              <span class="status-badge px-2 py-1 text-xs font-medium rounded-full ${
+                reservation.status === 'Confirmed' ? 'bg-green-500' : 'bg-[var(--turqueza)]'
+              } text-white">
                 ${reservation.status}
               </span>
             </td>
@@ -6102,6 +6164,9 @@
 
       // --- SCRIPT PARA EL MEDIDOR DE ENERGÍA ---
       document.addEventListener('DOMContentLoaded', () => {
+        // Inicializar la lista de reservaciones
+        updateReservationList();
+
         const totalCapacity = 132; // kWh
         const currentAvailability = 102; // kWh
 

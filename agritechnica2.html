@@ -6475,8 +6475,8 @@ map3.on('mouseleave', 'paddock-fill', () => {
               // Marcador para Battery Station
               // 4. Trailer (Hijo 2 del Warehouse)
               const batteryMarkerEl = document.createElement('div');
-              batteryMarkerEl.style.width = '40px';
-              batteryMarkerEl.style.height = '40px';
+              batteryMarkerEl.style.width = '55px';
+              batteryMarkerEl.style.height = '55px';
               batteryMarkerEl.style.cursor = 'pointer';
               batteryMarkerEl.style.opacity = '0';
               batteryMarkerEl.style.visibility = 'hidden';
@@ -6492,17 +6492,21 @@ map3.on('mouseleave', 'paddock-fill', () => {
     </defs>
     <g style="filter: url(#shadow);">
         <!-- The pin shape -->
-        <path fill="#0b2545" fill-opacity="0.7" stroke="white" stroke-width="02" d="M26 48.5C26 48.5 44 32.23 44 21C44 11.06 36.94 4 27 4C17.06 4 10 11.06 10 21C10 32.23 26 48.5 26 48.5z"/>
+        <path fill="#0b2545" fill-opacity="0.7" stroke="white" stroke-width="2" d="M26 4C15.5 4 7 12.5 7 23c0 12.5 19 25 19 25s19-12.5 19-25C45 12.5 36.5 4 26 4z"/>
 
-        <!-- The trailer icon, scaled and centered inside the circle -->
-        <g transform="translate(14,8) scale(1.1)" style="filter: url(#trailer-icon-shadow);">
-        <g fill="none" stroke="#4ABBBD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10 17h4V5H2v12h3"/>
-            <path d="M14 17h5v-3.4c0-.9-.7-1.6-1.6-1.6H14Z"/>
-            <path d="M2 17h2"/>
-            <path d="M19 17h2"/>
-            <circle cx="7" cy="17" r="2"/>
-            <circle cx="17" cy="17" r="2"/>
+        <!-- The battery station icon, scaled and centered inside the circle -->
+        <g transform="translate(12,9) scale(0.11)" style="filter: url(#shadow);">
+        <g fill="none" stroke="white" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.4;">
+            <polyline points="112 168 128 128 96 128 112 88"/>
+            <path d="M56,216V56A16,16,0,0,1,72,40h80a16,16,0,0,1,16,16V216"/>
+            <line x1="32" y1="216" x2="192" y2="216"/>
+            <path d="M168,112h24a16,16,0,0,1,16,16v40a16,16,0,0,0,16,16h0a16,16,0,0,0,16-16V86.63a16,16,0,0,0-4.69-11.32L216,56"/>
+        </g>
+        <g fill="none" stroke="#4ABBBD" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="112 168 128 128 96 128 112 88"/>
+            <path d="M56,216V56A16,16,0,0,1,72,40h80a16,16,0,0,1,16,16V216"/>
+            <line x1="32" y1="216" x2="192" y2="216"/>
+            <path d="M168,112h24a16,16,0,0,1,16,16v40a16,16,0,0,0,16,16h0a16,16,0,0,0,16-16V86.63a16,16,0,0,0-4.69-11.32L216,56"/>
         </g>
       </g>
     </svg>`;

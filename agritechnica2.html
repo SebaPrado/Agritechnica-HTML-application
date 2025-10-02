@@ -51,6 +51,17 @@
         animation: slideOut 0.3s ease forwards;
       }
 
+      /* Estilos para los inputs de fecha */
+      input[type="datetime-local"] {
+        background-color: transparent !important;
+        color: var(--turqueza) !important;
+      }
+      
+      input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        filter: invert(62%) sepia(86%) saturate(434%) hue-rotate(130deg) brightness(92%) contrast(98%);
+        cursor: pointer;
+      }
+
       /* Estilos para los badges de estado */
       .status-badge {
         transition: all 0.3s ease;
@@ -1405,19 +1416,18 @@
                       <label class="block text-white text-sm font-medium mb-2">Vehicle</label>
                       <select id="reservationVehicle" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
                         <option value="" disabled selected class="bg-transparent text-[var(--turqueza)]">Select vehicle</option>
-                        <option value="zetrabot1" class="bg-transparent text-[var(--turqueza)]">Zetrabot-001</option>
-                        <option value="zetrabot2" class="bg-transparent text-[var(--turqueza)]">Zetrabot-002</option>
-                        <option value="zetrabot3" class="bg-transparent text-[var(--turqueza)]">Zetrabot-003</option>
+                        <option value="zetrabot1" class="bg-transparent text-[var(--azul-oscuro)]">Zetrabot-001</option>
+                        <option value="zetrabot2" class="bg-transparent text-[var(--azul-oscuro)]">Zetrabot-002</option>
                       </select>
                     </div>
                     <div>
                       <label id="quantityLabel" class="block text-white text-sm font-medium mb-2">Number of packs</label>
                       <select id="reservationPacks" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
                         <option value="" disabled selected class="bg-transparent text-[var(--turqueza)]">select the amount</option>
-                        <option value="1" class="bg-transparent text-[var(--turqueza)]">1</option>
-                        <option value="2" class="bg-transparent text-[var(--turqueza)]">2</option>
-                        <option value="3" class="bg-transparent text-[var(--turqueza)]">3</option>
-                        <option value="4" class="bg-transparent text-[var(--turqueza)]">4</option>
+                        <option value="1" class="bg-transparent text-[var(--azul-oscuro)]">1</option>
+                        <option value="2" class="bg-transparent text-[var(--azul-oscuro)]">2</option>
+                        <option value="3" class="bg-transparent text-[var(--azul-oscuro)]">3</option>
+                        <option value="4" class="bg-transparent text-[var(--azul-oscuro)]">4</option>
                       </select>
                     </div>
                     <div>
@@ -6030,11 +6040,18 @@
 
       let reservationList = [
         {
-          packId: 'zetrabot1-Pack2',
+          packId: 'zetrabot1-Pack(1)',
           startTime: new Date('2025-11-20T08:00:00').toLocaleString(),
           endTime: new Date('2025-12-10T18:00:00').toLocaleString(),
           consumoKvh: '145.50',
           status: 'Confirmed'
+        },
+        {
+          packId: 'zetrabot2-Pack(1)',
+          startTime: new Date('2025-11-27T08:00:00').toLocaleString(),
+          endTime: new Date('2025-12-10T18:00:00').toLocaleString(),
+          consumoKvh: '165.50',
+          status: 'Pending'
         }
       ];
 

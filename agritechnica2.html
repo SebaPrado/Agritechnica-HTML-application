@@ -1529,7 +1529,23 @@
 
               <!-- Modal de Energy Status -->
               <div id="energyStatusModal" class="modal-backdrop fixed inset-0 z-50 hidden flex items-center justify-center">
-                <div class="modal-content bg-[var(--azul-oscuro)] border border-[#4ABBBD]/50 rounded-lg shadow-2xl max-w-5xl w-full mx-4 max-h-[95vh] overflow-y-auto">
+                <div class="modal-content bg-[var(--azul-oscuro)] border border-[#4ABBBD]/50 rounded-lg shadow-2xl max-w-5xl w-full mx-4 max-h-[95vh] overflow-y-auto custom-scrollbar">
+                  <style>
+                    .custom-scrollbar::-webkit-scrollbar {
+                      width: 8px;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-track {
+                      background: rgba(47, 57, 106, 0.2);
+                      border-radius: 4px;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-thumb {
+                      background: rgba(74, 187, 189, 0.3);
+                      border-radius: 4px;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                      background: rgba(74, 187, 189, 0.5);
+                    }
+                  </style>
                   <!-- Header del modal -->
                   <div class="flex items-center justify-between p-6 border-b border-[#4ABBBD]/50">
                     <h3 class="text-white text-xl font-semibold">Energy Overview</h3>
@@ -1544,7 +1560,7 @@
                   </div>
 
                   <!-- Contenido del modal -->
-                  <div class="p-8 space-y-8">
+                  <div class="p-10 space-y-8">
                     <!-- Resumen de energía del sistema -->
                     <div class="space-y-6">
                       <!-- <h4 class="text-white text-lg font-medium border-b border-[#2f396a] pb-2">System Energy Summary</h4> -->
@@ -1589,8 +1605,16 @@
                                <circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
                                <polyline points="128 72 128 128 184 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" class="clock-hands"/>
                              </svg> -->
-                          8 kWh / hr
-                          </p>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256">
+                              <rect width="256" height="256" fill="none"/><circle cx="40" cy="200" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                              <circle cx="96" cy="96" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                              <circle cx="160" cy="160" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                              <circle cx="216" cy="56" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                              <line x1="84.62" y1="117.13" x2="51.38" y2="178.87" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                              <line x1="143.03" y1="143.03" x2="112.97" y2="112.97" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                              <line x1="204.62" y1="77.13" x2="171.38" y2="138.87" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                            </svg>
+                           <span> 8 kWh/hr </span> </p>
                           <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">196 kWh consumed</p>
                         </div>
                       </div>
@@ -1598,7 +1622,7 @@
 
                     <!-- ------------------------------------------------------------------------------------------------------ -->
                     
-                    <div class="p-8 space-y-8">
+                    <div class=" space-y-8">
                       <h4 class="text-white text-lg font-medium pb-1">Packs</h4>
                       <!-- Resumen de energía del sistema -->
                       <div class="">
@@ -1652,14 +1676,14 @@
 
                     <!-- Gráfico de energía actual -->
                     <div class="space-y-6">
-                      <h4 class="text-white text-lg font-medium border-b border-[#4ABBBD]/50 pb-3">Current Energy Distribution</h4>
+                      <h4 class="text-white text-lg font-medium border-b border-[#4ABBBD]/50 pb-2 pt-4">Current Energy Distribution</h4>
                       <div class=" rounded-lg">
                         <!-- Flexbox de tres divs hijos -->
                         <div class="flex-col " >
                           <!-- Div hijo 1: Flex padre de dos hijos, dirección columna -->
                             <div class="flex flex-row gap-3 flex-1 items-center">
                                <!--    Zetrabot 1    -->
-                                <div class="flex-1 p-6 flex-row rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
+                            <!-- <div class="flex-1 p-6 flex-row rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
                               <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 1</p>
                               <div class="flex flex-col gap-3 mb-3  transition-transform duration-300">
                                 <div class="flex items-center gap-3">
@@ -1685,40 +1709,36 @@
                                 </div>
                                 <span class="text-white text-sm font-semibold">65.46%</span>
                               </div>
-                              <!-- <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-zetrabot1-kwh">24.4 kWh</p> -->
-                              <!-- <p class="text-[var(--turqueza)] text-xs">Working</p> -->
-                                </div>
+                            </div> -->
                             
-                               <!-- Zetrabot 2 -->
-                                <div class="flex-1 p-6 flex-row rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
-                      <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 2</p>
-                      <div class="flex flex-col gap-3 mb-3  transition-transform duration-300">
-                        <div class="flex items-center gap-3">
-                          <span class="text-white text-xs opacity-80">Fixed</span>
-                          <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
-                            <div class="h-full bg-[var(--turqueza)]" style="width: 80%;"></div>
-                          </div>
-                          <span class="text-white text-sm font-semibold" id="energy-zetrabot1-fixed-percent">80% <span class="text-[var(--turqueza)] text-xs">/35.5 kWh</span></span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                          <span class="text-white text-xs opacity-80">Swappable</span>
-                          <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
-                            <div class="h-full bg-[var(--turqueza)]" style="width: 50%;"></div>
-                          </div>
-                          <span class="text-white text-sm font-semibold" id="energy-zetrabot1-swappable-percent">50% <span class="text-[var(--turqueza)] text-xs">/25.5 kWh</span></span>
-                        </div>
-                      </div>
-                      <div class="my-2" style="height:1px; background-color: rgba(74,187,189,0.35);"></div>
-                      <div class="flex items-center gap-3 mt-2">
-                        <span class="text-white text-xs opacity-80">Total</span>
-                        <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
-                          <div class="h-full bg-[var(--turqueza)]" style="width: 65.46%;"></div>
-                        </div>
-                        <span class="text-white text-sm font-semibold">65.46%</span>
-                      </div>
-                      <!-- <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-zetrabot1-kwh">24.4 kWh</p> -->
-                      <!-- <p class="text-[var(--turqueza)] text-xs">Working</p> -->
-                                </div>
+                            <!-- Zetrabot 2 -->
+                              <!-- <div class="flex-1 p-6 flex-row rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
+                                  <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 2</p>
+                                  <div class="flex flex-col gap-3 mb-3  transition-transform duration-300">
+                                  <div class="flex items-center gap-3">
+                                  <span class="text-white text-xs opacity-80">Fixed</span>
+                                   <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
+                                   <div class="h-full bg-[var(--turqueza)]" style="width: 80%;"></div>
+                                   </div>
+                                   <span class="text-white text-sm font-semibold" id="energy-zetrabot1-fixed-percent">80% <span class="text-[var(--turqueza)] text-xs">/35.5 kWh</span></span>
+                                   </div>
+                                   <div class="flex items-center gap-3">
+                                    <span class="text-white text-xs opacity-80">Swappable</span>
+                                   <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
+                                   <div class="h-full bg-[var(--turqueza)]" style="width: 50%;"></div>
+                                  </div>
+                                  <span class="text-white text-sm font-semibold" id="energy-zetrabot1-swappable-percent">50% <span class="text-[var(--turqueza)] text-xs">/25.5 kWh</span></span>
+                                  </div>
+                                  </div>
+                                  <div class="my-2" style="height:1px; background-color: rgba(74,187,189,0.35);"></div>
+                                  <div class="flex items-center gap-3 mt-2">
+                                  <span class="text-white text-xs opacity-80">Total</span>
+                                  <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
+                                  <div class="h-full bg-[var(--turqueza)]" style="width: 65.46%;"></div>
+                                  </div>
+                                  <span class="text-white text-sm font-semibold">65.46%</span>
+                                  </div>             
+                            </div> -->
                   
                                <!-- <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] hover:scale-105 transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-[var(--turqueza)]/30 cursor-pointer group">
                               <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300 opacity-80">Zetrabot 2</p>
@@ -1781,9 +1801,9 @@
                                 <div class="flex overflow-hidden rounded border border-[#2f396a] bg-[var(--azul-oscuro)] shadow-lg shadow-[#2f396a]/50 transition-shadow duration-300 hover:shadow-xl">
                                    <table class="flex-1">
                                      <thead>
-                                       <tr class="bg-[#181d35]">
-                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 px-4 py-3 text-left text-white w-[300px] text-xs font-medium leading-normal">Vehicle</th>
-                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">SOC</th>
+                                       <tr class="bg-[var(--turqueza)]">
+                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 px-4 py-3 text-left text-white w-[300px] text-xs font-medium leading-normal"></th>
+                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">State of Charge</th>
                                          <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">Fixed Pack</th>
                                          <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">Swappable Pack</th>
                                          <!-- <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 px-4 py-3 text-left text-white w-60 text-xs font-medium leading-normal">Status</th> -->

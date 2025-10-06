@@ -2115,23 +2115,23 @@
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in battery-value-change" id="zetrabot1-battery">65<span class="battery-decimal">.46</span>%<span class="battery-dots"></span></td>
                                       <td class="px-4 py-3 text-green-400 text-sm">
                                         <span class="attention-wrapper">
-                                          <span class="attention-text-nested">Working</span>
+                                          <span class="attention-text-nested text-[#4ABBBD]">Working</span>
                                         </span>
                                       </td>
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">P 3</td>
                                     </tr>
-                                    <tr class="border-t border-t-[#4ABBBD]/50">
+                                    <!-- <tr class="border-t border-t-[#4ABBBD]/50">
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">Zetrabot 3</td>
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in battery-value-change" id="zetrabot3-battery">80<span class="battery-decimal">.00</span>%</td>
                                       <td class="px-4 py-3 text-green-400 text-sm slide-text-fade-in">Available</td>
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">P 3</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr class="border-t border-t-[#4ABBBD]/50">
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">Zetrabot 2</td>
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in battery-value-change" id="zetrabot2-battery">22<span class="battery-decimal">.36</span>%<span class="battery-dots"></span></td>
                                       <td class="px-4 py-3 text-yellow-400 text-sm slide-text-fade-in">
                                         <span class="attention-wrapper">
-                                          <span class="attention-text-nested">Charging</span>
+                                          <span class="attention-text-nested text-[#4ABBBD]">Charging</span>
                                         </span>
                                       </td>
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">Warehouse</td>
@@ -2139,7 +2139,7 @@
                                     <tr class="border-t border-t-[#4ABBBD]/50">
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">Battery station</td>
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in battery-value-change" id="battery-station">80<span class="battery-decimal">.00</span>%</td>
-                                      <td class="px-4 py-3 text-green-400 text-sm slide-text-fade-in">Available</td>
+                                      <td class="px-4 py-3 text-white text-sm slide-text-fade-in">Available</td>
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">Warehouse</td>
                                     </tr>
                                   </tbody>
@@ -2341,13 +2341,10 @@
                         </div>
 
                         <!-- Slide 3: Zetrabot 3 -->
-                        <div class="vehicle-slide hidden" id="vehicle-003">
-                          <!-- Header con icono del vehículo y gráfico circular -->
+                        <!-- <div class="vehicle-slide hidden" id="vehicle-003">
                           <div class="flex items-center justify-center mb-10">
                             <div class="relative">
-                              <!-- Gráfico circular de carga -->
                               <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
-                                <!-- Fondo del círculo -->
                                 <path
                                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                                   fill="none"
@@ -2355,7 +2352,6 @@
                                   stroke-width="2"
                                   stroke-linecap="round"
                                 />
-                                <!-- Círculo de progreso (80% de Zetrabot 3) -->
                                 <path
                                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                                   fill="none"
@@ -2367,7 +2363,6 @@
                                 />
                               </svg>
                               
-                              <!-- Icono del vehículo centrado -->
                               <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD"  viewBox="384 282 32 32">
@@ -2379,7 +2374,6 @@
                                 </div>
                               </div>
                               
-                              <!-- Porcentaje de carga superpuesto -->
                               <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
                                 <span class="text-white text-lg font-bold">80%</span>
                               </div>
@@ -2387,7 +2381,6 @@
                           </div>
                           
                           <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                            <!-- Swappable Pack -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
                               <p class="text-white text-lg font-bold">90%</p>
@@ -2397,7 +2390,6 @@
                               <p class="text-[var(--turqueza)] text-sm">42.5 kWh available</p>
                             </div>
 
-                            <!-- Fixed Pack -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
                               <p class="text-white text-lg font-bold">100%</p>
@@ -2407,34 +2399,30 @@
                               <p class="text-[var(--turqueza)] text-sm">44 kWh available</p>
                             </div>
 
-                            <!-- Availability -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Availability</p>
                               <p class="text-white text-lg font-bold">86.5 kWh</p>
                               <p class="text-[var(--turqueza)] text-sm">Operational capacity</p>
                             </div>
 
-                            <!-- Minimum Battery Threshold -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Battery Min</p>
                               <p class="text-white text-lg font-bold" id="threshold-value-3">20%</p>
                               <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
                                 <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 20%"></div>
-                                <!-- Círculo arrastrable -->
                                 <div class="absolute top-1/2 transform -translate-y-1/2 w-5 h-5 bg-[var(--turqueza)] rounded-full cursor-grab shadow-lg threshold-handle" 
                                      style="left: 20%; margin-left: -10px;" 
                                      id="threshold-handle-3">
-                                  <!-- Punto central para mejor agarre -->
                                   <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full opacity-80"></div>
                                 </div>
                               </div>
                               <p class="text-[var(--turqueza)] text-sm">Critical level warning</p>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
 
                         <!-- Slide 4: Trailer -->
-                        <div class="vehicle-slide hidden" id="vehicle-004">
+                        <div class="vehicle-slide hidden" id="vehicle-003">
                           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                             <!-- Swappable Pack -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
@@ -2481,9 +2469,7 @@
                   <div class="slide-indicator" onclick="goToSlide(1)" style="background-color: var(--turqueza)"></div>
                   <div class="slide-indicator" onclick="goToSlide(2)" style="background-color: var(--turqueza)"></div>
                   <div class="slide-indicator" onclick="goToSlide(3)" style="background-color: var(--turqueza)"></div>
-                  <div class="slide-indicator" onclick="goToSlide(4)" style="background-color: var(--turqueza)"></div>
-                  <div class="slide-indicator" onclick="goToSlide(5)" style="background-color: var(--turqueza)"></div>
-                </div>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -5074,8 +5060,8 @@
 
       // Variables para el slider de vehículos
       let currentVehicleIndex = 0;
-      const totalVehicles = 6;
-      const vehicleNames = [ 'General', 'Zetrabot 1', 'Zetrabot 2', 'Zetrabot 3', 'Battery Station' ];
+      const totalVehicles = 4;
+      const vehicleNames = [ 'General', 'Zetrabot 1', 'Zetrabot 2', 'Battery Station'];
 
       // Función para mostrar un vehículo específico con transiciones suaves
       function showVehicle(index) {
@@ -5113,9 +5099,6 @@
           if (index === 0) {
             // Slide General (índice 0)
             currentSlide = document.getElementById('vehicle-general');
-          } else if (index === 5) {
-            // Slide Prueba (índice 5)
-            currentSlide = document.getElementById('vehicle-prueba');
           } else {
             // Slides de vehículos normales (índices 1-4)
             currentSlide = document.getElementById(`vehicle-00${index}`);
@@ -6763,11 +6746,11 @@ map3.on('mouseleave', 'paddock-fill', () => {
       </g>
     </svg>`;
 
-              // Hacer el pin del Trailer clickeable para abrir el modal
+              // Hacer el pin de Battery Station clickeable para abrir el modal
               batteryMarkerEl.style.cursor = 'pointer';
               batteryMarkerEl.addEventListener('click', (e) => {
                 e.stopPropagation();
-                openVehicleStatusModal(4); // Índice 4 = Trailer
+                openVehicleStatusModal(3); // Índice 3 = Battery Station
               });
 
               const batteryMarker = new mapboxgl.Marker(batteryMarkerEl).setLngLat(warehouseCoords).addTo(map3);

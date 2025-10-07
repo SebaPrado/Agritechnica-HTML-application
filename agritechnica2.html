@@ -4028,7 +4028,8 @@
               </div>
 
               <div class="p-4">
-                <div class=" rounded p-6">
+                <div class="p-6">
+                <div class=" rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70">
                   <h3 class="text-white text-lg mb-4">Create New Work/Mission</h3>
                   <div class="grid grid-cols-1 gap-4">
                     <!-- Nombre del trabajo -->
@@ -4136,6 +4137,7 @@
                     <button onclick="calculateWorkConsumption()" class="mt-4 bg-[var(--turqueza)] text-white px-6 py-2 rounded hover:bg-[#4f6bdb] transition-colors">
                       Create Work
                     </button>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -5913,7 +5915,13 @@
 
         // Validar que todos los campos estén completos
         if (!workName || !vehicle || !paddock || !tool || !transportFrom || !transportTo || !estimatedHours) {
-          alert('Por favor complete todos los campos');
+          showNotification('Please complete all fields', 'error');
+          return;
+        }
+
+        // Validar que las horas estimadas sean válidas
+        if (estimatedHours <= 0) {
+          showNotification('Estimated hours must be greater than 0', 'error');
           return;
         }
 
@@ -5944,6 +5952,9 @@
         };
 
         updateWorkList();
+
+        // Mostrar notificación de éxito
+        showNotification('Work mission created successfully');
 
         // Limpiar el formulario
         document.getElementById('workName').value = '';

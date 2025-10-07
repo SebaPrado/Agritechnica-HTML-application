@@ -3114,28 +3114,148 @@
               <!-- ================================================================== -->
             <!-- =                     3) Consumption History VIEW                  = -->
             <!-- ================================================================== -->
-            <div id="history-view" class="view hidden w-full">
+            <div id="history-view" class="view hidden w-full p-6">
               <div class="flex flex-wrap justify-between gap-3 p-4">
-                <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Consumption History</p>
+                <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72 border-b border-[#4ABBBD]">Consumption History</p>
               </div>
-              
-              <!-- Summary Cards -->
-              <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                  <p class="text-white text-base font-medium leading-normal">Total Energy Used (30 days)</p>
-                  <p class="text-white tracking-light text-2xl font-bold leading-tight">2,450 kWh</p>
-                </div>
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                  <p class="text-white text-base font-medium leading-normal">Average Daily Usage</p>
-                  <p class="text-white tracking-light text-2xl font-bold leading-tight">81.6 kWh</p>
-                </div>
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                  <p class="text-white text-base font-medium leading-normal">Average Price </p>
-                  <p class="text-white tracking-light text-2xl font-bold leading-tight">2.5 U$S/kWh</p>
+              <!-- ------------------------------------------- -->
+
+              <div class="">
+                <div class="rounded p-6  transition-all duration-300 border-opacity-50">
+                  <h3 class="text-white text-lg mb-6 text-center flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)] me-3">
+                      <rect width="256" height="256" fill="none"/>
+                      <path d="M224,200v8a32,32,0,0,1-32,32H136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                      <path d="M224,128H192a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16h32V128a96,96,0,1,0-192,0v56a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V144a16,16,0,0,0-16-16H32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                    </svg>
+                    Consumption of the last: 
+                  </h3>
+                  <!-- Toggle Switch (con lógica para cambiar valores de tarjetas) -->
+                  <div class="flex items-center justify-center mb-6">
+                    <div class="flex items-center space-x-4 bg-[var(--azul-oscuro)]/50 p-2 rounded-full border border-[#4ABBBD]/30">
+                      <button data-period="week" class="energy-toggle px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-[var(--turqueza)] text-white"> 
+                        Week
+                      </button>
+                      <button data-period="month" class="energy-toggle px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[var(--turqueza)]">
+                        Month
+                      </button>
+                      <button data-period="year" class="energy-toggle px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[var(--turqueza)]">
+                        Year
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
 
+              <!-- ------------------------------------------- -->
+
+              <!-- Savings Highlight (dos tarjetas animadas) -->
+              <div class="flex flex-wrap gap-4 p-4">
+                <div class="flex min-w-[220px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
+                  <p class="text-white text-base font-medium leading-normal">Operational savings</p>
+                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight">
+                    <span id="operationalSavingsValue" data-prefix="" data-suffix=" €">12,500 €</span>
+                  </p>
+                </div>
+                <div class="flex min-w-[220px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
+                  <p class="text-white text-base font-medium leading-normal">CO2 emissions savings</p>
+                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight">
+                    <span id="co2SavingsValue" data-prefix="" data-suffix=" kg CO₂">3,400 kg CO₂</span>
+                  </p>
+                </div>
+              </div>
+
+               <!-- Summary Cards (valores dinámicos según período) -->
+               <div class="flex flex-wrap gap-4 p-4">
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
+                  <p class="text-white text-base font-medium leading-normal">Total Energy Used </p>
+                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight"><span id="totalEnergyValue">2,450 kWh</span></p>
+                </div>
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
+                  <p class="text-white text-base font-medium leading-normal">Average Daily Usage</p>
+                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight"><span id="avgDailyUsageValue">81.6 kWh</span></p>
+                </div>
+                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
+                  <p class="text-white text-base font-medium leading-normal">Average Price </p>
+                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight"><span id="avgPriceValue">2.5 U$S/kWh</span></p>
+                </div>
+              </div>
+
+              <!-- ------------------------------------------- -->
+
+
+
               <!-- Consumption by Vehicle -->
+              <script>
+                (function() {
+                  const buttons = document.querySelectorAll('.energy-toggle');
+                  const totalEl = document.getElementById('totalEnergyValue');
+                  const avgDailyEl = document.getElementById('avgDailyUsageValue');
+                  const avgPriceEl = document.getElementById('avgPriceValue');
+                  const opSavingsEl = document.getElementById('operationalSavingsValue');
+                  const co2SavingsEl = document.getElementById('co2SavingsValue');
+
+                  if (!buttons.length || !totalEl || !avgDailyEl || !avgPriceEl || !opSavingsEl || !co2SavingsEl) return;
+
+                  const valuesByPeriod = {
+                    week: { total: '580 kWh', avgDaily: '82.9 kWh', price: '2.4 U$S/kWh', op: 1450, co2: 410 },
+                    month: { total: '2,450 kWh', avgDaily: '81.6 kWh', price: '2.5 U$S/kWh', op: 12500, co2: 3400 },
+                    year: { total: '29,400 kWh', avgDaily: '80.5 kWh', price: '2.6 U$S/kWh', op: 152300, co2: 40500 }
+                  };
+
+                  function animateCount(el, target, { prefix = '', suffix = '', duration = 900 } = {}) {
+                    const text = el.textContent.trim();
+                    const current = parseFloat(text.replace(/[^0-9.\-]/g, '')) || 0;
+                    const start = current;
+                    const end = target;
+                    const startTime = performance.now();
+
+                    function format(n) {
+                      const withThousands = n.toLocaleString(undefined, { maximumFractionDigits: 0 });
+                      return `${prefix}${withThousands}${suffix}`;
+                    }
+
+                    function frame(now) {
+                      const t = Math.min(1, (now - startTime) / duration);
+                      // Ease-out cubic
+                      const eased = 1 - Math.pow(1 - t, 3);
+                      const value = Math.round(start + (end - start) * eased);
+                      el.textContent = format(value);
+                      if (t < 1) requestAnimationFrame(frame);
+                    }
+                    requestAnimationFrame(frame);
+                  }
+
+                  function setActive(target) {
+                    buttons.forEach(btn => {
+                      btn.classList.remove('bg-[var(--turqueza)]', 'text-white');
+                      btn.classList.add('text-[var(--turqueza)]');
+                    });
+                    target.classList.add('bg-[var(--turqueza)]', 'text-white');
+                    target.classList.remove('text-[var(--turqueza)]');
+                  }
+
+                  function updateValues(period) {
+                    const v = valuesByPeriod[period] || valuesByPeriod.month;
+                    totalEl.textContent = v.total;
+                    avgDailyEl.textContent = v.avgDaily;
+                    avgPriceEl.textContent = v.price;
+                    animateCount(opSavingsEl, v.op, { suffix: ' €' });
+                    animateCount(co2SavingsEl, v.co2, { suffix: ' kg CO₂' });
+                  }
+
+                  buttons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                      const period = btn.getAttribute('data-period');
+                      setActive(btn);
+                      updateValues(period);
+                    });
+                  });
+
+                  // Estado inicial (Week activo por markup)
+                  updateValues('week');
+                })();
+              </script>
               <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Charging station consumption by Time-of-day rates</h2>
               <div class="px-4 py-3">
                 <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
@@ -3967,7 +4087,9 @@
               <div class="flex flex-wrap justify-between gap-3 px-10 py-5">
                 <p class="text-white tracking-light text-[28px]  leading-tight min-w-72">Energy Master</p>
               </div>
-              
+
+             
+
               <!-- Lista de trabajos -->
               <div class="px-4 py-5">
                <div class="p-6">

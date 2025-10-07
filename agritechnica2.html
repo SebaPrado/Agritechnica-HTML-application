@@ -4027,6 +4027,31 @@
                 </div>
               </div>
 
+            <!-- Resultados del consumo -->
+            <div id="consumptionResults" class="mt-6 rounded p-6 hidden">
+              <div class="p-6">
+                <h3 class="text-white text-lg mb-4">Consumption Results</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
+                    <p class="text-white text-base font-medium">Transport to Paddock</p>
+                    <p id="transportToCost" class="text-white text-2xl font-bold">-- kWh</p>
+                  </div>
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
+                    <p class="text-white text-base font-medium">Transport from Paddock</p>
+                    <p id="transportFromCost" class="text-white text-2xl font-bold">-- kWh</p>
+                  </div>
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
+                    <p class="text-white text-base font-medium">Effective Work (per hour)</p>
+                    <p id="effectiveWorkCostPerHour" class="text-white text-2xl font-bold">-- kWh</p>
+                  </div>
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
+                    <p class="text-white text-base font-medium">Effective Work (total hours)</p>
+                    <p id="effectiveWorkCostTotal" class="text-white text-2xl font-bold">-- kWh</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
               <div class="p-4">
                 <div class="p-6">
                 <div class=" rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70">
@@ -4142,29 +4167,44 @@
                 </div>
               </div>
 
-              <!-- Resultados del consumo -->
-              <div id="consumptionResults" class="mt-6 bg-[#181d35] rounded p-6 hidden">
-                <h3 class="text-white text-lg mb-4">Consumption Results</h3>
+          <!-- Modal: Consumption Results -->
+          <div id="consumption-modal" class="hidden fixed inset-0 z-[100]">
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+            <div class="relative mx-auto mt-24 w-[min(920px,92vw)] rounded-lg border border-[#4ABBBD]/50 bg-[#181d35] shadow-2xl">
+              <div class="flex items-center justify-between px-5 py-4 border-b border-[#4ABBBD]/30">
+                <h3 class="text-white text-xl font-semibold">Consumption Results</h3>
+                <button onclick="closeConsumptionModal()" class="text-white/80 hover:text-white text-2xl leading-none">&times;</button>
+              </div>
+              <div class="p-6">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                    <p class="text-white text-base font-medium">Transport to Paddock</p>
-                    <p id="transportToCost" class="text-white text-2xl font-bold">-- kWh</p>
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50">
+                    <p class="text-white text-sm font-medium">To Paddock</p>
+                    <p id="modalTransportToCost" class="text-[var(--turqueza)] text-2xl font-bold">-- kWh</p>
                   </div>
-                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                    <p class="text-white text-base font-medium">Transport from Paddock</p>
-                    <p id="transportFromCost" class="text-white text-2xl font-bold">-- kWh</p>
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50">
+                    <p class="text-white text-sm font-medium">From Paddock</p>
+                    <p id="modalTransportFromCost" class="text-[var(--turqueza)] text-2xl font-bold">-- kWh</p>
                   </div>
-                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                    <p class="text-white text-base font-medium">Effective Work (per hour)</p>
-                    <p id="effectiveWorkCostPerHour" class="text-white text-2xl font-bold">-- kWh</p>
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50">
+                    <p class="text-white text-sm font-medium">Consumption /hour</p>
+                    <p id="modalEffectiveWorkPerHour" class="text-[var(--turqueza)] text-2xl font-bold">-- kWh</p>
                   </div>
-                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                    <p class="text-white text-base font-medium">Effective Work (total hours)</p>
-                    <p id="effectiveWorkCostTotal" class="text-white text-2xl font-bold">-- kWh</p>
+                  <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50">
+                    <p class="text-white text-sm font-medium">Total Consumption </p>
+                    <p id="modalEffectiveWorkTotal" class="text-[var(--turqueza)] text-2xl font-bold">-- kWh</p>
                   </div>
+                </div>
+                <div class="mt-6 flex items-center justify-between rounded border border-[#4ABBBD]/50 p-4">
+                  <span class="text-white text-base">Total Energy Consumption</span>
+                  <span id="modalTotalConsumption" class="text-[var(--turqueza)] text-3xl font-bold">-- kWh</span>
+                </div>
+                <div class="mt-6 flex justify-end">
+                  <button onclick="closeConsumptionModal()" class="bg-[var(--turqueza)] text-white px-5 py-2 rounded">Close</button>
                 </div>
               </div>
             </div>
+          </div>
+          </div>
             
              <!-- ================================================================== -->
             <!-- =                     MISSIONS VIEW                               = -->
@@ -5932,14 +5972,20 @@
         const effectiveWorkCostTotal = effectiveWorkCostPerHour * estimatedHours;
         const totalConsumption = transportToCost + transportFromCost + effectiveWorkCostTotal;
 
-        // Mostrar resultados
-        document.getElementById('transportToCost').textContent = transportToCost.toFixed(2) + ' kWh';
-        document.getElementById('transportFromCost').textContent = transportFromCost.toFixed(2) + ' kWh';
-        document.getElementById('effectiveWorkCostPerHour').textContent = effectiveWorkCostPerHour.toFixed(2) + ' kWh';
-        document.getElementById('effectiveWorkCostTotal').textContent = effectiveWorkCostTotal.toFixed(2) + ' kWh';
-        
-        // Mostrar el div de resultados
-        document.getElementById('consumptionResults').classList.remove('hidden');
+        // Mostrar resultados en el modal
+        const modalTransportTo = document.getElementById('modalTransportToCost');
+        const modalTransportFrom = document.getElementById('modalTransportFromCost');
+        const modalPerHour = document.getElementById('modalEffectiveWorkPerHour');
+        const modalTotalHours = document.getElementById('modalEffectiveWorkTotal');
+        const modalTotal = document.getElementById('modalTotalConsumption');
+
+        if (modalTransportTo) modalTransportTo.textContent = transportToCost.toFixed(2) + ' kWh';
+        if (modalTransportFrom) modalTransportFrom.textContent = transportFromCost.toFixed(2) + ' kWh';
+        if (modalPerHour) modalPerHour.textContent = effectiveWorkCostPerHour.toFixed(2) + ' kWh';
+        if (modalTotalHours) modalTotalHours.textContent = effectiveWorkCostTotal.toFixed(2) + ' kWh';
+        if (modalTotal) modalTotal.textContent = totalConsumption.toFixed(2) + ' kWh';
+
+        openConsumptionModal();
 
         // Guardar solo el trabajo más reciente
         lastWork = {
@@ -5948,6 +5994,12 @@
           paddock: paddock,
           tool: tool,
           totalConsumption: totalConsumption.toFixed(2),
+          details: {
+            toPaddock: transportToCost.toFixed(2),
+            fromPaddock: transportFromCost.toFixed(2),
+            perHour: effectiveWorkCostPerHour.toFixed(2),
+            totalHours: effectiveWorkCostTotal.toFixed(2)
+          },
           status: 'Pending'
         };
 
@@ -5964,6 +6016,37 @@
         document.getElementById('transportFrom').value = '';
         document.getElementById('transportTo').value = '';
         document.getElementById('estimatedHours').value = '';
+      }
+
+      // Modal helpers for Consumption Results
+      function openConsumptionModal() {
+        const modal = document.getElementById('consumption-modal');
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+
+      function closeConsumptionModal() {
+        const modal = document.getElementById('consumption-modal');
+        if (!modal) return;
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      function openConsumptionModalWithData(toPaddock, fromPaddock, perHour, totalHours, total) {
+        const modalTransportTo = document.getElementById('modalTransportToCost');
+        const modalTransportFrom = document.getElementById('modalTransportFromCost');
+        const modalPerHour = document.getElementById('modalEffectiveWorkPerHour');
+        const modalTotalHours = document.getElementById('modalEffectiveWorkTotal');
+        const modalTotal = document.getElementById('modalTotalConsumption');
+
+        if (modalTransportTo) modalTransportTo.textContent = `${toPaddock} kWh`;
+        if (modalTransportFrom) modalTransportFrom.textContent = `${fromPaddock} kWh`;
+        if (modalPerHour) modalPerHour.textContent = `${perHour} kWh`;
+        if (modalTotalHours) modalTotalHours.textContent = `${totalHours} kWh`;
+        if (modalTotal) modalTotal.textContent = `${total} kWh`;
+
+        openConsumptionModal();
       }
 
       function calculateTransportCost(from, to) {
@@ -5996,7 +6079,20 @@
               <td class="px-4 py-3 text-white">${lastWork.vehicle}</td>
               <td class="px-4 py-3 text-white">${lastWork.paddock}</td>
               <td class="px-4 py-3 text-white">${lastWork.tool}</td>
-              <td class="px-4 py-3 text-white">${lastWork.totalConsumption} kWh</td>
+              <td class="px-4 py-3 text-white">
+                <div class="flex items-center gap-2">
+                  <span>${lastWork.totalConsumption} kWh</span>
+                  <button class=" ms-3 p-1 rounded  text-[var(--turqueza)] hover:bg-[var(--turqueza)]/10 transition-colors" title="View breakdown" onclick="openConsumptionModalWithData('${lastWork.details.toPaddock}','${lastWork.details.fromPaddock}','${lastWork.details.perHour}','${lastWork.details.totalHours}','${lastWork.totalConsumption}')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4" fill="currentColor">
+                      <rect width="256" height="256" fill="none"/>
+                      <polyline points="160 48 208 48 208 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                      <line x1="144" y1="112" x2="208" y2="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                      <polyline points="96 208 48 208 48 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                      <line x1="112" y1="144" x2="48" y2="208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                    </svg>
+                  </button>
+                </div>
+              </td>
               <td class="px-4 py-3">
                 <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">
                   ${lastWork.status}

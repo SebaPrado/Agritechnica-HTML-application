@@ -4657,7 +4657,7 @@
       window.addEventListener('DOMContentLoaded', () => {
         // Verificar si hay una vista en la URL
         const hash = window.location.hash.substring(1);
-        const initialView = hash || 'dashboard';
+        const initialView = hash || 'live-monitoring-2';
         
         // Navegar a la vista inicial
         navigateTo(initialView);
@@ -4672,7 +4672,7 @@
       // ✅ SOLUCIÓN: Manejar navegación del navegador
       window.addEventListener('popstate', (event) => {
         const hash = window.location.hash.substring(1);
-        const view = hash || 'dashboard';
+        const view = hash || 'live-monitoring-2';
         navigateTo(view);
       });
 

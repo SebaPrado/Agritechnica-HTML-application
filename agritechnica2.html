@@ -3960,8 +3960,11 @@
             <!-- =                        WORK VIEW                                 = -->
             <!-- ================================================================== -->
             <div id="work-view" class="view hidden">
-              <div class="flex flex-wrap justify-between gap-3 p-4">
+              <!-- <div class="flex flex-wrap justify-between gap-3 p-4">
                 <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72 p-6">Energy Master</p>
+              </div> -->
+              <div class="flex flex-wrap justify-between gap-3 px-10 py-5">
+                <p class="text-white tracking-light text-[28px]  leading-tight min-w-72">Energy Master</p>
               </div>
               
               <!-- Lista de trabajos -->
@@ -3998,7 +4001,10 @@
                         </td>
                         <td class="p-4  text-sm font-normal leading-normal">18°C</td>
                         <td class="p-4">
-                          <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">Pending</span>
+                          <div class="inline-flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4 text-[var(--turqueza)]"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/></svg>
+                            <span class="status-badge inline-flex items-center px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">Pending</span>
+                          </div>
                         </td>
                       </tr>
                       <tr class=" text-[#4ABBBD] border-t border-t-[#4ABBBD]/50 p-5 hover:border-[#4ABBBD]/70 duration-300 hover:shadow-xl">
@@ -4016,7 +4022,10 @@
                         </td>
                         <td class="p-4  text-sm font-normal leading-normal">20°C</td>
                         <td class="p-4">
-                          <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">Pending</span>
+                          <div class="inline-flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4 text-[var(--turqueza)]"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/></svg>
+                            <span class="status-badge inline-flex items-center px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">Pending</span>
+                          </div>
                         </td>
                       </tr>
                       <tr class=" text-[#4ABBBD] border-t border-t-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 duration-300 hover:shadow-xl">
@@ -4034,7 +4043,10 @@
                         </td>
                         <td class="p-4  text-sm font-normal leading-normal">17°C</td>
                         <td class="p-4">
-                          <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)]/20 text-[var(--turqueza)]">Completed</span>
+                          <div class="inline-flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4 text-green-500"><rect width="256" height="256" fill="none"/><polyline points="16 130.29 54.4 168 144 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/><polyline points="125.96 144 150.4 168 240 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/></svg>
+                            <span class="status-badge inline-flex items-center px-2 py-1 text-xs font-medium rounded-full bg-green-500 text-white">Completed</span>
+                          </div>
                         </td>
                       </tr>
                       <!-- Los trabajos se agregarán aquí dinámicamente -->
@@ -6010,7 +6022,7 @@
           vehicle: vehicle,
           tool: tool,
           hours: estimatedHours,
-          totalConsumption: totalConsumption.toFixed(2),
+          totalConsumption: totalConsumption.toFixed(1),
           details: {
             toPaddock: transportToCost.toFixed(2),
             fromPaddock: transportFromCost.toFixed(2),
@@ -6141,7 +6153,10 @@
               </td>
               <td class="p-4  text-sm font-normal leading-normal">${(lastWork.avTemp!=null && lastWork.avTemp!=='' ? `${lastWork.avTemp}°C` : '—')}</td>
               <td class="p-4">
-                <span class="px-2 py-1 text-xs font-medium rounded-full ${(lastWork.status||'Pending')==='Pending' ? 'bg-[var(--turqueza)] text-white' : 'bg-[var(--turqueza)]/20 text-[var(--turqueza)]'}">
+                <span class="status-badge inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-full ${(lastWork.status||'Pending')==='Completed' ? 'bg-green-500 text-white' : 'bg-[var(--turqueza)] text-white'}">
+                  ${((lastWork.status||'Pending')==='Completed')
+                    ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4 text-white"><rect width="256" height="256" fill="none"/><polyline points="16 130.29 54.4 168 144 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/><polyline points="125.96 144 150.4 168 240 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/></svg>'
+                    : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4 text-white"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/></svg>'}
                   ${lastWork.status||'Pending'}
                 </span>
               </td>

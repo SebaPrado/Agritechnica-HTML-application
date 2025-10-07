@@ -3968,56 +3968,52 @@
               <div class="px-4 py-5">
                <div class="p-6">
                 <h3 class="text-white text-lg mb-4">Work List</h3>
-                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
-                  <table class="flex-1">
+                <div class="flex overflow-hidden rounded   transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)]  ">
+                  <table class="w-full">
                     <thead>
-                      <tr class="">
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Work Name</th>
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Vehicle</th>
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Paddock</th>
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Tool</th>
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Estimated Consumption</th>
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Status</th>
+                      <tr class="text-left border-b border-[#4ABBBD]/50">
+                        <th class="text-white text-sm font-medium p-2">Mission</th>
+                        <th class="text-white text-sm font-medium p-2">Vehicle</th>
+                        <th class="text-white text-sm font-medium p-2">Tool</th>
+                        <th class="text-white text-sm font-medium p-2">Worked hours</th>
+                        <th class="text-white text-sm font-medium p-2">Consumption</th>
+                        <th class="text-white text-sm font-medium p-2">Av temp</th>
+                        <th class="text-white text-sm font-medium p-2">Status</th>
                       </tr>
                     </thead>
-                    <tbody id="workList">
-                      <!-- Ejemplo predefinido de trabajo de fertilización pendiente -->
-                      <tr class="border-t border-[var(--turqueza)] border-opacity-50">
-                        <td class="px-4 py-3 text-white">Mowing-Paddock 4</td>
-                        <td class="px-4 py-3 text-white">Zetrabot-1</td>
-                        <td class="px-4 py-3 text-white">Paddock 4</td>
-                        <td class="px-4 py-3 text-white">Mower</td>
-                        <td class="px-4 py-3 text-white">12.5 kWh</td>
-                        <td class="px-4 py-3">
-                          <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">
-                            Pending
-                          </span>
+                    <tbody id="workList" class="px-3">
+                      <!-- Ejemplos predefinidos (nombres cortos y nuevas columnas) -->
+                      <tr class=" text-[#4ABBBD] border-t border-t-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 duration-300 hover:shadow-xl" style="padding: 12px;">
+                        <td class="p-4  text-sm font-normal leading-normal">Mowing</td>
+                        <td class="p-4  text-sm font-normal leading-normal">Zetrabot-1</td>
+                        <td class="p-4  text-sm font-normal leading-normal">Mower</td>
+                        <td class="p-4  text-sm font-normal leading-normal">3.5 h</td>
+                        <td class="p-4  text-sm font-normal leading-normal"><span class="opacity-30">12.5 kWh</span></td>
+                        <td class="p-4  text-sm font-normal leading-normal">18°C</td>
+                        <td class="p-4">
+                          <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">Pending</span>
                         </td>
                       </tr>
-                      <tr class="border-t border-[var(--turqueza)] border-opacity-50">
-                        <td class="px-4 py-3 text-white">Spraying-Paddock 7</td>
-                        <td class="px-4 py-3 text-white">Zetrabot-2</td>
-                        <td class="px-4 py-3 text-white">Paddock 7</td>
-                        <td class="px-4 py-3 text-white">Sprayer</td>
-                        <td class="px-4 py-3 text-white">38.2 kWh</td>
-                        <td class="px-4 py-3">
-                          <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">
-                            Pending
-                          </span>
+                      <tr class=" text-[#4ABBBD] border-t border-t-[#4ABBBD]/50 p-5 hover:border-[#4ABBBD]/70 duration-300 hover:shadow-xl">
+                        <td class=" p-4 text-sm font-normal leading-normal">Spraying</td>
+                        <td class=" p-4 text-sm font-normal leading-normal">Zetrabot-2</td>
+                        <td class=" p-4 text-sm font-normal leading-normal">Sprayer</td>
+                        <td class=" p-4 text-sm font-normal leading-normal">2.0 h</td>
+                        <td class=" p-4 text-sm font-normal leading-normal"><span class="opacity-30">38.2 kWh</span></td>
+                        <td class="p-4  text-sm font-normal leading-normal">20°C</td>
+                        <td class="p-4">
+                          <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">Pending</span>
                         </td>
                       </tr>
-                     
-                      <!-- Ejemplo predefinido de trabajo de fertilización completado -->
-                      <tr class="border-t border-[var(--turqueza)] border-opacity-50">
-                        <td class="px-4 py-3 text-white">Spraying-Paddock 3</td>
-                        <td class="px-4 py-3 text-white">Zetrabot-1</td>
-                        <td class="px-4 py-3 text-white">Paddock 3</td>
-                        <td class="px-4 py-3 text-white">Sprayer</td>
-                        <td class="px-4 py-3 text-white">42.5 kWh</td>
-                        <td class="px-4 py-3">
-                          <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)]/20 text-[var(--turqueza)]">
-                            Completed
-                          </span>
+                      <tr class=" text-[#4ABBBD] border-t border-t-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 duration-300 hover:shadow-xl">
+                        <td class="p-4  text-sm font-normal leading-normal">Fertilizing</td>
+                        <td class="p-4  text-sm font-normal leading-normal">Zetrabot-1</td>
+                        <td class="p-4  text-sm font-normal leading-normal">Seeder</td>
+                        <td class="p-4  text-sm font-normal leading-normal">4.0 h</td>
+                        <td class="p-4  text-sm font-normal leading-normal">42.5 kWh</td>
+                        <td class="p-4  text-sm font-normal leading-normal">17°C</td>
+                        <td class="p-4">
+                          <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)]/20 text-[var(--turqueza)]">Completed</span>
                         </td>
                       </tr>
                       <!-- Los trabajos se agregarán aquí dinámicamente -->
@@ -4076,21 +4072,21 @@
 
                     <!-- Selección de parcela -->
                     <div>
-                      <label class="block text-white text-sm font-medium mb-2">Paddock</label>
+                      <label class="block text-white text-sm font-medium mb-2">Paddock </label>
                       <select id="paddock" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
                         <option value="" disabled selected class="bg-transparent text-[var(--turqueza)]">Select paddock</option>
-                        <option value="paddock1" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 1</option>
-                        <option value="paddock2" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 2</option>
-                        <option value="paddock3" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 3</option>
-                        <option value="paddock4" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 4</option>
-                        <option value="paddock5" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 5</option>
-                        <option value="paddock6" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 6</option>
-                        <option value="paddock7" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 7</option>
-                        <option value="paddock8" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 8</option>
-                        <option value="paddock9" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 9</option>
-                        <option value="paddock10" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 10</option>
-                        <option value="paddock11" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 11</option>
-                        <option value="paddock12" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 12</option>
+                        <option value="1" class="bg-transparent text-[var(--azul-oscuro)]">1</option>
+                        <option value="2" class="bg-transparent text-[var(--azul-oscuro)]">2</option>
+                        <option value="3" class="bg-transparent text-[var(--azul-oscuro)]">3</option>
+                        <option value="4" class="bg-transparent text-[var(--azul-oscuro)]">4</option>
+                        <option value="5" class="bg-transparent text-[var(--azul-oscuro)]">5</option>
+                        <option value="6" class="bg-transparent text-[var(--azul-oscuro)]">6</option>
+                        <option value="7" class="bg-transparent text-[var(--azul-oscuro)]">7</option>
+                        <option value="8" class="bg-transparent text-[var(--azul-oscuro)]">8</option>
+                        <option value="9" class="bg-transparent text-[var(--azul-oscuro)]">9</option>
+                        <option value="10" class="bg-transparent text-[var(--azul-oscuro)]">10</option>
+                        <option value="11" class="bg-transparent text-[var(--azul-oscuro)]">11</option>
+                        <option value="12" class="bg-transparent text-[var(--azul-oscuro)]">12</option>
                       </select>
                     </div>
 
@@ -4171,7 +4167,7 @@
           <div id="consumption-modal" class="hidden fixed inset-0 z-[100] items-center justify-center">
             <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
             <div id="consumption-modal-content" class="relative w-[min(920px,92vw)] rounded-lg border border-[#4ABBBD]/50 bg-[#181d35] shadow-2xl transition-all duration-300 ease-out transform opacity-0 scale-95">
-              <div class="flex items-center justify-between px-5 py-4 border-b border-[#4ABBBD]/30">
+              <div class="flex items-center justify-between px-5 py-4 border-b border-[#4ABBBD]/50">
                 <h3 class="text-white text-xl font-semibold">Consumption Results</h3>
                 <button onclick="closeConsumptionModal()" class="text-white/80 hover:text-white text-2xl leading-none">&times;</button>
               </div>
@@ -5991,8 +5987,8 @@
         lastWork = {
           name: workName,
           vehicle: vehicle,
-          paddock: paddock,
           tool: tool,
+          hours: estimatedHours,
           totalConsumption: totalConsumption.toFixed(2),
           details: {
             toPaddock: transportToCost.toFixed(2),
@@ -6103,15 +6099,15 @@
         let newWorkRow = '';
         if (lastWork) {
           newWorkRow = `
-            <tr class="border-t border-[var(--turqueza)] border-opacity-50">
-              <td class="px-4 py-3 text-white">${lastWork.name}</td>
-              <td class="px-4 py-3 text-white">${lastWork.vehicle}</td>
-              <td class="px-4 py-3 text-white">${lastWork.paddock}</td>
-              <td class="px-4 py-3 text-white">${lastWork.tool}</td>
-              <td class="px-4 py-3 text-white">
+            <tr class="text-[#4ABBBD] border-t border-t-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 duration-300 hover:shadow-xl">
+              <td class="p-4  text-sm font-normal leading-normal">${lastWork.name}</td>
+              <td class="p-4  text-sm font-normal leading-normal">${lastWork.vehicle}</td>
+              <td class="p-4  text-sm font-normal leading-normal">${lastWork.tool}</td>
+              <td class="p-4  text-sm font-normal leading-normal">${lastWork.hours || '-'} h</td>
+              <td class="p-4  text-sm font-normal leading-normal">
                 <div class="flex items-center gap-2">
-                  <span>${lastWork.totalConsumption} kWh</span>
-                  <button class=" ms-3 p-1 rounded  text-[var(--turqueza)] hover:bg-[var(--turqueza)]/10 transition-colors" title="View breakdown" onclick="openConsumptionModalWithData('${lastWork.details.toPaddock}','${lastWork.details.fromPaddock}','${lastWork.details.perHour}','${lastWork.details.totalHours}','${lastWork.totalConsumption}')">
+                  <span class="${(lastWork.status||'Pending')==='Pending' ? 'opacity-30' : 'opacity-100'}">${lastWork.totalConsumption} kWh</span>
+                  <button class="ms-3 p-1 rounded text-[var(--turqueza)] hover:bg-[var(--turqueza)]/10 transition-colors ${(lastWork.status||'Pending')==='Pending' ? 'opacity-30' : 'opacity-100'}" title="View breakdown" onclick="openConsumptionModalWithData('${lastWork.details.toPaddock}','${lastWork.details.fromPaddock}','${lastWork.details.perHour}','${lastWork.details.totalHours}','${lastWork.totalConsumption}')">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4" fill="currentColor">
                       <rect width="256" height="256" fill="none"/>
                       <polyline points="160 48 208 48 208 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
@@ -6122,9 +6118,10 @@
                   </button>
                 </div>
               </td>
-              <td class="px-4 py-3">
-                <span class="px-2 py-1 text-xs font-medium rounded-full bg-[var(--turqueza)] text-white">
-                  ${lastWork.status}
+              <td class="p-4  text-sm font-normal leading-normal">${(lastWork.avTemp!=null && lastWork.avTemp!=='' ? `${lastWork.avTemp}°C` : '—')}</td>
+              <td class="p-4">
+                <span class="px-2 py-1 text-xs font-medium rounded-full ${(lastWork.status||'Pending')==='Pending' ? 'bg-[var(--turqueza)] text-white' : 'bg-[var(--turqueza)]/20 text-[var(--turqueza)]'}">
+                  ${lastWork.status||'Pending'}
                 </span>
               </td>
             </tr>

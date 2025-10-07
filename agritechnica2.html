@@ -4168,9 +4168,9 @@
               </div>
 
           <!-- Modal: Consumption Results -->
-          <div id="consumption-modal" class="hidden fixed inset-0 z-[100]">
+          <div id="consumption-modal" class="hidden fixed inset-0 z-[100] items-center justify-center">
             <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-            <div class="relative mx-auto mt-24 w-[min(920px,92vw)] rounded-lg border border-[#4ABBBD]/50 bg-[#181d35] shadow-2xl">
+            <div id="consumption-modal-content" class="relative w-[min(920px,92vw)] rounded-lg border border-[#4ABBBD]/50 bg-[#181d35] shadow-2xl transition-all duration-300 ease-out transform opacity-0 scale-95">
               <div class="flex items-center justify-between px-5 py-4 border-b border-[#4ABBBD]/30">
                 <h3 class="text-white text-xl font-semibold">Consumption Results</h3>
                 <button onclick="closeConsumptionModal()" class="text-white/80 hover:text-white text-2xl leading-none">&times;</button>
@@ -6021,17 +6021,46 @@
       // Modal helpers for Consumption Results
       function openConsumptionModal() {
         const modal = document.getElementById('consumption-modal');
-        if (!modal) return;
+        const content = document.getElementById('consumption-modal-content');
+        if (!modal || !content) return;
         modal.classList.remove('hidden');
+        modal.classList.add('flex');
         document.body.classList.add('overflow-hidden');
+        // animación de entrada
+        requestAnimationFrame(() => {
+          content.classList.remove('opacity-0','scale-95');
+          content.classList.add('opacity-100','scale-100');
+        });
       }
 
       function closeConsumptionModal() {
         const modal = document.getElementById('consumption-modal');
-        if (!modal) return;
-        modal.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
+        const content = document.getElementById('consumption-modal-content');
+        if (!modal || !content) return;
+        // animación de salida
+        content.classList.remove('opacity-100','scale-100');
+        content.classList.add('opacity-0','scale-95');
+        setTimeout(() => {
+          modal.classList.remove('flex');
+          modal.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }, 250);
       }
+
+      // Cerrar por click fuera y Escape
+      document.addEventListener('click', (e) => {
+        const modal = document.getElementById('consumption-modal');
+        const content = document.getElementById('consumption-modal-content');
+        if (modal && !modal.classList.contains('hidden')) {
+          if (e.target === modal) {
+            closeConsumptionModal();
+          }
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeConsumptionModal();
+      });
 
       function openConsumptionModalWithData(toPaddock, fromPaddock, perHour, totalHours, total) {
         const modalTransportTo = document.getElementById('modalTransportToCost');

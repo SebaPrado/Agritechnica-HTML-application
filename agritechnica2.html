@@ -4603,6 +4603,13 @@
       function navigateTo(viewName) {
         console.log('navigateTo called with:', viewName);
         
+        // ✅ NUEVA FUNCIONALIDAD: Scroll al inicio cuando se presiona cualquier icono del sidebar
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+        
         // Ocultar TODAS las vistas primero
         document.querySelectorAll('.view').forEach(view => {
           view.classList.add('hidden');

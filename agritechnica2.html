@@ -4431,9 +4431,9 @@
                       <h3 class="text-white text-lg font-normal">Fleet & Stations</h3>
                       <span class="text-[var(--turqueza)] text-xs">Summary</span>
                     </div>
-                    <div class="space-y-3">
+                    <div class="space-y-4 ">
                       <div class="flex items-center justify-between p-3 rounded border border-[#4ABBBD]/30 hover:border-[#4ABBBD]/60 transition-all">
-                        <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-4">
                           <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
                               <g>
@@ -4485,6 +4485,21 @@
                       </div>
                     </div>
                   </div>
+
+                  <!-- Consumption Period (compact) -->
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                      <h3 class="text-white text-lg font-normal">Consumption Period</h3>
+                      <span class="text-[var(--turqueza)] text-xs">Preference</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-[#0f1430] rounded-full p-1 border border-[#4ABBBD]/30 w-max">
+                      <button data-p="day" class="px-4 py-2 text-xs rounded-full period-btn text-[var(--turqueza)]">Daily</button>
+                      <button data-p="week" class="px-4 py-2 text-xs rounded-full period-btn bg-[var(--turqueza)] text-[#0b0e24]">Weekly</button>
+                      <button data-p="month" class="px-4 py-2 text-xs rounded-full period-btn text-[var(--turqueza)]">Monthly</button>
+                    </div>
+                    <p class="text-[var(--turqueza)] text-xs" style="margin-top: 20px;">Applies to your Consumption History</p>
+                  </div>
+                  
                 </div>
               </div>
               
@@ -4499,6 +4514,37 @@
             
 <!-- ===================================================================================================================== -->
 
+    <script>
+      // UI: Toggle activo en tarjeta "Consumption Period" (solo visual)
+      (function() {
+        function setActive(btns, active){
+          btns.forEach(b => {
+            if (b.dataset.p === active){
+              b.classList.add('bg-[var(--turqueza)]','text-[#0b0e24]');
+              b.classList.remove('text-[var(--turqueza)]');
+            } else {
+              b.classList.remove('bg-[var(--turqueza)]','text-[#0b0e24]');
+              b.classList.add('text-[var(--turqueza)]');
+            }
+          });
+        }
+        function init(){
+          const btns = Array.from(document.querySelectorAll('.period-btn'));
+          if (!btns.length) return;
+          let current = 'week';
+          setActive(btns, current);
+          btns.forEach(b => b.addEventListener('click', () => {
+            current = b.dataset.p;
+            setActive(btns, current);
+          }));
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', init);
+        } else {
+          init();
+        }
+      })();
+    </script>
     <!-- ===================================================================================================================== -->
     <!-- SCRIPT 1: ENERGY SUMMARY - Lógica de capacidad total y cálculos de energía -->
     <!-- ===================================================================================================================== -->

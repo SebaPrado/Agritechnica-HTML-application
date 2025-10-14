@@ -4499,6 +4499,41 @@
                     </div>
                     <p class="text-[var(--turqueza)] text-xs" style="margin-top: 20px;">Applies to your Consumption History</p>
                   </div>
+
+                  <!-- Energy Prices (Peak / Shoulder / Off-peak) -->
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                      <h3 class="text-white text-lg font-normal">Energy Prices</h3>
+                      <span class="text-[var(--turqueza)] text-xs">€/kWh</span>
+                    </div>
+                    <div class="space-y-3">
+                      <div class="grid grid-cols-[1fr_auto] gap-3 items-center">
+                        <label for="price-peak" class="text-white text-sm">Peak</label>
+                        <div class="flex items-center gap-2">
+                          <input id="price-peak" type="number" step="0.001" min="0" class="w-28 rounded bg-[#0f1430] text-white p-2 border border-[#4ABBBD]/40" placeholder="0.200" />
+                          <span class="text-[var(--turqueza)] text-xs">€/kWh</span>
+                        </div>
+                      </div>
+                      <div class="grid grid-cols-[1fr_auto] gap-3 items-center">
+                        <label for="price-shoulder" class="text-white text-sm">Shoulder</label>
+                        <div class="flex items-center gap-2">
+                          <input id="price-shoulder" type="number" step="0.001" min="0" class="w-28 rounded bg-[#0f1430] text-white p-2 border border-[#4ABBBD]/40" placeholder="0.160" />
+                          <span class="text-[var(--turqueza)] text-xs">€/kWh</span>
+                        </div>
+                      </div>
+                      <div class="grid grid-cols-[1fr_auto] gap-3 items-center">
+                        <label for="price-offpeak" class="text-white text-sm">Off-peak</label>
+                        <div class="flex items-center gap-2">
+                          <input id="price-offpeak" type="number" step="0.001" min="0" class="w-28 rounded bg-[#0f1430] text-white p-2 border border-[#4ABBBD]/40" placeholder="0.120" />
+                          <span class="text-[var(--turqueza)] text-xs">€/kWh</span>
+                        </div>
+                      </div>
+                      <div class="flex justify-end pt-2">
+                        <button id="saveEnergyPrices" class="px-3 py-2 rounded bg-[var(--turqueza)] text-[#0b0e24] text-sm font-semibold">Guardar</button>
+                      </div>
+                      <p id="energyPricesInfo" class="text-[var(--turqueza)] text-xs"></p>
+                    </div>
+                  </div>
                   
                 </div>
               </div>
@@ -4543,6 +4578,46 @@
         } else {
           init();
         }
+      })();
+    </script>
+
+    <script>
+      // Settings: Guardar/Cargar precios de energía (€/kWh) para Peak/Shoulder/Off-peak
+      (function(){
+        const KEY = 'settings:energyPrices';
+        const els = {
+          peak: document.getElementById('price-peak'),
+          shoulder: document.getElementById('price-shoulder'),
+          offpeak: document.getElementById('price-offpeak'),
+          save: document.getElementById('saveEnergyPrices'),
+          info: document.getElementById('energyPricesInfo'),
+        };
+        function load(){
+          try{ const s = localStorage.getItem(KEY); return s? JSON.parse(s): { peak: 0.200, shoulder: 0.160, offpeak: 0.120 }; }
+          catch(e){ return { peak: 0.200, shoulder: 0.160, offpeak: 0.120 }; }
+        }
+        function save(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch(e){} }
+        function init(){
+          if (!els.peak || !els.shoulder || !els.offpeak || !els.save) return;
+          const v = load();
+          els.peak.value = v.peak;
+          els.shoulder.value = v.shoulder;
+          els.offpeak.value = v.offpeak;
+          els.save.addEventListener('click', () => {
+            const peak = parseFloat(els.peak.value);
+            const shoulder = parseFloat(els.shoulder.value);
+            const offpeak = parseFloat(els.offpeak.value);
+            if ([peak, shoulder, offpeak].some(x => isNaN(x) || x < 0)){
+              els.info.textContent = 'Valores inválidos';
+              return;
+            }
+            const data = { peak, shoulder, offpeak };
+            save(data);
+            els.info.textContent = `Guardado: P ${peak.toFixed(3)} / S ${shoulder.toFixed(3)} / O ${offpeak.toFixed(3)} €/kWh`;
+            document.dispatchEvent(new CustomEvent('settings:energyPricesChanged', { detail: data }));
+          });
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
       })();
     </script>
     <!-- ===================================================================================================================== -->

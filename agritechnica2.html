@@ -4380,56 +4380,39 @@
                   <!-- General Settings -->
                  
 
-                  <!-- Energy Settings -->
-                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
-                    <h3 class="text-white text-lg font-semibold mb-4">Energy Settings</h3>
-                    <div class="space-y-4">
-                      <div>
-                        <label class="block text-white text-sm mb-2">Default Battery Threshold</label>
-                        <input type="range" min="5" max="95" value="20" class="w-full h-2 bg-[#2f396a] rounded-lg appearance-none cursor-pointer">
-                        <div class="flex justify-between text-xs text-gray-400 mt-1">
-                          <span>5%</span>
-                          <span>95%</span>
-                        </div>
+                  <!-- Wrapper for Simulation Actions + Fleet & Stations with 40%/60% split -->
+                  <div class="md:col-span-2 lg:col-span-2 flex flex-col md:flex-row gap-6">
+                  <!-- Simulation Actions -->
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6 md:basis-[40%] md:flex-none">
+                    <h3 class="text-white text-lg font-normal mb-4">Map Settings</h3>
+                    <div class="flex flex-col gap-3">
+                      <div class="flex items-center justify-between">
+                        <span class="text-white text-sm">Create Plot</span>
+                        <button id="btnCreatePlot" class="p-2 rounded-full border border-[var(--turqueza)] text-[var(--turqueza)] hover:bg-[var(--turqueza)]/10 transition-colors"
+                          onclick="openCreatePlotModal()">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4" fill="currentColor">
+                            <rect width="256" height="256" fill="none"></rect>
+                            <line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+                            <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+                          </svg>
+                        </button>
                       </div>
-                      <div>
-                        <label class="block text-white text-sm mb-2">Auto-refresh Interval</label>
-                        <select class="w-full p-2 bg-[#2f396a] text-white rounded border border-[#4a5578]">
-                          <option value="5">5 seconds</option>
-                          <option value="10" selected>10 seconds</option>
-                          <option value="30">30 seconds</option>
-                          <option value="60">1 minute</option>
-                        </select>
+                      <div class="flex items-center justify-between">
+                        <span class="text-white text-sm">Locate Warehouse</span>
+                        <button id="btnLocateWarehouse" class="p-2 rounded-full border border-[var(--turqueza)] text-[var(--turqueza)] hover:bg-[var(--turqueza)]/10 transition-colors"
+                          onclick="(function(){ if (typeof showNotification==='function') { showNotification('Locate Warehouse executed'); } })()">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4" fill="currentColor">
+                            <rect width="256" height="256" fill="none"></rect>
+                            <line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+                            <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Map Settings -->
-                  <!-- <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
-                    <h3 class="text-white text-lg font-semibold mb-4">Map Settings</h3>
-                    <div class="space-y-4">
-                      <div>
-                        <label class="block text-white text-sm mb-2">Map Style</label>
-                        <select class="w-full p-2 bg-[#2f396a] text-white rounded border border-[#4a5578]">
-                          <option value="satellite">Satellite</option>
-                          <option value="terrain" selected>Terrain</option>
-                          <option value="street">Street</option>
-                        </select>
-                      </div>
-                      <div class="flex items-center justify-between">
-                        <span class="text-white text-sm">Show Grid</span>
-                        <div class="relative">
-                          <input type="checkbox" class="sr-only" id="show-grid">
-                          <label for="show-grid" class="block w-12 h-6 bg-[#2f396a] rounded-full cursor-pointer">
-                            <span class="block w-5 h-5 bg-white rounded-full transform transition-transform duration-200 ease-in-out"></span>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-
                   <!-- Fleet & BSS Overview (compact) -->
-                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
+                  <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6 md:basis-[60%] md:flex-none">
                     <div class="flex items-center justify-between mb-4">
                       <h3 class="text-white text-lg font-normal">Fleet & Stations</h3>
                       <span class="text-[var(--turqueza)] text-xs">Summary</span>
@@ -4488,6 +4471,68 @@
                       </div>
                     </div>
                   </div>
+                  </div>
+
+                  <!-- Fleet & BSS Overview (compact) -->
+                  <!-- <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                      <h3 class="text-white text-lg font-normal">Fleet & Stations</h3>
+                      <span class="text-[var(--turqueza)] text-xs">Summary</span>
+                    </div>
+                    <div class="space-y-4 ">
+                      <div class="flex items-center justify-between p-3 rounded border border-[#4ABBBD]/30 hover:border-[#4ABBBD]/60 transition-all">
+                        <div class="flex items-center gap-4">
+                          <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
+                              <g>
+                                <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
+                                <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
+                              </g>
+                            </svg>
+                          </div>
+                          <div>
+                            <p class="text-white text-sm font-medium">Zetrabot 1</p>
+                            <p class="text-[var(--turqueza)] text-xs">40 kWh · 55 hp</p>
+                          </div>
+                        </div>
+                        <span class="px-2 py-1 text-xs rounded bg-[var(--turqueza)]/15 text-[var(--turqueza)] border border-[var(--turqueza)]/30">Tractor</span>
+                      </div>
+                      <div class="flex items-center justify-between p-3 rounded border border-[#4ABBBD]/30 hover:border-[#4ABBBD]/60 transition-all">
+                        <div class="flex items-center gap-3">
+                          <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
+                              <g>
+                                <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
+                                <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
+                              </g>
+                            </svg>
+                          </div>
+                          <div>
+                            <p class="text-white text-sm font-medium">Zetrabot 2</p>
+                            <p class="text-[var(--turqueza)] text-xs">40 kWh · 55 hp</p>
+                          </div>
+                        </div>
+                        <span class="px-2 py-1 text-xs rounded bg-[var(--turqueza)]/15 text-[var(--turqueza)] border border-[var(--turqueza)]/30">Tractor</span>
+                      </div>
+                      <div class="flex items-center justify-between p-3 rounded border border-[#4ABBBD]/30 hover:border-[#4ABBBD]/60 transition-all">
+                        <div class="flex items-center gap-3">
+                          <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+                              <rect x="32" y="64" width="176" height="128" rx="16" ry="16"></rect>
+                              <line x1="208" y1="96" x2="224" y2="96"></line>
+                              <line x1="208" y1="160" x2="224" y2="160"></line>
+                              <polyline points="120 96 96 128 136 128 112 160"></polyline>
+                            </svg>
+                          </div>
+                          <div>
+                            <p class="text-white text-sm font-medium">Battery station</p>
+                            <p class="text-[var(--turqueza)] text-xs">20 kWh</p>
+                          </div>
+                        </div>
+                        <span class="px-2 py-1 text-xs rounded bg-[var(--turqueza)]/15 text-[var(--turqueza)] border border-[var(--turqueza)]/30">Station</span>
+                      </div>
+                    </div>
+                  </div> -->
 
                   <!-- Consumption Period (compact) -->
                   <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
@@ -4583,6 +4628,145 @@
         }
       })();
     </script>
+    <script>
+
+//-------------------             Modal Create Plot (map + drawing polygon)              ------------------------------
+
+(function(){
+        function ensureModal(){
+          if (document.getElementById('createPlotModal')) return;
+          const modal = document.createElement('div');
+          modal.id = 'createPlotModal';
+          modal.className = 'fixed inset-0 bg-black/60 z-50 hidden';
+          modal.innerHTML = `
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+              <div class="w-full max-w-4xl bg-[#0f1430] border border-[#4ABBBD]/40 rounded-lg shadow-lg overflow-hidden">
+                <div class="flex items-center justify-between p-3 border-b border-[#4ABBBD]/30">
+                  <h3 class="text-white text-sm font-medium">Create Plot</h3>
+                  <button id=\"closeCreatePlot\" class=\"text-[var(--turqueza)] hover:opacity-80\">✕</button>
+                </div>
+                <div class="h-[60vh] relative">
+                  <div id="createPlotMap" class="absolute inset-0"></div>
+                  <div class="absolute top-3 left-3 flex gap-2">
+                    <button id="startPolygonBtn" class="px-3 py-1 rounded-full border border-[var(--turqueza)] text-[var(--turqueza)] text-xs hover:bg-[var(--turqueza)]/10">Start polygon</button>
+                    <button id="finishPolygonBtn" class="px-3 py-1 rounded-full border border-[var(--turqueza)] text-[var(--turqueza)] text-xs hover:bg-[var(--turqueza)]/10">Finish</button>
+                    <button id="clearPolygonBtn" class="px-3 py-1 rounded-full border border-[#fb6b6b] text-[#fb6b6b] text-xs hover:bg-[#fb6b6b]/10">Clear</button>
+                  </div>
+                </div>
+                <div id="createPlotInfo" class="p-3 text-[var(--turqueza)] text-xs"></div>
+              </div>
+            </div>`;
+          document.body.appendChild(modal);
+        }
+
+        let mapInstance = null;
+        let isDrawing = false;
+        let coordinates = [];
+        const polygonSourceId = 'create-plot-polygon';
+        const polygonLayerId = 'create-plot-polygon-fill';
+        let markers = [];
+
+        function renderPolygon(){
+          if (!mapInstance) return;
+          const source = mapInstance.getSource(polygonSourceId);
+          const poly = coordinates.length >= 3 ? {
+            type: 'Feature',
+            geometry: { type: 'Polygon', coordinates: [[...coordinates, coordinates[0]]] },
+            properties: {}
+          } : null;
+          if (source){
+            source.setData(poly ? { type: 'FeatureCollection', features: [poly] } : { type: 'FeatureCollection', features: [] });
+          }
+        }
+
+        function clearMarkers(){
+          markers.forEach(m => m.remove());
+          markers = [];
+        }
+
+        function addMarker(lngLat){
+          const el = document.createElement('div');
+          el.className = 'w-2.5 h-2.5 rounded-full bg-[var(--turqueza)] border border-white shadow';
+          const marker = new mapboxgl.Marker({ element: el }).setLngLat(lngLat).addTo(mapInstance);
+          markers.push(marker);
+        }
+
+        function initMap(){
+          const container = document.getElementById('createPlotMap');
+          if (!container) return;
+          if (mapInstance){
+            mapInstance.resize();
+            return;
+          }
+          mapboxgl.accessToken = mapboxgl.accessToken || (window.mapboxgl && window.mapboxgl.accessToken) || '';
+          mapInstance = new mapboxgl.Map({
+            container: 'createPlotMap',
+            style: 'mapbox://styles/mapbox/satellite-streets-v12',
+            center:  [ -4.860855240011148, 41.386506045138304],
+            zoom: 14
+          });
+
+          mapInstance.on('load', () => {
+            mapInstance.addSource(polygonSourceId, { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+            mapInstance.addLayer({ id: polygonLayerId, type: 'fill', source: polygonSourceId, paint: { 'fill-color': '#4ABBBD', 'fill-opacity': 0.25 } });
+            mapInstance.addLayer({ id: polygonLayerId+'-outline', type: 'line', source: polygonSourceId, paint: { 'line-color': '#4ABBBD', 'line-width': 2 } });
+          });
+
+          mapInstance.on('click', (e) => {
+            if (!isDrawing) return;
+            const { lng, lat } = e.lngLat;
+            coordinates.push([lng, lat]);
+            addMarker([lng, lat]);
+            renderPolygon();
+            const info = document.getElementById('createPlotInfo');
+            if (info) info.textContent = `Points: ${coordinates.length} (click to add, Finish to close)`;
+          });
+        }
+
+        window.openCreatePlotModal = function(){
+          ensureModal();
+          const modal = document.getElementById('createPlotModal');
+          modal.classList.remove('hidden');
+          setTimeout(() => { initMap(); mapInstance && mapInstance.resize(); }, 50);
+          coordinates = [];
+          clearMarkers();
+          const info = document.getElementById('createPlotInfo');
+          if (info) info.textContent = 'Click on the map to add polygon points';
+          isDrawing = false;
+          const startBtn = document.getElementById('startPolygonBtn');
+          const finishBtn = document.getElementById('finishPolygonBtn');
+          const clearBtn = document.getElementById('clearPolygonBtn');
+          const closeBtn = document.getElementById('closeCreatePlot');
+          if (startBtn) startBtn.onclick = () => { isDrawing = true; if (info) info.textContent = 'Drawing... click to add points'; };
+          if (finishBtn) finishBtn.onclick = () => {
+            isDrawing = false;
+            renderPolygon();
+            if (coordinates.length >= 3) {
+              if (info) info.textContent = 'Polygon closed';
+              try {
+                const feature = {
+                  id: `plot_${Date.now()}`,
+                  type: 'Feature',
+                  properties: {},
+                  geometry: { type: 'Polygon', coordinates: [[...coordinates, coordinates[0]]] }
+                };
+                if (window.paddockFeatures && Array.isArray(window.paddockFeatures.features)) {
+                  window.paddockFeatures.features.push(feature);
+                }
+                document.dispatchEvent(new CustomEvent('plots:added', { detail: feature }));
+                if (typeof showNotification === 'function') {
+                  showNotification('New plot added');
+                }
+              } catch (e) { /* noop */ }
+            } else {
+              if (info) info.textContent = 'Need at least 3 points';
+            }
+          };
+          if (clearBtn) clearBtn.onclick = () => { isDrawing = false; coordinates = []; clearMarkers(); renderPolygon(); if (info) info.textContent = 'Cleared'; };
+          if (closeBtn) closeBtn.onclick = () => { modal.classList.add('hidden'); };
+        }
+      })();
+    </script>
 
     <script>
       // Settings: Guardar/Cargar precios de energía (€/kWh) para Peak/Shoulder/Off-peak
@@ -4616,7 +4800,11 @@
             }
             const data = { peak, shoulder, offpeak };
             save(data);
-            els.info.textContent = `Guardado: P ${peak.toFixed(3)} / S ${shoulder.toFixed(3)} / O ${offpeak.toFixed(3)} €/kWh`;
+            els.info.textContent = `Saved: P ${peak.toFixed(3)} / S ${shoulder.toFixed(3)} / O ${offpeak.toFixed(3)} €/kWh`;
+            // Mostrar notificación idéntica a la usada en 'Make a Reservation'
+            if (typeof showNotification === 'function') {
+              showNotification(els.info.textContent);
+            }
             document.dispatchEvent(new CustomEvent('settings:energyPricesChanged', { detail: data }));
           });
         }
@@ -6396,7 +6584,7 @@
           status: 'In progress'
         },
         {
-          packId: 'res-1566',
+          packId: 'sw-76',
           startTime: '20/11/2025',
           endTime: '10/12/2025',
           consumoKvh: '',
@@ -6518,8 +6706,14 @@
           return;
         }
 
+        // Generar ID de reserva: res-pack-#### o res-bs-####
+        const idPrefix = currentReservationType === 'pack' ? 'res-pack' : 'res-bs';
+        const randomNumber = Math.floor(1000 + Math.random() * 9000);
+        const reservationId = `${idPrefix}-${randomNumber}`;
+
         // Agregar reservación a la lista
         const newReservation = {
+          reservationId,
           packId: currentReservationType === 'pack'
             ? `${vehicle ? vehicle + '-' : ''}Pack${numPacks}`
             : `Battery-Station-${numPacks}`,
@@ -6532,8 +6726,8 @@
         reservationList.push(newReservation);
         updateReservationList();
 
-        // Persistir en localStorage
-        try { localStorage.setItem('reservationList', JSON.stringify(reservationList)); } catch(e) { /* noop */ }
+        // Resetear persistencia para no mantener reservas entre refrescos
+        try { localStorage.removeItem('reservationList'); } catch(e) { /* noop */ }
 
         // Mostrar notificación de éxito
         showNotification('Reservation created successfully');
@@ -6562,7 +6756,7 @@
           return orderA - orderB;
         });
 
-        console.log('Reservaciones ordenadas:', sortedReservations.map(r => ({ id: r.packId, status: r.status })));
+        console.log('Reservaciones ordenadas:', sortedReservations.map(r => ({ id: (r.reservationId || r.packId), status: r.status })));
 
         sortedReservations.forEach(reservation => {
           const row = document.createElement('tr');
@@ -6571,9 +6765,10 @@
           const isFinished = reservation.status === 'Finished';
           const isPending = reservation.status === 'Pending';
           const isInProgress = reservation.status === 'In progress';
+          const displayId = reservation.reservationId || reservation.packId;
           
           row.innerHTML = `
-            <td class="px-4 py-3 text-[var(--turqueza)] text-sm">${reservation.packId}</td>
+            <td class="px-4 py-3 text-[var(--turqueza)] text-sm">${displayId}</td>
             <td class="px-4 py-3 text-[var(--turqueza)] text-sm">${reservation.startTime}</td>
             <td class="px-4 py-3 ${isFinished ? 'text-[var(--turqueza)]' : 'text-[var(--turqueza)] opacity-30'} text-sm">${reservation.endTime}</td>
             <td class="px-4 py-3 text-[var(--turqueza)] text-sm">${reservation.consumoKvh === '0.00' ? '' : reservation.consumoKvh}</td>
@@ -6628,14 +6823,8 @@
       console.log('Script Energy Meter cargado correctamente');
 
       document.addEventListener('DOMContentLoaded', () => {
-        // Cargar reservas persistidas si existen
-        try {
-          const saved = localStorage.getItem('reservationList');
-          if (saved) {
-            const parsed = JSON.parse(saved);
-            if (Array.isArray(parsed)) reservationList = parsed;
-          }
-        } catch(e) { /* noop */ }
+        // No cargar reservas desde localStorage; iniciar con el estado por defecto
+        try { localStorage.removeItem('reservationList'); } catch(e) { /* noop */ }
         updateReservationList();
 
         const totalCapacity = 132; // kWh
@@ -6842,6 +7031,8 @@
               }
             ]
           };
+          // Exponer para que otros módulos (modal Create Plot) puedan actualizar
+          window.paddockFeatures = paddockFeatures;
 
           const fincaFeature = paddockFeatures.features.find(f => f.id === "Finca");
 
@@ -6878,7 +7069,7 @@
               container: 'map3',
               style: 'mapbox://styles/mapbox/satellite-v9',
               projection: 'globe', 
-              zoom: 14.2,
+              zoom: 14.48,
               center: center,
               pitch: 0 
           });
@@ -6931,7 +7122,7 @@
                         'case',
                         ['boolean', ['feature-state', 'hover'], false],
                         2, // Ancho cuando hover es true
-                        0  // Ancho normal
+                        1  // Ancho visible por defecto
                       ],
                       'line-width-transition': {
                         'duration': 150
@@ -7312,6 +7503,23 @@ map3.on('mouseleave', 'paddock-fill', () => {
               });
 
               console.log("Map layers loaded successfully.");
+          });
+
+          // Escuchar nuevos polígonos creados desde Settings y refrescar la fuente
+          document.addEventListener('plots:added', () => {
+            try {
+              if (!window.map3Instance || !window.paddockFeatures) return;
+              const src = window.map3Instance.getSource('paddock');
+              if (!src) return;
+              const updated = {
+                type: 'FeatureCollection',
+                features: window.paddockFeatures.features.filter(f => f.id !== 'Finca').map((f, i) => ({
+                  ...f,
+                  id: f.properties?.id || f.id || (i + 1)
+                }))
+              };
+              src.setData(updated);
+            } catch(e) { /* noop */ }
           });
 
           // Globe spinning logic (unchanged)

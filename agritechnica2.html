@@ -3003,82 +3003,6 @@
               </div>
             </div>
 
-            <!-- ================================================================== -->
-            <!-- =                  2)   Battery as a service VIEW                = -->
-            <!-- ================================================================== -->
-            <!-- <div id="reservation-view" class="view hidden w-full">
-              <div class="flex flex-wrap justify-between gap-3 p-4">
-                <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Battery as a Service</p>
-              </div>
-              <h2 class="text-white text-[22px] leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Reservation Management</h2>
-              <div class="flex flex-wrap gap-4 p-4">
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                  <p class="text-white text-base font-medium leading-normal">Active Reservations</p>
-                  <p class="text-white tracking-light text-2xl font-bold leading-tight">0</p>
-                </div>
-                <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
-                  <p class="text-white text-base font-medium leading-normal">Pending Reservations</p>
-                  <p class="text-white tracking-light text-2xl font-bold leading-tight">1</p>
-                </div>
-              </div>
-              <div class="p-4">
-                <div class="bg-[#181d35] rounded p-6">
-                  <h3 class="text-white text-lg mb-4">Make a Reservation</h3>
-                  <div class="grid grid-cols-1 gap-4">
-                    <div>
-                      <label class="block text-white text-sm font-medium mb-2">Vehicle</label>
-                      <select id="reservationVehicle" class="w-full p-2 rounded bg-[var(--turqueza)]/20 text-white border border-[#4a5578]">
-                        <option value="" disabled selected>Select vehicle</option>
-                        <option value="zetrabot1">Zetrabot-001</option>
-                        <option value="zetrabot2">Zetrabot-002</option>
-                        <option value="zetrabot3">Zetrabot-003</option>
-                      </select>
-                    </div>
-                    <div>
-                        <label class="block text-white text-sm font-medium mb-2">Number of packs</label>
-                        <select id="reservationPacks" class="w-full p-2 rounded bg-[var(--turqueza)]/20 text-white border border-[#4a5578]">
-                          <option value="" disabled selected>select the amount of packs</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                        </select>
-                      </div>
-                    <div>
-                      <label class="block text-white text-sm font-medium mb-2">Start Time</label>
-                      <input id="reservationStart" type="datetime-local" class="w-full p-2 rounded bg-[var(--turqueza)]/20 text-white border border-[#4a5578]">
-                    </div>
-                    <div>
-                        <label class="block text-white text-sm font-medium mb-2">End Time</label>
-                        <input id="reservationEnd" type="datetime-local" class="w-full p-2 rounded bg-[var(--turqueza)]/20 text-white border border-[#4a5578]">
-                      </div>
-                  </div>
-                  <button onclick="requestReservation()" class="mt-4 bg-[var(--turqueza)] text-white px-6 py-2 rounded hover:bg-[#4f6bdb] transition-colors">
-                    Request Reservation 
-                  </button>
-                </div>
-              </div>
-
-              <div class="px-4 py-3">
-                <h3 class="text-white text-lg mb-4">Reservations List</h3>
-                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
-                  <table class="flex-1">
-                    <thead>
-                      <tr class="bg-[#181d35]">
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Pack Id</th>
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Start Time</th>
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">End Time</th>
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Consumo</th>
-                        <th class="px-4 py-3 text-left text-white text-sm font-medium">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody id="reservationList">
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div> -->
-
               <!-- ================================================================== -->
             <!-- =                     3) Consumption History VIEW                  = -->
             <!-- ================================================================== -->
@@ -3137,15 +3061,15 @@
                <div class="flex flex-wrap gap-4 p-4">
                 <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Total Energy Used </p>
-                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight"><span id="totalEnergyValue">2,450 kWh</span></p>
+                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight"><span id="totalEnergyValue" data-suffix=" kWh">2,450 kWh</span></p>
                 </div>
                 <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Average Daily Usage</p>
-                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight"><span id="avgDailyUsageValue">81.6 kWh</span></p>
+                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight"><span id="avgDailyUsageValue" data-suffix=" kWh">61.6 kWh</span></p>
                 </div>
                 <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50">
                   <p class="text-white text-base font-medium leading-normal">Average Price </p>
-                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight"><span id="avgPriceValue">2.5 U$S/kWh</span></p>
+                  <p class="text-[var(--turqueza)] tracking-light text-2xl font-bold leading-tight"><span id="avgPriceValue" data-suffix=" €/kWh">2.5 €/kWh</span></p>
                 </div>
               </div>
 
@@ -3165,13 +3089,15 @@
 
                   if (!buttons.length || !totalEl || !avgDailyEl || !avgPriceEl || !opSavingsEl || !co2SavingsEl) return;
 
+
+// ----------------                   valores  para Consumption History       ------------------------------- 
                   const valuesByPeriod = {
-                    week: { total: '580 kWh', avgDaily: '82.9 kWh', price: '2.4 U$S/kWh', op: 1450, co2: 410 },
-                    month: { total: '2,450 kWh', avgDaily: '81.6 kWh', price: '2.5 U$S/kWh', op: 12500, co2: 3400 },
-                    year: { total: '29,400 kWh', avgDaily: '80.5 kWh', price: '2.6 U$S/kWh', op: 152300, co2: 40500 }
+                    week: { total: 480, avgDaily: 62.9, price: 0.17, op: 615 , co2: 1615 },
+                    month: { total: 2150, avgDaily: 61.6, price: 0.16, op: 2650, co2: 7000 },
+                    year: { total: 25400, avgDaily: 70.5, price: 0.16, op: 32000, co2: 84500 }
                   };
 
-                  function animateCount(el, target, { prefix = '', suffix = '', duration = 900 } = {}) {
+                  function animateCount(el, target, { prefix = '', suffix = '', duration = 900, decimals = 0 } = {}) {
                     const text = el.textContent.trim();
                     const current = parseFloat(text.replace(/[^0-9.\-]/g, '')) || 0;
                     const start = current;
@@ -3179,7 +3105,7 @@
                     const startTime = performance.now();
 
                     function format(n) {
-                      const withThousands = n.toLocaleString(undefined, { maximumFractionDigits: 0 });
+                      const withThousands = n.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
                       return `${prefix}${withThousands}${suffix}`;
                     }
 
@@ -3187,7 +3113,9 @@
                       const t = Math.min(1, (now - startTime) / duration);
                       // Ease-out cubic
                       const eased = 1 - Math.pow(1 - t, 3);
-                      const value = Math.round(start + (end - start) * eased);
+                      const raw = start + (end - start) * eased;
+                      const factor = Math.pow(10, decimals);
+                      const value = Math.round(raw * factor) / factor;
                       el.textContent = format(value);
                       if (t < 1) requestAnimationFrame(frame);
                     }
@@ -3205,9 +3133,9 @@
 
                   function updateValues(period) {
                     const v = valuesByPeriod[period] || valuesByPeriod.month;
-                    totalEl.textContent = v.total;
-                    avgDailyEl.textContent = v.avgDaily;
-                    avgPriceEl.textContent = v.price;
+                    animateCount(totalEl, v.total, { suffix: totalEl.dataset.suffix || '', decimals: 0 });
+                    animateCount(avgDailyEl, v.avgDaily, { suffix: avgDailyEl.dataset.suffix || '', decimals: 1 });
+                    animateCount(avgPriceEl, v.price, { suffix: avgPriceEl.dataset.suffix || '', decimals: 2 });
                     animateCount(opSavingsEl, v.op, { suffix: ' €' });
                     animateCount(co2SavingsEl, v.co2, { suffix: ' kg CO₂' });
                   }
@@ -4120,9 +4048,9 @@
                         </td>
                       </tr>
                       <tr class=" text-[#4ABBBD] border-t border-t-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 duration-300 hover:shadow-xl">
-                        <td class="p-4  text-sm font-normal leading-normal">Fertilizing</td>
+                        <td class="p-4  text-sm font-normal leading-normal">Urea</td>
                         <td class="p-4  text-sm font-normal leading-normal">Zetrabot-1</td>
-                        <td class="p-4  text-sm font-normal leading-normal">Seeder</td>
+                        <td class="p-4  text-sm font-normal leading-normal">Fertilizer</td>
                         <td class="p-4  text-sm font-normal leading-normal">4.0 h</td>
                         <td class="p-4  text-sm font-normal leading-normal">
                           <div class="flex items-center gap-2">
@@ -4190,7 +4118,6 @@
                         <option value="" disabled selected class="bg-transparent text-[var(--turqueza)]">Select vehicle</option>
                         <option value="zetrabot1" class="bg-transparent text-[var(--azul-oscuro)]">Zetrabot-001</option>
                         <option value="zetrabot2" class="bg-transparent text-[var(--azul-oscuro)]">Zetrabot-002</option>
-                        <option value="zetrabot3" class="bg-transparent text-[var(--azul-oscuro)]">Zetrabot-003</option>
                       </select>
                     </div>
 
@@ -4205,12 +4132,12 @@
                         <option value="4" class="bg-transparent text-[var(--azul-oscuro)]">4</option>
                         <option value="5" class="bg-transparent text-[var(--azul-oscuro)]">5</option>
                         <option value="6" class="bg-transparent text-[var(--azul-oscuro)]">6</option>
-                        <option value="7" class="bg-transparent text-[var(--azul-oscuro)]">7</option>
+                        <!-- <option value="7" class="bg-transparent text-[var(--azul-oscuro)]">7</option>
                         <option value="8" class="bg-transparent text-[var(--azul-oscuro)]">8</option>
                         <option value="9" class="bg-transparent text-[var(--azul-oscuro)]">9</option>
                         <option value="10" class="bg-transparent text-[var(--azul-oscuro)]">10</option>
                         <option value="11" class="bg-transparent text-[var(--azul-oscuro)]">11</option>
-                        <option value="12" class="bg-transparent text-[var(--azul-oscuro)]">12</option>
+                        <option value="12" class="bg-transparent text-[var(--azul-oscuro)]">12</option> -->
                       </select>
                     </div>
 
@@ -4242,12 +4169,12 @@
                         <option value="paddock4" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 4</option>
                         <option value="paddock5" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 5</option>
                         <option value="paddock6" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 6</option>
-                        <option value="paddock7" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 7</option>
+                        <!-- <option value="paddock7" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 7</option>
                         <option value="paddock8" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 8</option>
                         <option value="paddock9" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 9</option>
                         <option value="paddock10" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 10</option>
                         <option value="paddock11" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 11</option>
-                        <option value="paddock12" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 12</option>
+                        <option value="paddock12" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 12</option> -->
                       </select>
                     </div>
 
@@ -4263,12 +4190,12 @@
                         <option value="paddock4" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 4</option>
                         <option value="paddock5" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 5</option>
                         <option value="paddock6" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 6</option>
-                        <option value="paddock7" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 7</option>
+                        <!-- <option value="paddock7" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 7</option>
                         <option value="paddock8" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 8</option>
                         <option value="paddock9" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 9</option>
                         <option value="paddock10" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 10</option>
                         <option value="paddock11" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 11</option>
-                        <option value="paddock12" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 12</option>
+                        <option value="paddock12" class="bg-transparent text-[var(--azul-oscuro)]">Paddock 12</option> -->
                       </select>
                     </div>
 

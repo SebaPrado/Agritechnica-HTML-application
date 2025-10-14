@@ -502,6 +502,17 @@
         }
       }
 
+      /* Animación fija sin desplazamiento de trazo para porcentaje variable */
+      .progress-circle-animate-fixed {
+        animation: circle-fill-fixed 3.2s ease-out forwards;
+        stroke-dasharray: 0 99;
+        stroke-dashoffset: 0;
+      }
+
+      @keyframes circle-fill-fixed {
+        to { stroke-dasharray: var(--pct) 99; }
+      }
+
       .progress-bar.below-threshold {
         background-color: rgba(255, 107, 107, 0.9);
         border-right-color: #ff6b6b;
@@ -1384,7 +1395,7 @@
                         <th class="text-white text-sm font-medium p-2">Reservation Id</th>
                         <th class="text-white text-sm font-medium p-2">Start Time</th>
                         <th class="text-white text-sm font-medium p-2">End Time</th>
-                        <th class="text-white text-sm font-medium p-2">Consumption kvh</th>
+                        <th class="text-white text-sm font-medium p-2">Consumption kWh</th>
                         <th class="text-white text-sm font-medium p-2">Status</th>
                       </tr>
                     </thead>
@@ -1419,14 +1430,14 @@
                   </div>
 
                   <div class="grid grid-cols-1 gap-4 p-10  border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70" style="border-radius: 8px;">
-                    <div id="vehicleSection">
+                    <!-- <div id="vehicleSection">
                       <label class="block text-white text-sm font-medium mb-2">Vehicle</label>
                       <select id="reservationVehicle" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
                         <option value="" disabled selected class="bg-transparent text-[var(--turqueza)]">Select vehicle</option>
                         <option value="zetrabot1" class="bg-transparent text-[var(--azul-oscuro)]">Zetrabot-001</option>
                         <option value="zetrabot2" class="bg-transparent text-[var(--azul-oscuro)]">Zetrabot-002</option>
                       </select>
-                    </div>
+                    </div> -->
                     <div>
                       <label id="quantityLabel" class="block text-white text-sm font-medium mb-2">Number of packs</label>
                       <select id="reservationPacks" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
@@ -1442,7 +1453,7 @@
                       <input id="reservationStart" type="datetime-local" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
                     </div>
                     <div>
-                      <label class="block text-white text-sm font-medium mb-2">End Time</label>
+                      <label class="block text-white text-sm font-medium mb-2">Estimated End Time</label>
                       <input id="reservationEnd" type="datetime-local" class="w-full p-2 rounded bg-transparent text-[var(--turqueza)] border border-[#4a5578]">
                     </div>
                     <button onclick="requestReservation()" class="mt-4 bg-[var(--turqueza)] text-white px-6 py-2 rounded hover:scale-105 transition-all duration-300">
@@ -1648,7 +1659,7 @@
                               <line x1="56" y1="96" x2="56" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
                               <line x1="248" y1="96" x2="248" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
                             </svg>
-                          <span id="energy-total-capacity">160 kWh</span>
+                          <span id="energy-total-capacity">100 kWh</span>
                           <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">0-100%</p>
                         </div>
                         <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[var(--turqueza)] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
@@ -1662,7 +1673,7 @@
                                <line x1="248" y1="96" x2="248" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
                              </svg>
                           
-                          <span id="energy-available">107 kWh</span>
+                          <span id="energy-available">66.2 kWh</span>
                           <div class="flex flex-row justify-center">
                             <p class="text-[var(--turqueza)] text-sm slide-text-fade-in" id="energy-available-percent">66%</p>
                             <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">&nbsp;of Capacity</p>
@@ -1691,6 +1702,14 @@
                       </div>
                     </div>
 
+
+                    <!-----------------------------------     script /\      -------------------------------------->
+                    
+                    <script>
+
+
+                    </script>
+
                     <!-- ------------------------------------------------------------------------------------------------------ -->
                     
                     <div class=" space-y-8">
@@ -1713,29 +1732,29 @@
                            
                            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 pt-4">
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Fixed-Z426</p>
+                               <!-- <p class="text-white text-sm slide-text-fade-in">Fixed-Z426</p> -->
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
-                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">f-866-zt</p>
+                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">f-66</p>
                              </div>
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Fixed-Z45</p>
+                               <!-- <p class="text-white text-sm slide-text-fade-in">Fixed-Z45</p> -->
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
-                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">f-866-zt</p>
+                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">f-105</p>
                              </div>
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Swap-S15</p>
+                               <!-- <p class="text-white text-sm slide-text-fade-in">Swap-S15</p> -->
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
-                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">s-866-zt</p>
+                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">sw-85</p>
                              </div>
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Swap-S36</p>
+                               <!-- <p class="text-white text-sm slide-text-fade-in">Swap-S36</p> -->
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
-                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">s-866-zt</p>
+                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">sw-36</p>
                              </div>
                              <div class="p-6 rounded-lg border border-[#4ABBBD]/50 text-center hover:border-[--turqueza] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20">
-                               <p class="text-white text-sm slide-text-fade-in">Station-38</p>
+                               <!-- <p class="text-white text-sm slide-text-fade-in">Station-38</p> -->
                                <p class="text-white text-2xl font-bold slide-text-fade-in" id="energy-total-capacity">20 kWh</p>
-                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">bt-866-zt</p>
+                               <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">st-15</p>
                              </div>
                            </div>
                          </div>
@@ -1958,7 +1977,7 @@
                                          <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                                            <p class="text-white text-base">100% <span class="text-[var(--turqueza)] text-sm">/ 88 kWh</span></p>
                                          </td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
+                                         <!-- <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
                                            <div class="flex items-center gap-4">
                                              <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
                                                <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 100%;"></div>
@@ -1973,7 +1992,7 @@
                                              </div>
                                              <p class="text-white text-base ">100% <span class="text-[var(--turqueza)] text-sm">/ 44 kWh</span></p>
                                            </div>
-                                         </td>
+                                         </td> -->
                                          <!-- <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 h-[72px] px-4 py-2 w-60 text-white text-base  leading-normal">
                                            Available
                                          </td> -->
@@ -2138,7 +2157,7 @@
                                     </tr>
                                     <tr class="border-t border-t-[#4ABBBD]/50">
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">Battery station</td>
-                                      <td class="px-4 py-3 text-white text-sm slide-text-fade-in battery-value-change" id="battery-station">80<span class="battery-decimal">.00</span>%</td>
+                                      <td class="px-4 py-3 text-white text-sm slide-text-fade-in battery-value-change" id="battery-station">100<span class="battery-decimal">.00</span>%</td>
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">Available</td>
                                       <td class="px-4 py-3 text-white text-sm slide-text-fade-in">Warehouse</td>
                                     </tr>
@@ -2150,7 +2169,8 @@
                         </div>
 
 
-                        <!-- Slide 1: Zetrabot 1 -->
+<!------------------               Slide 1: Zetrabot 1                ------------------------------>
+
                         <div class="vehicle-slide hidden" id="vehicle-001">
                           <!-- Header con icono del vehículo y gráfico circular -->
                           <div class="flex items-center justify-center mb-10">
@@ -2202,29 +2222,29 @@
                             <!-- Fixed Pack -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[white] text-sm">Fixed Pack</p>
-                              <p style="color: var(--turqueza) ; font-size: 14px; "> f-866-zt</p>
+                              <p style="color: var(--turqueza) ; font-size: 14px; "> f-66</p>
                               <p class="text-white text-lg font-bold">80%</p>
                               <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
                                 <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 80%"></div>
                               </div>
-                              <p class="text-[white] text-sm">35.5 kWh</p>
+                              <p class="text-[white] text-sm">16.1 kWh</p>
                             </div>
 
                               <!-- Swappable Pack -->
                               <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                                 <p class="text-[white] text-sm">Swappable Pack</p>
-                                <p style="color: var(--turqueza) ; font-size: 14px; "> s-866-zt</p>
+                                <p style="color: var(--turqueza) ; font-size: 14px; "> sw-85</p>
                                 <p class="text-white text-lg font-bold">50%</p>
                                 <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
                                   <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 50%"></div>
                                 </div>
-                                <p class="text-[white] text-sm">25.5 kWh</p>
+                                <p class="text-[white] text-sm">10.0 kWh</p>
                               </div>
 
                             <!-- Availability -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-white text-sm">Availability</p>
-                              <p class="text-white text-lg font-bold">59 kWh</p>
+                              <p class="text-white text-lg font-bold">26.1 kWh</p>
                               <p class="text-white text-sm">Operational capacity</p>
                             </div>
 
@@ -2247,7 +2267,8 @@
                           </div>
                         </div>
 
-                        <!-- Slide 2: Zetrabot 2 -->
+<!-------------------------                   Slide 2: Zetrabot 2                ------------------------------>
+
                         <div class="vehicle-slide hidden" id="vehicle-002">
                           <!-- Header con icono del vehículo y gráfico circular -->
                           <div class="flex items-center justify-center mb-10">
@@ -2288,7 +2309,7 @@
                               
                               <!-- Porcentaje de carga superpuesto -->
                               <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
-                                <span class="text-white text-lg font-bold">22%</span>
+                                <span class="text-white text-lg font-bold">22.8%</span>
                               </div>
                             </div>
                           </div>
@@ -2297,27 +2318,27 @@
                             <!-- Swappable Pack -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
-                              <p class="text-white text-lg font-bold">12%</p>
+                              <p class="text-white text-lg font-bold">30%</p>
                               <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 12%"></div>
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 30%"></div>
                               </div>
-                              <p class="text-[var(--turqueza)] text-sm">9.7 kWh available</p>
+                              <p class="text-[var(--turqueza)] text-sm">6.0 kWh available</p>
                             </div>
 
                             <!-- Fixed Pack -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
-                              <p class="text-white text-lg font-bold">10%</p>
+                              <p class="text-white text-lg font-bold">15%</p>
                               <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 10%"></div>
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 15%"></div>
                               </div>
-                              <p class="text-[var(--turqueza)] text-sm">8.6 kWh available</p>
+                              <p class="text-[var(--turqueza)] text-sm">3.1 kWh available</p>
                             </div>
 
                             <!-- Availability -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
                               <p class="text-[var(--turqueza)] text-sm">Availability</p>
-                              <p class="text-white text-lg font-bold">17.1 kWh</p>
+                              <p class="text-white text-lg font-bold">9.1 kWh</p>
                               <p class="text-[var(--turqueza)] text-sm">Operational capacity</p>
                             </div>
 
@@ -2340,123 +2361,70 @@
                           </div>
                         </div>
 
-                        <!-- Slide 3: Zetrabot 3 -->
-                        <!-- <div class="vehicle-slide hidden" id="vehicle-003">
-                          <div class="flex items-center justify-center mb-10">
-                            <div class="relative">
-                              <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
-                                <path
-                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                  fill="none"
-                                  stroke="#2f396a"
-                                  stroke-width="2"
-                                  stroke-linecap="round"
-                                />
-                                <path
-                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                  fill="none"
-                                  stroke="var(--turqueza)"
-                                  stroke-width="2"
-                                  stroke-linecap="round"
-                                  stroke-dasharray="80, 100"
-                                  class="progress-circle-animate-80"
-                                />
-                              </svg>
-                              
-                              <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD"  viewBox="384 282 32 32">
-                                    <g>
-                                      <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
-                                      <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
-                                    </g>
-                                  </svg>
-                                </div>
-                              </div>
-                              
-                              <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
-                                <span class="text-white text-lg font-bold">80%</span>
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full my-4">
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
-                              <p class="text-[var(--turqueza)] text-sm">Swappable Pack</p>
-                              <p class="text-white text-lg font-bold">90%</p>
-                              <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 90%"></div>
-                              </div>
-                              <p class="text-[var(--turqueza)] text-sm">42.5 kWh available</p>
-                            </div>
+                     
+<!---------------------------                    Slide 4: Trailer             ---------------------------->
 
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
-                              <p class="text-[var(--turqueza)] text-sm">Fixed Pack</p>
-                              <p class="text-white text-lg font-bold">100%</p>
-                              <div class="w-full bg-[#2f396a] rounded-full h-2 mb-2">
-                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 44%"></div>
-                              </div>
-                              <p class="text-[var(--turqueza)] text-sm">44 kWh available</p>
-                            </div>
-
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
-                              <p class="text-[var(--turqueza)] text-sm">Availability</p>
-                              <p class="text-white text-lg font-bold">86.5 kWh</p>
-                              <p class="text-[var(--turqueza)] text-sm">Operational capacity</p>
-                            </div>
-
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
-                              <p class="text-[var(--turqueza)] text-sm">Battery Min</p>
-                              <p class="text-white text-lg font-bold" id="threshold-value-3">20%</p>
-                              <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 relative threshold-slider">
-                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate" style="width: 20%"></div>
-                                <div class="absolute top-1/2 transform -translate-y-1/2 w-5 h-5 bg-[var(--turqueza)] rounded-full cursor-grab shadow-lg threshold-handle" 
-                                     style="left: 20%; margin-left: -10px;" 
-                                     id="threshold-handle-3">
-                                  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full opacity-80"></div>
-                                </div>
-                              </div>
-                              <p class="text-[var(--turqueza)] text-sm">Critical level warning</p>
-                            </div>
-                          </div>
-                        </div> -->
-
-                        <!-- Slide 4: Trailer -->
                         <div class="vehicle-slide hidden" id="vehicle-003">
-                          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+<!--  -->
+                                    <div class="flex items-center justify-center mb-10">
+                                      <div class="relative">
+                                        <!-- Gráfico circular de carga -->
+                                        <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
+                                          <!-- fondo -->
+                                          <path
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            fill="none"
+                                            stroke="#2f396a"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                          />
+                                          <!-- progreso animado -->
+                                          <path
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                            fill="none"
+                                            stroke="var(--turqueza)"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            pathLength="100"
+                                            stroke-dasharray="0 100"
+                                            stroke-dashoffset="0"
+                                            class="progress-circle-animate-fixed"
+                                            style="--pct: 100"
+                                          />
+                                        </svg>
+                                        
+                                        <!-- Icono del vehículo centrado -->
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                          <div class="bg-[#181d35] rounded-full p-3 border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 shadow-lg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
+                                              <g>
+                                                <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
+                                                <path d="m407.27288,289.85509l2.95442,-5.12783l0,3.50852l2.95444,0l-2.95444,5.12783l0.00012,-3.50852l-2.95454,0z"/>
+                                              </g>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        
+                                        <!-- Porcentaje de carga superpuesto -->
+                                        <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
+                                          <span class="text-white text-lg font-bold">100%</span>
+                                        </div>
+                                      </div>
+                                    </div>
+<!--  -->
+
+                          <div class="">
                             <!-- Swappable Pack -->
                             <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
-                             <p class="text-[var(--turqueza)] text-sm">Informacion de interes para BS?</p>
-                                <!--<p class="text-white text-2xl font-bold">85%</p>
-                              <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-3 mb-2">
-                                <div class="bg-[var(--turqueza)] h-3 rounded-full progress-bar progress-bar-animate" style="width: 85%"></div>
+                             <p class="text-[var(--turqueza)] text-sm">State of charge</p>
+                                <p class="text-white text-2xl font-bold">100%</p>
+                              <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-2 mb-2 p-3">
+                                <div class="bg-[var(--turqueza)] h-2 rounded-full progress-bar progress-bar-animate p-1" style="width: 100%"></div>
                               </div>
-                              <p class="text-[var(--turqueza)] text-sm">38.7 kWh available</p> -->
+                              <p class="text-[var(--turqueza)] text-sm">40 kWh available</p>
                             </div>
 
-                            <!-- Fixed Pack -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
-                             <p class="text-[var(--turqueza)] text-sm">Informacion de interes para BS?</p>
-                               <!-- <p class="text-white text-2xl font-bold">95%</p>
-                              <div class="w-full bg-[var(--turqueza)]/20 rounded-full h-3 mb-2">
-                                <div class="bg-[var(--turqueza)] h-3 rounded-full progress-bar progress-bar-animate" style="width: 95%"></div>
-                              </div>
-                              <p class="text-white text-sm">41.8 kWh available</p> -->
-                            </div>
-
-                            <!-- Availability -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
-                             <p class="text-[var(--turqueza)] text-sm">Informacion de interes para BS?</p>
-                                <!--<p class="text-white text-2xl font-bold">80.5 kWh</p>
-                              <p class="text-[var(--turqueza)] text-sm">Total operational capacity</p> -->
-                            </div>
-
-                            <!-- Minimum Battery Threshold -->
-                            <div class="bg-[#181d35] p-4 rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 text-center">
-                               <p class="text-[var(--turqueza)] text-sm">Informacion de interes para BS?</p>
-                             <!-- <p class="text-white text-2xl font-bold">15%</p>
-                              <p class="text-[var(--turqueza)] text-sm">Optimal performance level</p> -->
-                            </div>
+                           
                           </div>
                         </div>
 
@@ -4586,9 +4554,12 @@
             
 <!-- ===================================================================================================================== -->
 
+    <!-- ===================================================================================================================== -->
+    <!-- SCRIPT 1: ENERGY SUMMARY - Lógica de capacidad total y cálculos de energía -->
+    <!-- ===================================================================================================================== -->
     <script>
       // ✅ SCRIPT DE PRUEBA - Verificar que JavaScript funcione
-      console.log('Script cargado correctamente');
+      console.log('Script Energy Summary cargado correctamente');
       
       // ✅ SOLUCIÓN: Estado inicial correcto
       let currentView = null;
@@ -5942,6 +5913,17 @@
         thresholdHandle.style.cursor = 'grab';
       }
 
+      // ===================================================================================
+      // FIN DE SECCIÓN: VEHICLE FLEET STATUS
+      // ===================================================================================
+    </script>
+
+    <!-- ===================================================================================================================== -->
+    <!-- SCRIPT 2: VEHICLE FLEET STATUS - Lógica de modales y navegación de vehículos -->
+    <!-- ===================================================================================================================== -->
+    <script>
+      console.log('Script Vehicle Fleet Status cargado correctamente');
+
       // Función para ir a un slide específico
       function goToSlide(index) {
         currentVehicleIndex = index;
@@ -6098,6 +6080,17 @@
           closeVehicleListModal();
         }
       });
+
+      // ===================================================================================
+      // FIN DE SECCIÓN: VEHICLE FLEET STATUS (PARTE 2)
+      // ===================================================================================
+    </script>
+
+    <!-- ===================================================================================================================== -->
+    <!-- SCRIPT 3: WORK ORGANIZER - Lógica de organización de trabajo -->
+    <!-- ===================================================================================================================== -->
+    <script>
+      console.log('Script Work Organizer cargado correctamente');
 
       // Funciones para el Work Organizer
       let lastWork = null; // Cambiamos workList por lastWork
@@ -6331,65 +6324,65 @@
   // 
       let reservationList = [
        {
-          packId: 'swap-886-zt',
+          packId: 'sw-85',
           startTime: '05/11/2025',
           endTime: '25/12/2025',
           consumoKvh: '180.50',
           status: 'In progress'
         },
         {
-          packId: 'zetrabot1-Pack(1)',
+          packId: 'res-1566',
           startTime: '20/11/2025',
           endTime: '10/12/2025',
           consumoKvh: '',
           status: 'Confirmed'
         },
         {
-          packId: 'zetrabot2-Pack(1)',
+          packId: 'res-1670',
           startTime: '27/11/2025 ',
           endTime: '10/12/2025 ',
           consumoKvh: '',
           status: 'Pending'
         },
         {
-          packId: 'swap-545-zt',
+          packId: 'sw-06',
           startTime: '20/10/2025',
           endTime: '05/11/2025',
           consumoKvh: '180.50',
           status: 'Finished'
         },
         {
-          packId: 'swap-334-zt',
+          packId: 'sw-88',
           startTime: '12/09/2025',
           endTime: '30/09/2025',
           consumoKvh: '220.0',
           status: 'Finished'
         },{
-          packId: 'swap-555-zt',
+          packId: 'sw-96',
           startTime: '28/08/2025',
           endTime: '15/09/2025',
           consumoKvh: '200.0',
           status: 'Finished'
         },{
-          packId: 'station-088-bt',
+          packId: 'st-15',
           startTime: '28/08/2025',
           endTime: '15/09/2025',
-          consumoKvh: '450.5',
+          consumoKvh: '',
           status: 'Finished'
         },{
-          packId: 'swap-777-zt',
+          packId: 'sw-40',
           startTime: '18/06/2025',
           endTime: '05/07/2025',
           consumoKvh: '100.5',
           status: 'Finished'
         },{
-          packId: 'swap-886-zt',
+          packId: 'sw-64',
           startTime: '23/05/2025',
           endTime: '05/06/2025',
           consumoKvh: '130.5',
           status: 'Finished'
         },{
-          packId: 'swap-999-zt',
+          packId: 'sw-19',
           startTime: '18/04/2025',
           endTime: '05/05/2025',
           consumoKvh: '190.0',
@@ -6553,9 +6546,15 @@
         });
       }
 
-      // --- SCRIPT PARA EL MEDIDOR DE ENERGÍA ---
+      // ===================================================================================
+      // FIN DE SECCIÓN: WORK ORGANIZER
+      // ===================================================================================
+    </script>
+
+     <script>
+      console.log('Script Energy Meter cargado correctamente');
+
       document.addEventListener('DOMContentLoaded', () => {
-        // Inicializar la lista de reservaciones
         updateReservationList();
 
         const totalCapacity = 132; // kWh
@@ -6573,25 +6572,148 @@
         gaugePath.style.strokeDashoffset = offset;
         percentageText.textContent = `${Math.round(percentage)}%`;
         
-        // Opcional: actualizar el texto si es dinámico
-        // availabilityText.innerHTML = `${currentAvailability} kWh <span class="text-[var(--turqueza)] text-base">/ ${totalCapacity} kWh</span>`;
       });
+
+    
     </script>
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js"></script>
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 
     <!-- ===================================================================================================================== -->
-
-    <!-- ============                                LIVE MONITORING 2 VIEW                                     =============== -->
-
+    <!-- SCRIPT 5: BATTERY SIMULATION - Lógica de simulación de baterías -->
     <!-- ===================================================================================================================== -->
+    <script>
+      console.log('Script Battery Simulation cargado correctamente');
+
+      // ====================================        SIMULACIÓN DE BATERÍA           ===========================================
+      
+      // Función para simular la descarga de batería de Zetrabot 1 (baja 0.04 cada 7 segundos)
+      function simulateBatteryDrain() {
+        const batteryElement = document.getElementById('zetrabot1-battery');
+        if (!batteryElement) return;
+        
+        let currentBattery = 65.46; // Valor inicial con decimales
+        
+        const drainInterval = setInterval(() => {
+          if (currentBattery > 0) {
+            // Aplicar efecto visual de cambio
+            batteryElement.classList.add('battery-value-changing');
+            
+            // Reducir batería en 0.04
+            currentBattery = Math.max(0, currentBattery - 0.04);
+            
+            // Actualizar el HTML manteniendo los decimales pequeños y los puntos
+            const [integer, decimal] = currentBattery.toFixed(2).split('.');
+            batteryElement.innerHTML = integer + '<span class="battery-decimal">.' + decimal + '</span > %<span class="battery-dots"></span>';
+            
+            // Los valores de batería se mantienen en blanco (sin colores especiales)
+            batteryElement.classList.remove('battery-low', 'battery-critical');
+            
+            // Remover la clase de animación después de completarse
+            setTimeout(() => {
+              batteryElement.classList.remove('battery-value-changing');
+            }, 800);
+            
+            console.log(`Zetrabot 1 battery: ${currentBattery.toFixed(2)}%`);
+          } else {
+            // Batería agotada
+            clearInterval(drainInterval);
+            batteryElement.innerHTML = '0<span class="battery-decimal">.00</span>%<span class="battery-dots"></span>';
+            console.log('Zetrabot 1 battery depleted!');
+          }
+        }, 7000); // Cambiar cada 7 segundos
+        
+        // Retornar el intervalo para poder detenerlo si es necesario
+        return drainInterval;
+      }
+      
+      // Función para simular la carga de batería de Zetrabot 2 (sube 0.01 cada 7 segundos)
+      function simulateBatteryCharge() {
+        const batteryElement = document.getElementById('zetrabot2-battery');
+        if (!batteryElement) return;
+        
+        let currentBattery = 22.36; // Valor inicial con decimales
+        
+        const chargeInterval = setInterval(() => {
+          if (currentBattery < 100) {
+            // Aplicar efecto visual de cambio
+            batteryElement.classList.add('battery-value-changing');
+            
+            // Aumentar batería en 0.01
+            currentBattery = Math.min(100, currentBattery + 0.01);
+            
+            // Actualizar el HTML manteniendo los decimales pequeños y los puntos
+            const [integer, decimal] = currentBattery.toFixed(2).split('.');
+            batteryElement.innerHTML = integer + '<span class="battery-decimal">.' + decimal + '</span > %<span class="battery-dots"></span>';
+            
+            // Los valores de batería se mantienen en blanco (sin colores especiales)
+            batteryElement.classList.remove('battery-low', 'battery-critical');
+            
+            // Remover la clase de animación después de completarse
+            setTimeout(() => {
+              batteryElement.classList.remove('battery-value-changing');
+            }, 800);
+            
+            console.log(`Zetrabot 2 battery: ${currentBattery.toFixed(2)}%`);
+          } else {
+            // Batería completamente cargada
+            clearInterval(chargeInterval);
+            batteryElement.innerHTML = '100<span class="battery-decimal">.00</span>%<span class="battery-dots"></span>';
+            console.log('Zetrabot 2 battery fully charged!');
+          }
+        }, 7000); // Cambiar cada 7 segundos
+        
+        // Retornar el intervalo para poder detenerlo si es necesario
+        return chargeInterval;
+      }
+      
+      // Función para inicializar los valores de batería en el HTML
+      function initializeBatteryValues() {
+        // Zetrabot 1 - valor inicial 61%
+        const zetrabot1Element = document.getElementById('zetrabot1-battery');
+        if (zetrabot1Element) {
+          zetrabot1Element.innerHTML = '61<span class="battery-decimal">.0</span>%<span class="battery-dots"></span>';
+        }
+        
+        // Zetrabot 2 - valor inicial 23%
+        const zetrabot2Element = document.getElementById('zetrabot2-battery');
+        if (zetrabot2Element) {
+          zetrabot2Element.innerHTML = '23<span class="battery-decimal">.0</span>%<span class="battery-dots"></span>';
+        }
+        
+        console.log('Battery values initialized: Zetrabot 1 (61.0%), Zetrabot 2 (23.0%)');
+      }
+      
+      // Iniciar la simulación cuando se carga la página
+      document.addEventListener('DOMContentLoaded', () => {
+        // Inicializar valores de batería inmediatamente
+        initializeBatteryValues();
+        
+        // Esperar un poco para que el modal se inicialice
+        setTimeout(() => {
+          simulateBatteryDrain(); // Zetrabot 1 - descarga
+          simulateBatteryCharge(); // Zetrabot 2 - carga
+          
+          // Actualizar el Energy Summary cada 7 segundos (sincronizado con los cambios de batería)
+          setInterval(() => updateEnergySummary(false), 7000);
+        }, 2000);
+      });
+
+      // ===================================================================================
+      // FIN DE SECCIÓN: BATTERY SIMULATION
+      // ===================================================================================
+    </script>
+
+    <!-- =================                LIVE MONITORING 2 VIEW                    ================== -->
 
     <script>
         // Script for the third map (spinning globe) - REFACTORED
         (function() {
           mapboxgl.accessToken = 'pk.eyJ1Ijoic2ViYXN0aWFucHJhZG8iLCJhIjoiY21ibTQ4NHNlMGdzMzJsczU0a2s3MjFlbCJ9.h3TjjeSIyavEQjqlu8oAKw';
-          
+
+// ------------------------------            fINCAS - POLIGONOS          ----------------------------------- 
+
           const paddockFeatures = {
             "type": "FeatureCollection",
             "features": [
@@ -6599,37 +6721,43 @@
                 id: "Finca",
                 type: "Feature",
                 properties: {},
-                geometry: { type: "Polygon", coordinates: [[[-2.456164971296232,42.83090407619602],[-2.4558181873175045,42.83368195643942],[-2.4557915116272113,42.834249254657294],[-2.4556314574835483,42.83491435628039],[-2.4560849442243864,42.83491435628039],[-2.4575254315198265,42.83532515076624],[-2.4614734337361597,42.836342344406546],[-2.4633407320822016,42.836850934948274],[-2.4644077597075977,42.837144350663834],[-2.466168355291501,42.83739864315751],[-2.466675193413977,42.83743776498693],[-2.4669419503197787,42.83728127752147],[-2.467288734298478,42.83696830140167],[-2.4677155453490798,42.83663576253704],[-2.4679289508743807,42.83657707902239],[-2.471450142040112,42.836322783148546],[-2.46987627629224,42.835207781192054],[-2.467395437061697,42.83344721082642],[-2.46507465197476,42.831823529255075],[-2.4647011923047444,42.831530088275855],[-2.461686839261432,42.830532378523685],[-2.459072621577377,42.830669320031774],[-2.4563517011312683,42.83082582423978],[-2.456164971296232,42.83090407619602]]]}
+                geometry: { type: "Polygon", coordinates: [[[-4.8677934891829295,41.39201783432216],[-4.869528396524771,41.38417037499596],[-4.863114307839481,41.38219523505089],[-4.861190094738106,41.38757910912312],[-4.858107643841862,41.38378919558443],[-4.855007500977337,41.38520284587966],[-4.8551678531945015,41.385293077833666],[-4.85538165615074,41.38535323239992],[-4.855542008367877,41.38558382438953],[-4.855782536693283,41.38573421002917],[-4.856023065018661,41.38574423572595],[-4.856223505290302,41.38578433849824],[-4.856383857507467,41.38578433849824],[-4.856544209724632,41.38574423572595],[-4.856731287310964,41.38568408152145],[-4.8569584529525685,41.38579436418732],[-4.857185618593348,41.38590464666666],[-4.8569584529525685,41.38609513414488],[-4.856375836788061,41.38657337352183],[-4.856068495038301,41.38686411435336],[-4.855948230875583,41.38702452253071],[-4.855841329397492,41.387114751957284],[-4.857364682770992,41.388799010894246],[-4.857323138426324,41.388998285928466],[-4.857269687687278,41.389228864991054],[-4.857176148893728,41.38951959394751],[-4.856962345937518,41.390000797639516],[-4.856601553448684,41.39040179799551],[-4.856334299753399,41.39057222239762],[-4.85939869222085,41.39197598431468],[-4.861149202182929,41.38762648415707],[-4.8677934891829295,41.39201783432216]]]}
               },
               {
                 id: "poligono_1",
                 type: "Feature",
                 properties: {},
-                geometry: { type: "Polygon", coordinates: [[[-2.4589936955511575,42.83562585279756],[-2.4591647861492447,42.835638398992614],[-2.4592332223874394,42.83553802935944],[-2.460259765974598,42.833380042816174],[-2.460191329736489,42.833292216186436],[-2.4593358767460245,42.83306637570911],[-2.459199004268328,42.83305382899138],[-2.4591134589692842,42.83320438943238],[-2.4582066788001953,42.835337289603984],[-2.4582066788001953,42.8354251133274],[-2.4584119875187582,42.83546275202767],[-2.4589936955511575,42.83562585279756]]]}
+                geometry: { type: "Polygon", coordinates: [[[-4.86133155499553,41.38771950294637],[-4.8677256243771865,41.39192073625287],[-4.868382802031846,41.38888172314904],[-4.861558885929298,41.38677732711682],[-4.861281215638684,41.38760459639278],[-4.86133155499553,41.38771950294637]]]}
               },
               {
                 id: "poligono_2",
                 type: "Feature",
                 properties: {},
-                geometry: { type: "Polygon", coordinates: [[[-2.460645818421227,42.83309897168422],[-2.460701635284039,42.83326270180342],[-2.4607165197805614,42.83331182075426],[-2.4607500098979926,42.83334729552814],[-2.4608021056363896,42.833374583801856],[-2.4611184011922944,42.833461906196504],[-2.4625956880601336,42.83387395727328],[-2.463886373427698,42.834233759098254],[-2.4639107020152267,42.834232744530794],[-2.463929477135693,42.83423089868192],[-2.4639451218365025,42.83422004736579],[-2.463958995135556,42.83419321311641],[-2.463965062642899,42.83417139704741],[-2.4642218202116055,42.83370750073777],[-2.464452529910517,42.83333092352618],[-2.4645343933838717,42.83319175272132],[-2.4642553090698414,42.83310170110599],[-2.46390924452092,42.83299254745742],[-2.4636896981941447,42.83292978402193],[-2.4632803745346905,42.83278788384601],[-2.462692434641781,42.83258321889082],[-2.4622831109823267,42.8324194869719],[-2.4620970547729826,42.83238946940614],[-2.4619928632962456,42.83235126521086],[-2.461937046433434,42.832326705358554],[-2.4618365760798895,42.83230487437035],[-2.461739826851982,42.83227212787381],[-2.461635635374023,42.8322393813599],[-2.461517753622701,42.8321904809481],[-2.4613912354005834,42.832171378791884],[-2.4613093706680047,42.83212225893425],[-2.460795855530648,42.8321550055106],[-2.460494444472431,42.832168649912205],[-2.460401416367773,42.832174107671904],[-2.4603716473747284,42.832195938705866],[-2.4603493206294047,42.83222868524322],[-2.4603604840015123,42.83226961838966],[-2.460386531871251,42.832335111368536],[-2.4604497936716143,42.83252340608732],[-2.4604795626658245,42.83261345854487],[-2.460645818421227,42.83309897168422]]]}
+                geometry: { type: "Polygon", coordinates: [[[-4.8683933489183175,41.388895907648845],[-4.861566144799923,41.38677816588026],[-4.862389399677966,41.384457173980906],[-4.868948682522387,41.38647743816756],[-4.8683933489183175,41.388895907648845]]]}
               },
               {
                 id: "poligono_3",
                 type: "Feature",
                 properties: {},
-                geometry: { type: "Polygon", coordinates: [[[-2.4671253282082546,42.833255959737755],[-2.4670661697778655,42.833225294450585],[-2.4670242756506866,42.83324531407479],[-2.466935927769157,42.83331613289215],[-2.4664864331816716,42.83367479900167],[-2.46640775964093,42.83374779360966],[-2.466337959026191,42.8338012293481],[-2.4663091409267395,42.83381822083024],[-2.4662843435553157,42.83381851443903],[-2.466238139178216,42.83381710265871],[-2.4661541722547042,42.8337990679764],[-2.466130703766339,42.83379039108331],[-2.4661089986175,42.83380114194736],[-2.4660839371635745,42.83382410542447],[-2.4656367499776763,42.83419010817531],[-2.4652074770928323,42.83452917151328],[-2.46507465659181,42.8346320436502],[-2.465051290295861,42.834654007334166],[-2.465049296971358,42.834667462898636],[-2.465054782895862,42.834682648815715],[-2.465074196578513,42.83469780973829],[-2.465208925299521,42.83475959653808],[-2.46526507078579,42.8347878943855],[-2.4653750021353744,42.834849974698585],[-2.465559163770905,42.83496448391966],[-2.4656906043620097,42.83505890967646],[-2.4660073069510133,42.83529175682847],[-2.466179434672597,42.835427957716746],[-2.466285988687332,42.835514232287835],[-2.466392542702039,42.835600506738444],[-2.4665286920170217,42.83572195462406],[-2.466590020048727,42.835777887797775],[-2.466776845482997,42.83592646491567],[-2.466847251803074,42.835977043422616],[-2.4670023099746174,42.836093919903476],[-2.467193835242284,42.836233147507926],[-2.4673640307979667,42.836366120600246],[-2.4674421302564724,42.83643189627796],[-2.467512180666887,42.83648487679682],[-2.467575642174495,42.83652639389612],[-2.467614281232443,42.83654527198533],[-2.4676466872952005,42.83655028427552],[-2.467679093358612,42.83655529656528],[-2.467719867869448,42.836559760109964],[-2.4677533416597157,42.836557565130704],[-2.46778389516129,42.836552706741315],[-2.4678699778708904,42.83653095056786],[-2.4679541670868446,42.83651340208817],[-2.4681114841452256,42.836500870549884],[-2.4682801964823113,42.83649328932273],[-2.468634534880408,42.83646815490562],[-2.4688579447139034,42.83645603741124],[-2.4692121734863974,42.836433986835374],[-2.4695095419739914,42.83641313113171],[-2.4696879189488925,42.83639985175077],[-2.469898453682873,42.83638506209908],[-2.4701874580062793,42.83636927638787],[-2.4702082806950614,42.836370126652554],[-2.4702278467304666,42.836357132208065],[-2.470234809878889,42.836339899767154],[-2.4702318473421485,42.83632268513074],[-2.4702291215651258,42.83630387233674],[-2.470229782693295,42.8362843563326],[-2.470259411006216,42.836271985900886],[-2.4703839305797084,42.8362591520914],[-2.470572278908771,42.83624267708743],[-2.4706548829492716,42.83623524705635],[-2.4707063270744913,42.83625147193271],[-2.4707309609014807,42.8362855956707],[-2.4707454799816873,42.83631962616047],[-2.4707775658376274,42.83632685119278],[-2.4710377641785835,42.8363146842659],[-2.4713179351725594,42.83629284022246],[-2.471330749310698,42.83629079993946],[-2.471347707152453,42.836273180090984],[-2.471337600780169,42.83625081096817],[-2.471130733049061,42.83610539963255],[-2.4705760993536816,42.83570460849043],[-2.470037323847052,42.83532051223153],[-2.469354515526131,42.834839951429814],[-2.468586840445944,42.83429075250972],[-2.4671253282082546,42.833255959737755]]]}
+                geometry: { type: "Polygon", coordinates: [[[-4.868957924056616,41.38649290916945],[-4.862396177196246,41.38446146761987],[-4.863160102968436,41.38228643102741],[-4.8632683332963325,41.38227245145134],[-4.869468125982962,41.384183489955035],[-4.868957924056616,41.38649290916945]]]}
               },
               {
                 id: "poligono_4",
                 type: "Feature",
                 properties: {},
-                geometry: { type: "Polygon", coordinates: [[[-2.465277789677117,42.834956301817755],[-2.4653359873647958,42.83493898901784],[-2.4654026780778793,42.834976583980335],[-2.4659841062085945,42.83540320026876],[-2.466361141785967,42.835710092022026],[-2.4666097456319562,42.83594248374811],[-2.46691104720432,42.83618009957979],[-2.467252633363586,42.836439132912886],[-2.4674653311448935,42.83659313236808],[-2.467512428383742,42.83665726335502],[-2.4675134956856937,42.83672174298087],[-2.4673924204878688,42.83681527083979],[-2.4671855841237686,42.836987576435234],[-2.4669911432684444,42.83714735653115],[-2.4668836470287374,42.83724229264095],[-2.4667704211992145,42.83730676393017],[-2.4666111766667314,42.837344080320776],[-2.4664819632148465,42.83734701941344],[-2.466117493632538,42.83730429340926],[-2.465766885178539,42.83726076842774],[-2.464900423605627,42.837155857589295],[-2.4648460227174382,42.83713883243536],[-2.4648767256589394,42.83710516627781],[-2.4649559315189435,42.83708903726665],[-2.4651198194981703,42.837012495859],[-2.4651900221115284,42.836975431682646],[-2.46524502687123,42.83691378932892],[-2.4653864063271556,42.836775519073456],[-2.465545599746747,42.83661569885206],[-2.465643601513335,42.83651370193763],[-2.465746413133445,42.836411997264975],[-2.465965525141968,42.83620540976278],[-2.465913941307633,42.83615154211222],[-2.4655706888741804,42.836016169462766],[-2.4653853838172495,42.83591056165568],[-2.465287222311531,42.83580650300925],[-2.46513931806615,42.83567103880554],[-2.464997273437291,42.835561355492445],[-2.4648278726141655,42.83541127405567],[-2.464793782300113,42.8353794737551],[-2.46487507610415,42.835315969525475],[-2.4650271392262084,42.835198436706364],[-2.465277789677117,42.834956301817755]]]}
+                geometry: { type: "Polygon", coordinates: [[[-4.860912278579747,41.38735390957643],[-4.860001301963592,41.3861923162155],[-4.856573012926646,41.387765083875536],[-4.857565477490027,41.388891010619005],[-4.860912278579747,41.38735390957643]]]}
               },
               {
                 id: "poligono_5",
                 type: "Feature",
                 properties: {},
-                geometry: { type: "Polygon", coordinates: [[[-2.4646100504139667,42.83319740763625],[-2.464316175374819,42.83362448525966],[-2.4641196653469706,42.833951303984435],[-2.464006680299377,42.83411284582442],[-2.4639823982582527,42.83417201234997],[-2.463986423802595,42.83422152397611],[-2.464040645284257,42.834249123094395],[-2.464094739162107,42.83427436376857],[-2.4641983314483014,42.83429261595418],[-2.4643844083223314,42.83433653488453],[-2.4646160878333205,42.83440443636027],[-2.4648522287764933,42.834515169855194],[-2.4649611275648056,42.83457619367147],[-2.465040561093332,42.834620084036885],[-2.46506957696937,42.83461225386017],[-2.4651007564732765,42.83458115212227],[-2.4651157146707874,42.8345542179907],[-2.4654518391569695,42.8342942300381],[-2.46568524768378,42.83411367418657],[-2.4660829333348033,42.83379066238098],[-2.4661176510022074,42.83376791054465],[-2.4661815357735577,42.83378642038008],[-2.466254301990034,42.833799285844236],[-2.4663162324568475,42.83379354740612],[-2.466690335169858,42.83346665390138],[-2.4668523613779314,42.833330513624134],[-2.4669932648501742,42.833226850859944],[-2.467010882527859,42.83319450308883],[-2.4665972406359344,42.83289550690833],[-2.465511644180168,42.83212197172216],[-2.4652316837107833,42.83191890971264],[-2.464983175306429,42.83174075615193],[-2.4647187857466406,42.83158734805073],[-2.4644912049956815,42.83148471444241],[-2.463967306366584,42.83131052487357],[-2.4633673223005985,42.831118966802876],[-2.4628932384264033,42.83095645711725],[-2.462381217021374,42.83078657240472],[-2.4618315965070963,42.83061541616672],[-2.4616421163250095,42.83056879874013],[-2.4614795594090424,42.830570344866345],[-2.46142320589243,42.83056016255941],[-2.46133861020823,42.83055264103132],[-2.4611820597046687,42.83055182994673],[-2.460529201707459,42.83059529779243],[-2.460082555300943,42.83062499594715],[-2.4596703151209454,42.83065353881827],[-2.4595939492677132,42.83066283410264],[-2.45957533292011,42.83068903471249],[-2.4595986227258493,42.83075413181433],[-2.4596492316833007,42.83088879719736],[-2.459738208942156,42.831086540817154],[-2.4599047667925333,42.83139740124594],[-2.460110884955526,42.831775782193915],[-2.4602525263674693,42.832059134976646],[-2.4603086055855954,42.83215042718609],[-2.4603680672273924,42.83215865925308],[-2.4604827065346626,42.832152625598496],[-2.4610984013506823,42.83211044399164],[-2.46127205496245,42.832101141908026],[-2.4613374603352725,42.83209508243519],[-2.4613674235055214,42.83207874191166],[-2.4613838354702864,42.832041194999846],[-2.461382652638605,42.8319921117708],[-2.4613909970188956,42.831960239326605],[-2.461394288531096,42.83190479224052],[-2.4613982613311407,42.83186721201639],[-2.4614031165891674,42.83183411723064],[-2.4614184766200538,42.831808866466815],[-2.4614438757758137,42.83183034108444],[-2.4614628248048405,42.83187652546053],[-2.461476302860774,42.83195233615871],[-2.4614871949470114,42.8320025029567],[-2.4614873693488164,42.83204508823695],[-2.4614964688101395,42.83208714464226],[-2.461528833366714,42.8321056082211],[-2.462103191666813,42.83224140688708],[-2.4621310901213462,42.83226314637534],[-2.4621535130231393,42.83230331365405],[-2.462188771096322,42.83234708109242],[-2.462245960530879,42.8323778620055],[-2.4623180609358712,42.83242113929913],[-2.4624644619441085,42.83247042638072],[-2.4625178598121806,42.83249351786978],[-2.4646100504139667,42.83319740763625]]]}
+                geometry: { type: "Polygon", coordinates: [[[-4.859974474837173,41.386181817858215],[-4.856582560900193,41.387738701886775],[-4.856027728398516,41.387134030323836],[-4.856259052214597,41.38704822739288],[-4.856133993146983,41.38688729584095],[-4.856480083322424,41.3866070495672],[-4.856676202058054,41.38644879145477],[-4.856831312425328,41.3862926081477],[-4.857130402302545,41.38608905723012],[-4.857296070621288,41.38596021532081],[-4.85726534769293,41.38579799804981],[-4.857144968962558,41.385739179108896],[-4.85704391402291,41.38575970059608],[-4.856942711927303,41.38568449363268],[-4.8568355613018355,41.38558799741591],[-4.856717972154172,41.385559961123874],[-4.856513404568744,41.38566594851977],[-4.856339173931673,41.385742627990766],[-4.855997156534272,41.38566358836644],[-4.855824758313645,41.38566121212193],[-4.855645273166459,41.38557664140109],[-4.855566366335154,41.385426551800805],[-4.855358161644887,41.38521981325391],[-4.855148376024886,41.385205634153635],[-4.855248835773239,41.3851401230979],[-4.858058103008943,41.38386113944293],[-4.859974474837173,41.386181817858215]]]}
+              },
+              {
+                id: "poligono_6",
+                type: "Feature",
+                properties: {},
+                geometry: { type: "Polygon", coordinates: [[[-4.860920531731978,41.387411902873566],[-4.85761552400362,41.38887450939916],[-4.857341375896567,41.38869168538275],[-4.857280454095104,41.38882880344329],[-4.857295684546131,41.38908018580344],[-4.857067227790424,41.38988003229977],[-4.856838771034688,41.390234246889605],[-4.856564622928545,41.390497050016165],[-4.856427548875473,41.390577033365645],[-4.859208701685105,41.391866279870044],[-4.859798446697766,41.39030956440746],[-4.860618730303287,41.38823212219134],[-4.860920531731978,41.387411902873566]]]}
               }
             ]
           };
@@ -6669,7 +6797,7 @@
               container: 'map3',
               style: 'mapbox://styles/mapbox/satellite-v9',
               projection: 'globe', 
-              zoom: 15.2,
+              zoom: 14.2,
               center: center,
               pitch: 0 
           });
@@ -6812,7 +6940,7 @@ map3.on('mouseleave', 'paddock-fill', () => {
               });
 
               // Snake line coordinates
-              const snakeLineCoords = [[-2.471166051338031,42.83623951331677],[-2.4677344013283573,42.83644768469631],[-2.467592459600752,42.8364538073732],[-2.467525663493575,42.83639870325791],[-2.4675841100861646,42.836355844468216],[-2.4676926537608495,42.836331353717725],[-2.4707485756671588,42.8361537954859],[-2.4708654688550666,42.83613542736376],[-2.470923915448992,42.836098691103075],[-2.470923915448992,42.836049709388504],[-2.470873818368318,42.83600072763517],[-2.4707485756671588,42.83601297307737],[-2.467525663493575,42.8362088998191],[-2.4674254693321416,42.83623339061813],[-2.4673336246839312,42.83623339061813],[-2.4672417800370567,42.8362088998191],[-2.4671666344166567,42.836166040897325],[-2.4671582849034337,42.83611705923616],[-2.4671916829563827,42.83606807753617],[-2.467291877117816,42.836049709388504],[-2.467375372251439,42.83604358667159],[-2.4674588673850906,42.83606195482105],[-2.4675507120332725,42.836074200250664],[-2.470531488319182,42.8359088867428],[-2.47060663393961,42.835878273081846],[-2.4706233329660563,42.835829291192596],[-2.47060663393961,42.83576806377613],[-2.4705565368588793,42.835731327297566],[-2.4704730417252847,42.835731327297566],[-2.470389546591605,42.835749695539334],[-2.470322750484428,42.835786432007495],[-2.4672417800370567,42.835957868568954],[-2.4671499353902107,42.83598235946752],[-2.4670497412287773,42.83599460491334],[-2.466957896581931,42.83599460491334],[-2.4668827509601385,42.835963991294875],[-2.4668243043662414,42.835902764011905],[-2.466807605339767,42.83584153666831],[-2.466874401446944,42.835786432007495],[-2.4669996441480464,42.835780309264464],[-2.4670914887962283,42.8357925547499],[-2.4671582849034337,42.83583541393074],[-2.470155760215846,42.835663977029554],[-2.4702476048640563,42.835633363246785],[-2.470272653403697,42.835578258400375],[-2.470264303890474,42.83551703073522],[-2.4702142068097714,42.835474171334084],[-2.4701474107025945,42.83544968023415],[-2.4700555660556915,42.835474171334084],[-2.4700138184882405,42.83552315350482],[-2.469955371894315,42.83554764457563],[-2.467408770305667,42.83567622253801]];
+              const snakeLineCoords = [[-4.856071520930158,41.387040208752836],[-4.85602613250046,41.38714275319708],[-4.857534424100891,41.38882008277022],[-4.860756354725936,41.38731957276454],[-4.8608021765545,41.387321058785034],[-4.86082846527367,41.38729504626198],[-4.860811319628226,41.387257981252674],[-4.860765294408679,41.3872440893569],[-4.860736618225559,41.38727966835276],[-4.857574047262204,41.38875386215557],[-4.857555531109028,41.388788392146665],[-4.8575007429830634,41.388783171222485],[-4.85749754195399,41.38874311511668],[-4.857543160391458,41.388732195515445],[-4.857570846233102,41.388713806031745],[-4.860710709673725,41.38725127418357],[-4.860765294408679,41.3872440893569],[-4.860788788880768,41.38720283150283],[-4.860721046478915,41.38718341335078],[-4.860694961150784,41.3872218317982],[-4.8606646844541785,41.3872373822864],[-4.860626635191608,41.38724441451802],[-4.857506888418698,41.38869244456305],[-4.857497338562922,41.388730709527294],[-4.85745011961194,41.388721601065384],[-4.857427995646532,41.38869126375877],[-4.857450499778224,41.38866719555264],[-4.857488549040767,41.38866016347487],[-4.8606788058467885,41.3871675776264],[-4.860728615652789,41.38717952572546],[-4.860724220892223,41.38714425186768],[-4.860731179893008,41.387103146546394],[-4.860677585498564,41.38709314224826],[-4.860655284757854,41.3871296169352],[-4.857462437097922,41.38861936429791],[-4.857434954647317,41.38865015941556],[-4.857393120797269,41.38865913526246],[-4.857372190564348,41.38862401479997],[-4.857432947349679,41.38860532009966],[-4.857461826923782,41.38858214745011],[-4.8574895127664774,41.38856375792395],[-4.860616625322223,41.38709943148194],[-4.860671413447079,41.387104652541325],[-4.860689726209301,41.38705771574658],[-4.860635725032722,41.387022899612475],[-4.860600266625141,41.38703277129386],[-4.860594501356815,41.38706909341846],[-4.860559042949205,41.387078965092854],[-4.857391493666938,41.388559890349455],[-4.857389512986117,41.38859426785092],[-4.857346485403582,41.38860802683391],[-4.857315395141796,41.38857395452507],[-4.857305818670284,41.38853300270122],[-4.857347449129264,41.388511621204856],[-4.857397055544254,41.38851116342636],[-4.860562013971503,41.38702739763238],[-4.860623177539907,41.387033514307376],[-4.860648069135522,41.38699987899534],[-4.860637298931522,41.38696370942853],[-4.860613980949211,41.386938154643445],[-4.8605582024827925,41.38695012275343],[-4.860525741713303,41.386987645728226],[-4.860499452994134,41.387013658374286],[-4.857365964995978,41.38847709115734],[-4.857336095081422,41.388517452613485],[-4.857270156585173,41.3885304686155],[-4.857239066323416,41.38849639626682],[-4.857257582476564,41.38846186612065],[-4.857323520972869,41.38844885010491],[-4.857367945677822,41.38844271359471],[-4.857393040664505,41.38842148466168],[-4.8605125840453525,41.38696104265398],[-4.860564781316299,41.38696342429421],[-4.860594854621894,41.386935467808456],[-4.860576515245015,41.38690318584793],[-4.860529296292924,41.38689407713076],[-4.860491653813455,41.38692592127421],[-4.8573199934900515,41.38840696980358],[-4.857293060558277,41.38845101992558],[-4.857215266039304,41.38845404317672],[-4.857206103207034,41.388394957175706],[-4.857294961378926,41.38837953663523],[-4.857307760166776,41.388373671625544],[-4.857345853108342,41.3883506988216],[-4.857379877313917,41.38833322386611],[-4.860448451742656,41.38689691055802],[-4.860502675151281,41.3869065509588],[-4.860556233640295,41.38687563429576],[-4.8605335844941635,41.38682591934227],[-4.860477077372195,41.386803819004314],[-4.860401057719599,41.3868599049695],[-4.860368175370695,41.38688361027647],[-4.857268669846263,41.388335810205206],[-4.85722082063981,41.38839787523324],[-4.857133049961817,41.38837138367458],[-4.857140356285356,41.38830969276137],[-4.857241142567716,41.38830564250205],[-4.8603839516255505,41.3868312005346],[-4.860454616208642,41.38682898828495],[-4.860470226233758,41.38676643921386],[-4.860396945477959,41.38673591295438],[-4.860355116259825,41.38678466288755],[-4.860327444503554,41.386809100199144],[-4.857205311585858,41.38827633145806],[-4.857150134303055,41.38833534399208],[-4.857090534072086,41.38831483280006],[-4.857085467956267,41.38825949637007],[-4.857128771490494,41.38823725548616],[-4.857183970526108,41.38824298645824],[-4.860322544618299,41.38676390177409],[-4.86039418482838,41.386757780202885],[-4.860398398041184,41.38669767643026],[-4.860360615807025,41.386676183311096],[-4.860311935450426,41.38668755345384],[-4.860296968592081,41.38672591469947],[-4.857149115171239,41.388209766154716],[-4.857113472172728,41.388255337714384],[-4.857054370630834,41.388265243660214],[-4.857016422166964,41.388233612002864],[-4.85702325155259,41.388206247382556],[-4.857076000645094,41.38818937963643],[-4.8571175191558495,41.388185096262816],[-4.860288975596944,41.38668230488997],[-4.860338964039897,41.38668730402068],[-4.8603601171170965,41.38664576540452],[-4.860337634200704,41.38660618958636],[-4.860285528030232,41.38659886993045],[-4.860245650065195,41.38663980131386],[-4.8602324682302935,41.386660204638446],[-4.8570826635563265,41.388151876064256],[-4.857062652334946,41.38819964354758],[-4.857017065088229,41.388209424788585],[-4.856969837295708,41.38818255901302],[-4.8569662454959825,41.388153730447954],[-4.856999937241341,41.38811597729293],[-4.85706750871546,41.388115353724714],[-4.86022138212536,41.38661818345912],[-4.860281625523953,41.38661450724365],[-4.860305871711006,41.386571379905604],[-4.860285506277421,41.3865341246987],[-4.8602281897589705,41.38652607291985],[-4.86019271299017,41.38658178497454],[-4.857027442767901,41.38808140139315],[-4.857009549030209,41.38813148952849],[-4.856949305632469,41.38813516565756],[-4.856892466051079,41.38809278761022],[-4.85690955066886,41.388056747677325],[-4.857012288204345,41.38804487891872],[-4.86017967590945,41.38654758231377],[-4.860240251767436,41.38656418473178],[-4.860252934912438,41.38651336340993],[-4.860216771471215,41.386463772895496],[-4.860135541225958,41.38651912717421],[-4.859325394416885,41.3869027966453]];
               map3.addSource('snake-line', {
                   'type': 'geojson',
                   'data': {
@@ -6850,7 +6978,7 @@ map3.on('mouseleave', 'paddock-fill', () => {
                       'properties': {},
                       'geometry': {
                           'type': 'LineString',
-                          'coordinates': [[-2.4673955459733747,42.835682213958506],[-2.4672678449481396,42.83568970547813],[-2.467063523306763,42.83569345123763],[-2.4669460383632895,42.83570843427381],[-2.466874525788967,42.83574589184755],[-2.4667723649690174,42.83574589184755],[-2.4667008523946663,42.835730908821006],[-2.4666242317793206,42.83570843427381],[-2.46659358353304,42.83566723091596],[-2.466578259410312,42.835618536003864],[-2.4666037996148305,42.835581078352334],[-2.4666599880665103,42.83555860375125],[-2.466736608681856,42.83554736644703],[-2.4668234453789637,42.83553612914139],[-2.4668847418715245,42.83554736644703],[-2.4669460383632895,42.83556984105283],[-2.469837189580801,42.83542750174561],[-2.46991381019609,42.83542750174561],[-2.469969998646917,42.83540877286481],[-2.470005754934107,42.83537506086549],[-2.470005754934107,42.83534134884778],[-2.469964890606036,42.83530014524578],[-2.469939350401461,42.835266433186604],[-2.4698780539088716,42.83524395847107],[-2.469816757416254,42.83524021268374],[-2.4697605689654267,42.83525145004381],[-2.4697197046373276,42.83527017897174],[-2.469683948350138,42.83529639946187],[-2.469653300103829,42.83532636572258],[-2.4696124359650753,42.835330111461275],[-2.466721284748445,42.83546870521994],[-2.466634448050513,42.835483688310035],[-2.466562935476105,42.83550241716816],[-2.466476098778969,42.835517400250694],[-2.4663793577113893,42.835528937535145],[-2.4663386888363164,42.83550847710404],[-2.4663062114567538,42.83546810247253],[-2.4663393391824684,42.83542353143196],[-2.4664168640072432,42.83538464802595],[-2.466498415068827,42.83537503306812],[-2.4665591636682223,42.835379835304025],[-2.466634023559891,42.835381936075976],[-2.4696094390634755,42.83522051098191],[-2.4697203299564308,42.835206410674004],[-2.4697492256255202,42.83517698125294],[-2.4697498413420362,42.83513882416699],[-2.4697302232750076,42.8351026795045],[-2.4696914190944312,42.835072225798456],[-2.469641326836296,42.835057998336],[-2.4695817031108334,42.83506729278355],[-2.469517010916178,42.83507705813798],[-2.469420515804501,42.83510487915265],[-2.4667064109169416,42.83524727389246]]
+                          'coordinates': [[-4.859296412676883,41.386906440071726],[-4.85695106256361,41.388000844542916],[-4.856890359458646,41.38806050740277],[-4.856833631855892,41.38803788070075],[-4.856818583128472,41.38797494616142],[-4.856922749580946,41.38795839106268],[-4.860099079610649,41.38647264742778],[-4.860171829730916,41.38648456220204],[-4.860173432225736,41.386417958981866],[-4.860117576774854,41.38638396487079],[-4.860073524892073,41.38643996203973],[-4.860027830345018,41.38645641113064],[-4.856885674911666,41.38792345438566],[-4.856853386428639,41.38796329056126],[-4.856807063176774,41.387972694128024],[-4.856752465134406,41.387952791114714],[-4.856749321613478,41.38791756539567],[-4.856801648287728,41.38789087611909],[-4.856852230658376,41.38788691998613],[-4.860041581494386,41.386399105280674],[-4.860079771762514,41.38640426380471],[-4.860123336750178,41.38638509091501],[-4.8601259532046015,41.386350990392145],[-4.860080745552608,41.38633061518556],[-4.860019900639799,41.38634640995596],[-4.860003634673319,41.386375534606685],[-4.856824546380437,41.38785151158493],[-4.856801019583941,41.38788383096997],[-4.856751694620897,41.38790187739971],[-4.856699854842702,41.38789174323594],[-4.856668540148718,41.38785793254186],[-4.856705716456332,41.387830588907576],[-4.856778081320783,41.387817046536554],[-4.859984083379089,41.38632556305106],[-4.860028033622569,41.38633184762537],[-4.860071598609238,41.38631267471507],[-4.860066325528948,41.38627472431793],[-4.8600232474373115,41.386257072877754],[-4.8599639033791675,41.38626854613216],[-4.859941877438274,41.38629654477202],[-4.856744008363705,41.387773466916144],[-4.856733502372549,41.387803716948014],[-4.85669632606502,41.38783106059353],[-4.8566335950398525,41.38782571953618],[-4.856601022937383,41.38777781848799],[-4.856634568829975,41.38775207252715],[-4.85672208406109,41.3877391844739],[-4.856763519488425,41.387717288248865],[-4.859917823576268,41.386259537760935],[-4.859974794626055,41.38626375290062],[-4.860005582254473,41.386228237219854],[-4.859998808318608,41.386194608312564],[-4.859938206852775,41.38619199091454],[-4.8598792480514135,41.3862289217079],[-4.856679249416459,41.38770312165775],[-4.856603326565391,41.38773889041536],[-4.856540824725528,41.38771485995815],[-4.85647640212386,41.38769635997167],[-4.855980256179862,41.38714165302727],[-4.856064821065388,41.38703415830349],[-4.856117537617251,41.38702969892918]]
                       }
                   }
               });
@@ -6901,7 +7029,7 @@ map3.on('mouseleave', 'paddock-fill', () => {
                 vehicleMarkerEl.querySelector('svg').style.transform = 'scale(1)';
               });
 
-              const vehicleCoords = [-2.46744, 42.8357];
+              const vehicleCoords = lastCoord;
 
                               const vehiclePopupContent = `
                   <div style="width: 100%; font-family: sans-serif;">
@@ -6942,7 +7070,7 @@ map3.on('mouseleave', 'paddock-fill', () => {
                   .addTo(map3);
 
               // 2. Warehouse/Battery Station (Padre que alberga dos hijos)
-              const warehouseCoords = [-2.4563193420900973, 42.83395617619635];
+              const warehouseCoords = [-4.856092399082087, 41.38704902539442];
               const warehouseMarkerEl = document.createElement('div');
               warehouseMarkerEl.style.width = '55px';
               warehouseMarkerEl.style.height = '55px';
@@ -7446,150 +7574,6 @@ map3.on('mouseleave', 'paddock-fill', () => {
           console.log('Battery values initialized: Zetrabot 1 (61.0%), Zetrabot 2 (23.0%)');
         }
         
-        // Función para animar contadores desde 0 hasta el valor final
-        function animateCounter(element, start, end, suffix = '', duration = 1500) {
-          if (!element) return;
-          
-          const startTime = performance.now();
-          const difference = end - start;
-          
-          function updateCounter(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Función de easing para aceleración rápida al inicio y desaceleración suave al final
-            const easeProgress = 1 - Math.pow(1 - progress, 2.5);
-            
-            const currentValue = start + (difference * easeProgress);
-            
-            // Actualizar el elemento
-            if (suffix === '%') {
-              element.textContent = Math.round(currentValue) + suffix;
-            } else {
-              element.textContent = currentValue.toFixed(1) + suffix;
-            }
-            
-            // Continuar la animación si no ha terminado
-            if (progress < 1) {
-              requestAnimationFrame(updateCounter);
-            }
-          }
-          
-          // Iniciar la animación
-          requestAnimationFrame(updateCounter);
-        }
-        
-        // Función para actualizar dinámicamente el Energy Summary
-        function updateEnergySummary(animate = false) {
-          // Valores corregidos según la referencia lógica: total capacity 40 kWh (100%)
-          const zetrabot1Percent = 61.0; // Valor corregido
-          const zetrabot3Percent = 80.0; // Valor corregido
-          const zetrabot2Percent = 23.0; // Valor corregido
-          const batteryStationPercent = 100.0; // Valor corregido
-          
-          // Calcular kWh para cada vehículo (100% = 40 kWh)
-          const zetrabot1Kwh = (zetrabot1Percent * 40) / 100;
-          const zetrabot3Kwh = (zetrabot3Percent * 40) / 100;
-          const zetrabot2Kwh = (zetrabot2Percent * 40) / 100;
-          const batteryStationKwh = (batteryStationPercent * 40) / 100;
-          
-          // Calcular totales del sistema
-          const totalCapacity = 40 * 4; // 160 kWh (4 vehículos de 40 kWh cada uno)
-          const totalAvailable = zetrabot1Kwh + zetrabot3Kwh + zetrabot2Kwh + batteryStationKwh;
-          const averagePercent = (zetrabot1Percent + zetrabot3Percent + zetrabot2Percent + batteryStationPercent) / 4;
-          // const operationalRange = 196; // Valor fijo para Energy Consumed - Ya no se usa
-          
-          // Calcular horas estimadas (consumo promedio de 19 kWh por hora)
-          const estimatedHours = totalAvailable / 19;
-          
-          // Actualizar los gráficos pequeños de vehículos
-          const energyZetrabot1Percent = document.getElementById('energy-zetrabot1-percent');
-          const energyZetrabot1Kwh = document.getElementById('energy-zetrabot1-kwh');
-          if (energyZetrabot1Percent) {
-            if (animate) {
-              animateCounter(energyZetrabot1Percent, 0, Math.round(zetrabot1Percent), '%', 1500);
-            } else {
-              energyZetrabot1Percent.textContent = Math.round(zetrabot1Percent) + '%';
-            }
-          }
-          if (energyZetrabot1Kwh) energyZetrabot1Kwh.textContent = zetrabot1Kwh.toFixed(1) + ' kWh';
-          
-          const energyZetrabot3Percent = document.getElementById('energy-zetrabot3-percent');
-          const energyZetrabot3Kwh = document.getElementById('energy-zetrabot3-kwh');
-          if (energyZetrabot3Percent) {
-            if (animate) {
-              animateCounter(energyZetrabot3Percent, 0, Math.round(zetrabot3Percent), '%', 1500);
-            } else {
-              energyZetrabot3Percent.textContent = Math.round(zetrabot3Percent) + '%';
-            }
-          }
-          if (energyZetrabot3Kwh) energyZetrabot3Kwh.textContent = zetrabot3Kwh.toFixed(1) + ' kWh';
-          
-          const energyZetrabot2Percent = document.getElementById('energy-zetrabot2-percent');
-          const energyZetrabot2Kwh = document.getElementById('energy-zetrabot2-kwh');
-          if (energyZetrabot2Percent) {
-            if (animate) {
-              animateCounter(energyZetrabot2Percent, 0, Math.round(zetrabot2Percent), '%', 1500);
-            } else {
-              energyZetrabot2Percent.textContent = Math.round(zetrabot2Percent) + '%';
-            }
-          }
-          if (energyZetrabot2Percent) energyZetrabot2Percent.classList.add('battery-value-change');
-          if (energyZetrabot2Kwh) energyZetrabot2Kwh.textContent = zetrabot2Kwh.toFixed(1) + ' kWh';
-          
-          const energyBatteryStationPercent = document.getElementById('energy-battery-station-percent');
-          const energyBatteryStationKwh = document.getElementById('energy-battery-station-kwh');
-          if (energyBatteryStationPercent) {
-            if (animate) {
-              animateCounter(energyBatteryStationPercent, 0, Math.round(batteryStationPercent), '%', 1500);
-            } else {
-              energyBatteryStationPercent.textContent = Math.round(batteryStationPercent) + '%';
-            }
-          }
-          if (energyBatteryStationKwh) energyBatteryStationKwh.textContent = batteryStationKwh.toFixed(1) + ' kWh';
-          
-          // Actualizar el gráfico central del sistema
-          const energySystemPercent = document.getElementById('energy-system-percent');
-          const energySystemAvailable = document.getElementById('energy-system-available');
-          const energySystemTotal = document.getElementById('energy-system-total');
-          const energySystemHours = document.getElementById('energy-system-hours');
-          
-          if (energySystemPercent) {
-            if (animate) {
-              animateCounter(energySystemPercent, 0, averagePercent, '%', 1500);
-            } else {
-              energySystemPercent.textContent = averagePercent.toFixed(1) + '%';
-            }
-          }
-          if (energySystemAvailable) energySystemAvailable.textContent = Math.round(totalAvailable);
-          if (energySystemTotal) energySystemTotal.textContent = totalCapacity;
-          if (energySystemHours) energySystemHours.textContent = estimatedHours.toFixed(1);
-          
-          // Actualizar las tarjetas principales
-          const energyTotalCapacity = document.getElementById('energy-total-capacity');
-          const energyAvailable = document.getElementById('energy-available');
-          // const energyAvailablePercent = document.getElementById('energy-available-percent'); // Ya no se usa
-          // const energyOperationalRange = document.getElementById('energy-operational-range'); // Ya no se usa
-          
-          if (energyTotalCapacity) energyTotalCapacity.textContent = totalCapacity + ' kWh';
-          if (energyAvailable) energyAvailable.textContent = Math.round(totalAvailable) + ' kWh';
-          // if (energyAvailablePercent) {
-          //   if (animate) {
-          //     animateCounter(energyAvailablePercent, 0, averagePercent, '%', 1500);
-          //   } else {
-          //     energyAvailablePercent.textContent = averagePercent.toFixed(1) + '%';
-          //   }
-          // }
-          // if (energyOperationalRange) energyOperationalRange.textContent = Math.round(operationalRange) + ' kWh';
-          
-          console.log('Energy Summary updated:', {
-            totalCapacity: totalCapacity + ' kWh',
-            totalAvailable: totalAvailable.toFixed(1) + ' kWh',
-            averagePercent: averagePercent.toFixed(1) + '%',
-            estimatedHours: estimatedHours.toFixed(1) + ' hours'
-          });
-        }
-        
         // Iniciar la simulación cuando se carga la página
         document.addEventListener('DOMContentLoaded', () => {
           // Inicializar valores de batería inmediatamente
@@ -7609,5 +7593,4 @@ map3.on('mouseleave', 'paddock-fill', () => {
     
     </script>
   </body>
-</html>
 </html>

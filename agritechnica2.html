@@ -1301,7 +1301,9 @@
                   <div onclick="navigateTo('reservation')" class="nav-tooltip nav-item flex items-center gap-3 px-3 py-2 cursor-pointer" data-view="reservation" data-tooltip="Battery as a Service">
                     <div class="text-white" data-icon="BatteryCharging" data-size="20px" data-weight="regular" style="padding-left: 2px;">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="18px" fill="currentColor" viewBox="0 0 256 256">
-                        <path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8Zm48-80v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM138.81,123.79a8,8,0,0,1,.35,7.79l-16,32a8,8,0,0,1-14.32-7.16L119.06,136H100a8,8,0,0,1-7.16-11.58l16-32a8,8,0,1,1,14.32,7.16L112.94,120H132A8,8,0,0,1,138.81,123.79Z"></path>
+                        <rect width="256" height="256" fill="none"/>
+                        <path d="M224,200v8a32,32,0,0,1-32,32H136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+                        <path d="M224,128H192a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16h32V128a96,96,0,1,0-192,0v56a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V144a16,16,0,0,0-16-16H32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
                       </svg>
                     </div>
                     <p class="nav-text text-white text-xs font-medium leading-normal">Battery as a Service</p>
@@ -1309,10 +1311,11 @@
                   <div onclick="navigateTo('work')" class="nav-tooltip nav-item flex items-center gap-3 px-3 py-2 cursor-pointer" data-view="work" data-tooltip="Energy Master">
                     <div class="text-white" data-icon="Briefcase" data-size="20px" data-weight="regular" style="padding-left: 2px;">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="18px" fill="currentColor" viewBox="0 0 256 256">
-                        <path d="M152,80V56a16,16,0,0,0-16-16H120a16,16,0,0,0-16,16V80H40a16,16,0,0,0-16,16v80a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V96a16,16,0,0,0-16-16ZM120,56h16V80H120ZM216,176H40V96H216v80Z"></path>
+                        <rect width="256" height="256" fill="none"/>
+                        <polygon points="160 16 144 96 208 120 96 240 112 160 48 136 160 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
                       </svg>
                     </div>
-                    <p class="nav-text text-white text-xs font-medium leading-normal">Energy Planner</p>
+                    <p class="nav-text text-white text-xs font-medium leading-normal">Energy Master</p>
                   </div>
                   <div onclick="navigateTo('history')" class="nav-tooltip nav-item flex items-center gap-3 px-3 py-2 cursor-pointer" data-view="history" data-tooltip="Consumption History">
                     <div class="text-white" data-icon="ChartLine" data-size="20px" data-weight="regular" style="padding-left: 2px;">
@@ -3174,22 +3177,22 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="border-t border-t-[#4ABBBD]/50 text-[#4ABBBD]">
-                        <td class="px-4 py-3 text-sm">Peak</td>
-                        <td class="px-4 py-3  text-sm">20 %</td>
-                        <td class="px-4 py-3  text-sm">430 kWh</td>
+                      <tr class="border-t border-t-[#4ABBBD]/50 ">
+                        <td class="px-4 py-3 text-sm text-white">Peak</td>
+                        <td class="px-4 py-3  text-sm text-[#4ABBBD]">20 %</td>
+                        <td class="px-4 py-3  text-sm text-[#4ABBBD]">430 kWh</td>
                         <td class="px-4 py-3 text-green-400 text-sm">↑ 5%</td>
                       </tr>
-                      <tr class="border-t border-t-[#4ABBBD]/50 text-[#4ABBBD]">
-                        <td class="px-4 py-3  text-sm">Shoulder</td>
-                        <td class="px-4 py-3  text-sm">12 %</td>
-                        <td class="px-4 py-3  text-sm">394 kWh</td>
+                      <tr class="border-t border-t-[#4ABBBD]/50 ">
+                        <td class="px-4 py-3  text-sm text-white">Shoulder</td>
+                        <td class="px-4 py-3  text-sm text-[#4ABBBD]">12 %</td>
+                        <td class="px-4 py-3  text-sm text-[#4ABBBD]">394 kWh</td>
                         <td class="px-4 py-3 text-red-400 text-sm">↓ 2%</td>
                       </tr>
-                      <tr class="border-t border-t-[#4ABBBD]/50 text-[#4ABBBD]">
-                        <td class="px-4 py-3  text-sm">Off-peak</td>
-                        <td class="px-4 py-3  text-sm">68 %</td>
-                        <td class="px-4 py-3  text-sm">1680 kWh</td>
+                      <tr class="border-t border-t-[#4ABBBD]/50 ">
+                        <td class="px-4 py-3  text-sm text-white">Off-peak</td>
+                        <td class="px-4 py-3  text-sm text-[#4ABBBD]">68 %</td>
+                        <td class="px-4 py-3  text-sm text-[#4ABBBD]">1680 kWh</td>
                         <td class="px-4 py-3 text-green-400 text-sm">↑ 3%</td>
                       </tr>
                     </tbody>
@@ -6370,21 +6373,17 @@
         const quantityLabel = document.getElementById('quantityLabel');
         
         if (type === 'pack') {
-          packBtn.classList.add('bg-[var(--turqueza)]', 'text-white');
-          packBtn.classList.remove('text-[var(--turqueza)]');
-          stationBtn.classList.remove('bg-[var(--turqueza)]', 'text-white');
-          stationBtn.classList.add('text-[var(--turqueza)]');
+          if (packBtn) { packBtn.classList.add('bg-[var(--turqueza)]', 'text-white'); packBtn.classList.remove('text-[var(--turqueza)]'); }
+          if (stationBtn) { stationBtn.classList.remove('bg-[var(--turqueza)]', 'text-white'); stationBtn.classList.add('text-[var(--turqueza)]'); }
           
-          vehicleSection.style.display = 'block';
-          quantityLabel.textContent = 'Number of packs';
+          if (vehicleSection) vehicleSection.style.display = 'block';
+          if (quantityLabel) quantityLabel.textContent = 'Number of packs';
         } else {
-          stationBtn.classList.add('bg-[var(--turqueza)]', 'text-white');
-          stationBtn.classList.remove('text-[var(--turqueza)]');
-          packBtn.classList.remove('bg-[var(--turqueza)]', 'text-white');
-          packBtn.classList.add('text-[var(--turqueza)]');
+          if (stationBtn) { stationBtn.classList.add('bg-[var(--turqueza)]', 'text-white'); stationBtn.classList.remove('text-[var(--turqueza)]'); }
+          if (packBtn) { packBtn.classList.remove('bg-[var(--turqueza)]', 'text-white'); packBtn.classList.add('text-[var(--turqueza)]'); }
           
-          vehicleSection.style.display = 'none';
-          quantityLabel.textContent = 'Number of Battery Stations';
+          if (vehicleSection) vehicleSection.style.display = 'none';
+          if (quantityLabel) quantityLabel.textContent = 'Number of Battery Stations';
         }
       }
   // 
@@ -6483,14 +6482,17 @@
       }
 
       function requestReservation() {
-        // Obtener valores del formulario
-        const vehicle = document.getElementById('reservationVehicle').value;
-        const numPacks = document.getElementById('reservationPacks').value;
-        const startTime = document.getElementById('reservationStart').value;
-        const endTime = document.getElementById('reservationEnd').value;
+        // Obtener valores del formulario (con soporte a ausencia de vehicle)
+        const vehicleEl = document.getElementById('reservationVehicle');
+        const vehicle = vehicleEl ? vehicleEl.value : '';
+        const numPacks = (document.getElementById('reservationPacks') || {}).value || '';
+        const startTime = (document.getElementById('reservationStart') || {}).value || '';
+        const endTime = (document.getElementById('reservationEnd') || {}).value || '';
 
         // Validar que todos los campos estén completos
-        if ((currentReservationType === 'pack' && !vehicle) || !numPacks || !startTime || !endTime) {
+        // Si no existe el selector de vehículo, no requerirlo aunque sea 'pack'
+        const requireVehicle = currentReservationType === 'pack' && !!vehicleEl;
+        if ((requireVehicle && !vehicle) || !numPacks || !startTime || !endTime) {
           showNotification('Please complete all fields', 'error');
           return;
         }
@@ -6518,7 +6520,9 @@
 
         // Agregar reservación a la lista
         const newReservation = {
-          packId: currentReservationType === 'pack' ? `${vehicle}-Pack${numPacks}` : `Battery-Station-${numPacks}`,
+          packId: currentReservationType === 'pack'
+            ? `${vehicle ? vehicle + '-' : ''}Pack${numPacks}`
+            : `Battery-Station-${numPacks}`,
           startTime: new Date(new Date(startTime).getTime() - userTimezoneOffset).toLocaleDateString('es-ES'),
           endTime: new Date(new Date(endTime).getTime() - userTimezoneOffset).toLocaleDateString('es-ES'),
           consumoKvh: '0.00', // Este valor se actualizará cuando haya consumo real
@@ -6527,6 +6531,9 @@
 
         reservationList.push(newReservation);
         updateReservationList();
+
+        // Persistir en localStorage
+        try { localStorage.setItem('reservationList', JSON.stringify(reservationList)); } catch(e) { /* noop */ }
 
         // Mostrar notificación de éxito
         showNotification('Reservation created successfully');
@@ -6621,6 +6628,14 @@
       console.log('Script Energy Meter cargado correctamente');
 
       document.addEventListener('DOMContentLoaded', () => {
+        // Cargar reservas persistidas si existen
+        try {
+          const saved = localStorage.getItem('reservationList');
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed)) reservationList = parsed;
+          }
+        } catch(e) { /* noop */ }
         updateReservationList();
 
         const totalCapacity = 132; // kWh

@@ -4370,7 +4370,7 @@
             <!-- ================================================================== -->
             <div id="settings-view" class="view hidden">
               <div class="flex flex-wrap px-3 gap-3 "style="margin-top: -22px; margin-bottom: 30px;">
-                <p class=" text-white tracking-light text-[32px]  leading-tight min-w-72 border-b border-[#4ABBBD]/70">Settings</p>
+                <p class=" text-white tracking-light text-[32px]  leading-tight  border-b border-[#4ABBBD]/70" style="margin-top:20px; margin-left: 20px;">Settings</p>
               </div>
               
               <div class="p-6">
@@ -4396,9 +4396,9 @@
                         </button>
                       </div>
                       <div class="flex items-center justify-between">
-                        <span class="text-white text-sm">Locate Warehouse</span>
+                        <span class="text-white text-sm">Locate Battery sation</span>
                         <button id="btnLocateWarehouse" class="p-2 rounded-full border border-[var(--turqueza)] text-[var(--turqueza)] hover:bg-[var(--turqueza)]/10 transition-colors"
-                          onclick="(function(){ if (typeof showNotification==='function') { showNotification('Locate Warehouse executed'); } })()">
+                          onclick="(function(){ if (typeof showNotification==='function') { showNotification('Permission needed. Contact Zetrack'); } })()">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-4 h-4" fill="currentColor">
                             <rect width="256" height="256" fill="none"></rect>
                             <line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
@@ -4413,12 +4413,12 @@
                   <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6 md:basis-[60%] md:flex-none">
                     <div class="flex items-center justify-between mb-4">
                       <h3 class="text-white text-lg font-normal">Fleet & Stations</h3>
-                      <span class="text-[var(--turqueza)] text-xs">Summary</span>
+                      <!-- <span class="text-[var(--turqueza)] text-xs">Summary</span> -->
                     </div>
                     <div class="space-y-4 ">
                       <div class="flex items-center justify-between p-3 rounded border border-[#4ABBBD]/30 hover:border-[#4ABBBD]/60 transition-all">
                         <div class="flex items-center gap-4">
-                          <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)]">
+                          <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)] me-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
                               <g>
                                 <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
@@ -4426,16 +4426,20 @@
                               </g>
                             </svg>
                           </div>
-                          <div>
-                            <p class="text-white text-sm font-medium">Zetrabot 1</p>
-                            <p class="text-[var(--turqueza)] text-xs">40 kWh · 55 hp</p>
+                          <div class=" flex flex-row gap-3">
+                            <div>
+                              <p class="text-white text-sm font-medium">Zetrabot 1</p>
+                            </div>
+                            <div>
+                              <p class="text-[var(--turqueza)] text-sm ">40 kWh · 55 hp</p>
                           </div>
                         </div>
-                        <span class="px-2 py-1 text-xs rounded bg-[var(--turqueza)]/15 text-[var(--turqueza)] border border-[var(--turqueza)]/30">Tractor</span>
+                        </div>
+                        <span class="px-2 py-1 text-xs rounded bg-[var(--turqueza)]/15 text-[var(--turqueza)] ">Tractor</span>
                       </div>
                       <div class="flex items-center justify-between p-3 rounded border border-[#4ABBBD]/30 hover:border-[#4ABBBD]/60 transition-all">
                         <div class="flex items-center gap-3">
-                          <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)]">
+                          <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)] me-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#4ABBBD" viewBox="384 282 32 32">
                               <g>
                                 <path d="m390.49085,289.18182l0,7.25c-1.34766,0.30469 -2.58203,0.88281 -3.625,1.71875l1.25,1.5625c1.19922,-0.96094 2.71484,-1.53125 4.375,-1.53125c3.87891,0 7,3.12109 7,7l4.5625,0c-0.34766,0.59375 -0.5625,1.26563 -0.5625,2c0,2.19922 1.80078,4 4,4c2.19922,0 4,-1.80078 4,-4c0,-1.02734 -0.41797,-1.94531 -1.0625,-2.65625l2,-4.96875l0.0625,-0.1875l0,-2.1875l-3.78888,-0.02626l-3.42733,0.02626l-3.09629,0l-2.75,-7.34375l-0.25,-0.65625l-8.6875,0zm2,2l5.3125,0l2.75,7.34375l0.25,0.65625l9.59375,0l-1.59375,4l-7.5625,0c-0.91797,-3.99609 -4.48047,-7 -8.75,-7l0,-5zm0,8c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zm0,2c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4zm0,2c-1.10547,0 -2,0.89453 -2,2c0,1.10547 0.89453,2 2,2c1.10547,0 2,-0.89453 2,-2c0,-1.10547 -0.89453,-2 -2,-2zm15,2c1.11719,0 2,0.88281 2,2c0,1.11719 -0.88281,2 -2,2c-1.11719,0 -2,-0.88281 -2,-2c0,-1.11719 0.88281,-2 2,-2z" />
@@ -4443,16 +4447,20 @@
                               </g>
                             </svg>
                           </div>
-                          <div>
-                            <p class="text-white text-sm font-medium">Zetrabot 2</p>
-                            <p class="text-[var(--turqueza)] text-xs">40 kWh · 55 hp</p>
+                          <div class=" flex flex-row gap-3">
+                            <div>
+                              <p class="text-white text-sm font-medium">Zetrabot 2</p>
+                            </div>
+                            <div>
+                              <p class="text-[var(--turqueza)] text-sm ">40 kWh · 55 hp</p>
                           </div>
                         </div>
-                        <span class="px-2 py-1 text-xs rounded bg-[var(--turqueza)]/15 text-[var(--turqueza)] border border-[var(--turqueza)]/30">Tractor</span>
+                        </div>
+                        <span class="px-2 py-1 text-xs rounded bg-[var(--turqueza)]/15 text-[var(--turqueza)]">Tractor</span>
                       </div>
                       <div class="flex items-center justify-between p-3 rounded border border-[#4ABBBD]/30 hover:border-[#4ABBBD]/60 transition-all">
                         <div class="flex items-center gap-3">
-                          <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)]">
+                          <div class="w-8 h-8 rounded-full bg-[var(--turqueza)]/15 flex items-center justify-center text-[var(--turqueza)] me-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
                               <rect x="32" y="64" width="176" height="128" rx="16" ry="16"></rect>
                               <line x1="208" y1="96" x2="224" y2="96"></line>
@@ -4460,12 +4468,16 @@
                               <polyline points="120 96 96 128 136 128 112 160"></polyline>
                             </svg>
                           </div>
-                          <div>
-                            <p class="text-white text-sm font-medium">Battery station</p>
-                            <p class="text-[var(--turqueza)] text-xs">20 kWh</p>
+                          <div class=" flex flex-row gap-3">
+                            <div>
+                              <p class="text-white text-sm font-medium">sw-15</p>
+                            </div>
+                            <div>
+                              <p class="text-[var(--turqueza)] text-sm ">20 kWh</p>
                           </div>
                         </div>
-                        <span class="px-2 py-1 text-xs rounded bg-[var(--turqueza)]/15 text-[var(--turqueza)] border border-[var(--turqueza)]/30">Station</span>
+                        </div>
+                        <span class="px-2 py-1 text-xs rounded bg-[var(--turqueza)]/15 text-[var(--turqueza)] ">Pack</span>
                       </div>
                     </div>
                   </div>
@@ -4550,7 +4562,7 @@
                   <div class="bg-[#181d35] rounded-lg border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 p-6">
                     <div class="flex items-center justify-between mb-4">
                       <h3 class="text-white text-lg font-normal">Energy Prices</h3>
-                      <span class="text-[var(--turqueza)] text-xs">€/kWh</span>
+                      <!-- <span class="text-[var(--turqueza)] text-xs">€/kWh</span> -->
                     </div>
                     <div class="space-y-3">
                       <div class="grid grid-cols-[1fr_auto] gap-3 items-center">

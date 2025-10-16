@@ -1724,7 +1724,7 @@
                         <div class="absolute top-0 left-0 h-px bg-[#4ABBBD]/50 w-full"></div>
                         
                         <!-- Etiqueta para Measured Usage -->
-                        <div class="absolute -top-2 left-0 w-full flex justify-center pointer-events-none">
+                        <div class="absolute -top-2 left-0 w-full flex justify-start pointer-events-none" style="padding-left: 5%;">
                           <span class="px-2 bg-[var(--azul-oscuro)] text-[var(--turqueza)] text-[10px] tracking-[0.15em] uppercase rounded-full/px shadow-[0_0_10px_rgba(74,187,189,0.25)]">Measured Usage</span>
                         </div>
                         
@@ -1777,22 +1777,18 @@
                         </div>
                         
                         <!-- Separador y línea para Predicted Usage -->
-                        <div class="relative mt-12">
-                          <!-- Línea horizontal para Predicted Usage -->
+                        <!-- <div class="relative mt-12">
                           <div class="absolute top-0 left-0 h-px bg-[#4ABBBD]/50 w-full"></div>
                           
-                          <!-- Etiqueta para Predicted Usage -->
-                          <div class="absolute -top-2 left-0 w-full flex justify-center pointer-events-none">
+                          <div class="absolute -top-2 left-0 w-full flex justify-start pointer-events-none" style="padding-left: 5%;">
                             <span class="px-2 bg-[var(--azul-oscuro)] text-[var(--turqueza)] text-[10px] tracking-[0.15em] uppercase rounded-full/px shadow-[0_0_10px_rgba(74,187,189,0.25)]">Predicted Usage</span>
                           </div>
                           
-                          <!-- Contenido de Predicted Usage -->
                           <div class="pt-4">
                             <div class="flex flex-wrap gap-6">
-                              <!-- Total hours of operation - Predicted -->
                                 <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 border-opacity-50 bg-[var(--azul-oscuro)] min-w-[200px] flex-1">
                                   <div class="flex items-center justify-center gap-2">
-                                    <p class="text-white text-sm font-medium leading-normal">Predicted operational hours</p>
+                                    <p class="text-white text-sm font-medium leading-normal">Estimated autonomy</p>
                                   </div>
                                   <p class="text-white tracking-light text-xl font-bold leading-tight flex items-center justify-center gap-2 mt-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)]">
@@ -1800,10 +1796,14 @@
                                       <circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
                                       <polyline points="128 72 128 128 184 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)]">
+                                      <rect width="256" height="256" fill="none"/>
+                                      <path d="M40,71.85v112.3a7.91,7.91,0,0,0,12.18,6.59l88.19-56.15a7.8,7.8,0,0,0,0-13.18L52.18,65.26A7.91,7.91,0,0,0,40,71.85Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                      <path d="M144,71.85v112.3a7.91,7.91,0,0,0,12.18,6.59l88.19-56.15a7.8,7.8,0,0,0,0-13.18L156.18,65.26A7.91,7.91,0,0,0,144,71.85Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                    </svg>
                                     7:30 hrs
                                   </p>
                                 </div>
-                              <!-- Distance covered - Predicted -->
                               <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 border-opacity-50 bg-[var(--azul-oscuro)] min-w-[200px] flex-1">
                                 <div class="flex items-center justify-center gap-2">
                                   <p class="text-white text-sm font-medium leading-normal">Predicted distance</p>
@@ -1818,7 +1818,6 @@
                                 </p>
                               </div>
                               
-                              <!-- Energy used - Predicted -->
                               <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 border-opacity-50 bg-[var(--azul-oscuro)] min-w-[200px] flex-1">
                                 <div class="flex items-center justify-center gap-2">
                                   <p class="text-white text-sm font-medium leading-normal">Predicted energy</p>
@@ -1833,7 +1832,7 @@
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
 

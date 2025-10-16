@@ -1674,9 +1674,9 @@
                                <line x1="248" y1="96" x2="248" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
                              </svg>
                           
-                          <span id="energy-available">66.2 kWh</span>
+                          <span id="energy-available">55.2 kWh</span>
                           <div class="flex flex-row justify-center">
-                            <p class="text-[var(--turqueza)] text-sm slide-text-fade-in" id="energy-available-percent">66%</p>
+                            <p class="text-[var(--turqueza)] text-sm slide-text-fade-in" id="energy-available-percent">55%</p>
                             <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">&nbsp;of Capacity</p>
                           </div>
                         </div>
@@ -1698,7 +1698,7 @@
                               <line x1="204.62" y1="77.13" x2="171.38" y2="138.87" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
                             </svg>
                            <span> 8 kWh/hr </span> </p>
-                          <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">196 kWh consumed</p>
+                          <p class="text-[var(--turqueza)] text-sm slide-text-fade-in">45 kWh consumed</p>
                         </div>
                       </div>
                     </div>
@@ -1712,8 +1712,242 @@
                     </script>
 
                     <!-- ------------------------------------------------------------------------------------------------------ -->
+    
+                                    <!-- ================     Today's Fleet Usage Section     ================ -->
                     
-                    <div class=" space-y-8">
+                                    <div class="space-y-4 mb-8">
+                      <h4 class="text-white text-lg font-medium pb-1">Today's fleet usage</h4>
+                      
+                      <!-- Líneas horizontales con subtítulos -->
+                      <div class="relative">
+                        <!-- Líneas horizontales como techos -->
+                        <div class="absolute top-0 left-0 h-px bg-[#4ABBBD]/50 w-full"></div>
+                        
+                        <!-- Etiqueta para Measured Usage -->
+                        <div class="absolute -top-2 left-0 w-full flex justify-center pointer-events-none">
+                          <span class="px-2 bg-[var(--azul-oscuro)] text-[var(--turqueza)] text-[10px] tracking-[0.15em] uppercase rounded-full/px shadow-[0_0_10px_rgba(74,187,189,0.25)]">Measured Usage</span>
+                        </div>
+                        
+                        <!-- Contenido de Measured Usage -->
+                        <div class="pt-4">
+                          <div class="flex flex-wrap gap-6">
+                            <!-- Total hours of operation -->
+                              <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 border-opacity-50 bg-[var(--azul-oscuro)] min-w-[200px] flex-1">
+                                <div class="flex items-center justify-center gap-2">
+                                  <p class="text-white text-sm font-medium leading-normal">Today's operational hours</p>
+                                </div>
+                                <p class="text-white tracking-light text-xl font-bold leading-tight flex items-center justify-center gap-2 mt-1">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)]">
+                                    <rect width="256" height="256" fill="none"/>
+                                    <circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                    <polyline points="128 72 128 128 184 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                  </svg>
+                                  5:40 hrs
+                                </p>
+                              </div>
+                            <!-- Distance covered -->
+                            <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 border-opacity-50 bg-[var(--azul-oscuro)] min-w-[200px] flex-1">
+                              <div class="flex items-center justify-center gap-2">
+                                <p class="text-white text-sm font-medium leading-normal">Distance covered</p>
+                              </div>
+                              <p class="text-white tracking-light text-xl font-bold leading-tight flex items-center justify-center gap-2 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)]">
+                                  <rect width="256" height="256" fill="none"/>
+                                  <circle cx="200" cy="200" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                  <path d="M72,56h96a32,32,0,0,1,0,64H72a40,40,0,0,0,0,80H176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                </svg>
+                                9.5 km
+                              </p>
+                            </div>
+                            
+                            <!-- Energy used -->
+                            <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 border-opacity-50 bg-[var(--azul-oscuro)] min-w-[200px] flex-1">
+                              <div class="flex items-center justify-center gap-2">
+                                <p class="text-white text-sm font-medium leading-normal">Energy used</p>
+                              </div>
+                              <p class="text-white tracking-light text-xl font-bold leading-tight flex items-center justify-center gap-2 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)]">
+                                  <rect width="256" height="256" fill="none"/>
+                                  <polygon points="160 16 144 96 208 120 96 240 112 160 48 136 160 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                </svg>
+                                45 kWh
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <!-- Separador y línea para Predicted Usage -->
+                        <div class="relative mt-12">
+                          <!-- Línea horizontal para Predicted Usage -->
+                          <div class="absolute top-0 left-0 h-px bg-[#4ABBBD]/50 w-full"></div>
+                          
+                          <!-- Etiqueta para Predicted Usage -->
+                          <div class="absolute -top-2 left-0 w-full flex justify-center pointer-events-none">
+                            <span class="px-2 bg-[var(--azul-oscuro)] text-[var(--turqueza)] text-[10px] tracking-[0.15em] uppercase rounded-full/px shadow-[0_0_10px_rgba(74,187,189,0.25)]">Predicted Usage</span>
+                          </div>
+                          
+                          <!-- Contenido de Predicted Usage -->
+                          <div class="pt-4">
+                            <div class="flex flex-wrap gap-6">
+                              <!-- Total hours of operation - Predicted -->
+                                <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 border-opacity-50 bg-[var(--azul-oscuro)] min-w-[200px] flex-1">
+                                  <div class="flex items-center justify-center gap-2">
+                                    <p class="text-white text-sm font-medium leading-normal">Predicted operational hours</p>
+                                  </div>
+                                  <p class="text-white tracking-light text-xl font-bold leading-tight flex items-center justify-center gap-2 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)]">
+                                      <rect width="256" height="256" fill="none"/>
+                                      <circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                      <polyline points="128 72 128 128 184 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                    </svg>
+                                    7:30 hrs
+                                  </p>
+                                </div>
+                              <!-- Distance covered - Predicted -->
+                              <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 border-opacity-50 bg-[var(--azul-oscuro)] min-w-[200px] flex-1">
+                                <div class="flex items-center justify-center gap-2">
+                                  <p class="text-white text-sm font-medium leading-normal">Predicted distance</p>
+                                </div>
+                                <p class="text-white tracking-light text-xl font-bold leading-tight flex items-center justify-center gap-2 mt-1">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)]">
+                                    <rect width="256" height="256" fill="none"/>
+                                    <circle cx="200" cy="200" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                    <path d="M72,56h96a32,32,0,0,1,0,64H72a40,40,0,0,0,0,80H176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                  </svg>
+                                  12.8 km
+                                </p>
+                              </div>
+                              
+                              <!-- Energy used - Predicted -->
+                              <div class="flex flex-col gap-2 rounded p-4 border border-[#4ABBBD]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 border-opacity-50 bg-[var(--azul-oscuro)] min-w-[200px] flex-1">
+                                <div class="flex items-center justify-center gap-2">
+                                  <p class="text-white text-sm font-medium leading-normal">Predicted energy</p>
+                                </div>
+                                <p class="text-white tracking-light text-xl font-bold leading-tight flex items-center justify-center gap-2 mt-1">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-[var(--turqueza)]">
+                                    <rect width="256" height="256" fill="none"/>
+                                    <polygon points="160 16 144 96 208 120 96 240 112 160 48 136 160 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+                                  </svg>
+                                  58 kWh
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- ------------------------------------------------------------------------------------------------------ -->
+
+                    
+                    <!-- Gráfico de energía actual -->
+                    <div class="space-y-6">
+                      <h4 class="text-white text-lg font-medium border-b border-[#4ABBBD]/50 pb-2 pt-4">Current Energy Distribution</h4>
+                      <div class=" rounded-lg">
+                        <!-- Flexbox de tres divs hijos -->
+                        <div class="flex-col " >
+                          <!-- Div hijo 1: Flex padre de dos hijos, dirección columna -->
+                            <div class="flex flex-row gap-3 flex-1 items-center"> 
+                             </div>
+                         
+                          <!-- Nueva fila para cuadro de vehiculos -->
+                             <div>
+                               <div class=" py-3 @container">
+                                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
+                                   <table class="flex-1">
+                                     <thead>
+                                       <tr class="bg-[var(--turqueza)]">
+                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 px-4 py-3 text-left text-white w-[300px] text-xs font-medium leading-normal"></th>
+                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">State of Charge</th>
+                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">Fixed Pack</th>
+                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">Swappable Pack</th>
+                                         <!-- <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 px-4 py-3 text-left text-white w-60 text-xs font-medium leading-normal">Status</th> -->
+                                       </tr>
+                                     </thead>
+                                     <tbody>
+                                       <tr class="border-t border-t-[#4ABBBD]/50">
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[300px] text-white text-sm font-normal leading-normal">Zetrabot 1</td>
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
+                                           <p class="text-white text-base">65% <span class="text-[var(--turqueza)] text-sm">/ 26 kWh</span></p>
+                                         </td>
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
+                                           <div class="flex items-center gap-4">
+                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
+                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 85%;"></div>
+                                             </div>
+                                             <p class="text-white text-base ">80% <span class="text-[var(--turqueza)] text-sm">/ 16.0 kWh</span></p>
+                                           </div>
+                                         </td>
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
+                                           <div class="flex items-center gap-4">
+                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
+                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 60%;"></div>
+                                             </div>
+                                             <p class="text-white text-base ">50% <span class="text-[var(--turqueza)] text-sm">/ 10.0 kWh</span></p>
+                                           </div>
+                                         </td>
+                                         <!-- <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 h-[72px] px-4 py-2 w-60 text-white text-base  leading-normal">
+                                           On duty
+                                         </td> -->
+                                       </tr>
+                                       <tr class="border-t border-t-[#4ABBBD]/50">
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[300px] text-white text-sm font-normal leading-normal">Zetrabot 2</td>
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
+                                           <p class="text-white text-base">23.1% <span class="text-[var(--turqueza)] text-sm">/ 9.2 kWh</span></p>
+                                         </td>
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
+                                           <div class="flex items-center gap-4">
+                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
+                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 45%;"></div>
+                                             </div>
+                                             <p class="text-white text-base ">30% <span class="text-[var(--turqueza)] text-sm">/ 6.0 kWh</span></p>
+                                           </div>
+                                         </td>
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
+                                           <div class="flex items-center gap-4">
+                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
+                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 90%;"></div>
+                                             </div>
+                                             <p class="text-white text-base ">15% <span class="text-[var(--turqueza)] text-sm">/ 3.1 kWh</span></p>
+                                           </div>
+                                         </td>
+                                         
+                                       </tr>
+                                     
+                                       <tr class="border-t border-t-[#4ABBBD]/50">
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[300px] text-white text-sm font-normal leading-normal">Battery Station</td>
+                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
+                                           <p class="text-white text-base">100% <span class="text-[var(--turqueza)] text-sm">/ 20 kWh</span></p>
+                                         </td>
+                                       
+                                      </tr>
+                                     
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <style>
+                                  @container(max-width:120px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120{display: none;}}
+                                  @container(max-width:240px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240{display: none;}}
+                                  @container(max-width:360px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360{display: none;}}
+                                  @container(max-width:480px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-480{display: none;}}
+                                  @container(max-width:600px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600{display: none;}}
+                                </style>
+                               </div>
+                             </div>
+                         </div>
+                          
+                          <!-- Div hijo 3: Flex padre de dos hijos, dirección columna -->
+                          <!-- <div class="flex flex-row gap-6 flex-1 items-center justify-around">
+                            
+                           
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- ------------------------------------------------------------------------------------------------------ -->
+
+                    <div class=" space-y-8" style="margin-left: 45px; margin-right: 45px; margin-bottom: 65px; ">
                       <h4 class="text-white text-lg font-medium pb-1">Packs</h4>
                       <!-- Resumen de energía del sistema -->
                       <div class="">
@@ -1759,285 +1993,6 @@
                              </div>
                            </div>
                          </div>
-                      </div>
-
-
-                    <!-- ------------------------------------------------------------------------------------------------------ -->
-
-
-                    <!-- Gráfico de energía actual -->
-                    <div class="space-y-6">
-                      <h4 class="text-white text-lg font-medium border-b border-[#4ABBBD]/50 pb-2 pt-4">Current Energy Distribution</h4>
-                      <div class=" rounded-lg">
-                        <!-- Flexbox de tres divs hijos -->
-                        <div class="flex-col " >
-                          <!-- Div hijo 1: Flex padre de dos hijos, dirección columna -->
-                            <div class="flex flex-row gap-3 flex-1 items-center">
-                               <!--    Zetrabot 1    -->
-                            <!-- <div class="flex-1 p-6 flex-row rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
-                              <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 1</p>
-                              <div class="flex flex-col gap-3 mb-3  transition-transform duration-300">
-                                <div class="flex items-center gap-3">
-                                  <span class="text-white text-xs opacity-80">Fixed</span>
-                                  <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
-                                    <div class="h-full bg-[var(--turqueza)]" style="width: 80%;"></div>
-                                  </div>
-                                  <span class="text-white text-sm font-semibold" id="energy-zetrabot1-fixed-percent">80% <span class="text-[var(--turqueza)] text-xs">/35.5 kWh</span></span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                  <span class="text-white text-xs opacity-80">Swappable</span>
-                                  <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
-                                    <div class="h-full bg-[var(--turqueza)]" style="width: 50%;"></div>
-                                  </div>
-                                  <span class="text-white text-sm font-semibold" id="energy-zetrabot1-swappable-percent">50% <span class="text-[var(--turqueza)] text-xs">/25.5 kWh</span></span>
-                                </div>
-                              </div>
-                              <div class="my-2" style="height:1px; background-color: rgba(74,187,189,0.35);"></div>
-                              <div class="flex items-center gap-3 mt-2">
-                                <span class="text-white text-xs opacity-80">Total</span>
-                                <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
-                                  <div class="h-full bg-[var(--turqueza)]" style="width: 65.46%;"></div>
-                                </div>
-                                <span class="text-white text-sm font-semibold">65.46%</span>
-                              </div>
-                            </div> -->
-                            
-                            <!-- Zetrabot 2 -->
-                              <!-- <div class="flex-1 p-6 flex-row rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group">
-                                  <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300">Zetrabot 2</p>
-                                  <div class="flex flex-col gap-3 mb-3  transition-transform duration-300">
-                                  <div class="flex items-center gap-3">
-                                  <span class="text-white text-xs opacity-80">Fixed</span>
-                                   <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
-                                   <div class="h-full bg-[var(--turqueza)]" style="width: 80%;"></div>
-                                   </div>
-                                   <span class="text-white text-sm font-semibold" id="energy-zetrabot1-fixed-percent">80% <span class="text-[var(--turqueza)] text-xs">/35.5 kWh</span></span>
-                                   </div>
-                                   <div class="flex items-center gap-3">
-                                    <span class="text-white text-xs opacity-80">Swappable</span>
-                                   <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
-                                   <div class="h-full bg-[var(--turqueza)]" style="width: 50%;"></div>
-                                  </div>
-                                  <span class="text-white text-sm font-semibold" id="energy-zetrabot1-swappable-percent">50% <span class="text-[var(--turqueza)] text-xs">/25.5 kWh</span></span>
-                                  </div>
-                                  </div>
-                                  <div class="my-2" style="height:1px; background-color: rgba(74,187,189,0.35);"></div>
-                                  <div class="flex items-center gap-3 mt-2">
-                                  <span class="text-white text-xs opacity-80">Total</span>
-                                  <div class="flex-1 h-2 bg-[#21284a] rounded-full overflow-hidden">
-                                  <div class="h-full bg-[var(--turqueza)]" style="width: 65.46%;"></div>
-                                  </div>
-                                  <span class="text-white text-sm font-semibold">65.46%</span>
-                                  </div>             
-                            </div> -->
-                  
-                               <!-- <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center  hover:border-[var(--turqueza)] hover:bg-[#1f2438] hover:scale-105 transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-[var(--turqueza)]/50/30 cursor-pointer group">
-                              <p class="text-white text-sm mb-3 slide-text-fade-in font-medium  transition-colors duration-300 opacity-80">Zetrabot 2</p>
-                              <div class="flex items-center justify-center gap-4 mb-3 group-hover:scale-110 transition-transform duration-300">
-                                <div class="relative w-24 h-12">
-                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50/50 transition-all duration-300" viewBox="0 0 100 50">
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="25.132" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
-                                  </svg>
-                                  <div class="absolute inset-0 flex flex-col items-center justify-center mt-2">
-                                    <p class="text-white text-lg font-bold mt-6 slide-text-fade-in  transition-colors duration-300" id="energy-zetrabot3-percent">80%</p>
-                                  </div>
-                                </div>
-                                <div class="relative w-24 h-22">
-                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50/50 transition-all duration-300" viewBox="0 0 100 50">
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="113.094" class="group-hover:stroke-[var(--turqueza)] transition-colors duration-300"></path>
-                                  </svg>
-                                  <div class="absolute inset-0 flex flex-col items-center justify-center mt-2">
-                                    <p class="text-white text-lg font-bold mt-6 slide-text-fade-in  transition-colors duration-300" id="energy-zetrabot3-percent">10%</p>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="flex items-center justify-center gap-8 mb-2 text-xs text-white/80">
-                                <div class="text-center">
-                                  <p>Swappable</p>
-                                </div>
-                                <div class="text-center">
-                                  <p>Fixed </p>
-                                  <p>8.6 kWh</p>
-                                </div>
-                              </div>
-                              <p class="text-white text-center text-lg font-bold "> 22%</p>
-                            </div>
-                             -->
-                            
-                             </div>
-                          <!-- Nueva fila para Battery Station -->
-                          <!-- Battery Station -->
-                             <!-- <div class="flex flex-row mt-3">
-                              <div class="flex-1 p-6 rounded-xl border border-[#4ABBBD]/50 text-center hover:border-[var(--turqueza)] hover:bg-[#1f2438] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4ABBBD]/20 cursor-pointer group"> 
-                              <p class="text-white text-sm mb-3 slide-text-fade-in font-medium transition-colors duration-300">Battery Station</p>
-                              <div class="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                                <div class="relative w-24 h-12">
-                                  <svg class="w-full h-full group-hover:drop-shadow-lg group-hover:drop-shadow-[var(--turqueza)]/50/50 transition-all duration-300" viewBox="0 0 100 50">
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)/20" stroke-width="8" fill="none" stroke-linecap="round"></path>
-                                    <path d="M 10,45 A 40,40 0 0,1 90,45" stroke="var(--turqueza)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="0" class=" transition-colors duration-300"></path>
-                                  </svg>
-                                  <div class="absolute inset-0 flex flex-col items-center justify-center mt-2">
-                                    <p class="text-white text-lg font-bold mt-6 slide-text-fade-in  transition-colors duration-300" id="energy-battery-station-percent">100%</p>
-                                  </div>
-                                </div>
-                              </div> 
-                              <p class="text-white text-sm slide-text-fade-in group-hover:text-[var(--turqueza)] transition-colors duration-300" id="energy-battery-station-kwh">20.0 kWh</p>
-                              </div>
-                             </div>  -->
-                          <!-- Nueva fila para cuadro de vehiculos -->
-                             <div>
-                               <div class=" py-3 @container">
-                                <div class="flex overflow-hidden rounded border border-[#4ABBBD]/50 hover:border-[#4ABBBD]/70 transition-all duration-300 border-opacity-50 bg-[var(--azul-oscuro)] shadow-lg shadow-[var(--turqueza)]/50/50 transition-shadow duration-300 hover:shadow-xl">
-                                   <table class="flex-1">
-                                     <thead>
-                                       <tr class="bg-[var(--turqueza)]">
-                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 px-4 py-3 text-left text-white w-[300px] text-xs font-medium leading-normal"></th>
-                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">State of Charge</th>
-                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">Fixed Pack</th>
-                                         <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 px-4 py-3 text-left text-white w-[400px] text-xs font-medium leading-normal">Swappable Pack</th>
-                                         <!-- <th class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 px-4 py-3 text-left text-white w-60 text-xs font-medium leading-normal">Status</th> -->
-                                       </tr>
-                                     </thead>
-                                     <tbody>
-                                       <tr class="border-t border-t-[#4ABBBD]/50">
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[300px] text-white text-sm font-normal leading-normal">Zetrabot 1</td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <p class="text-white text-base">72.5% <span class="text-[var(--turqueza)] text-sm">/ 62.8 kWh</span></p>
-                                         </td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <div class="flex items-center gap-4">
-                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 85%;"></div>
-                                             </div>
-                                             <p class="text-white text-base ">85% <span class="text-[var(--turqueza)] text-sm">/ 35.5 kWh</span></p>
-                                           </div>
-                                         </td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <div class="flex items-center gap-4">
-                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 60%;"></div>
-                                             </div>
-                                             <p class="text-white text-base ">60% <span class="text-[var(--turqueza)] text-sm">/ 27.3 kWh</span></p>
-                                           </div>
-                                         </td>
-                                         <!-- <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 h-[72px] px-4 py-2 w-60 text-white text-base  leading-normal">
-                                           On duty
-                                         </td> -->
-                                       </tr>
-                                       <tr class="border-t border-t-[#4ABBBD]/50">
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[300px] text-white text-sm font-normal leading-normal">Zetrabot 2</td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <p class="text-white text-base">67.5% <span class="text-[var(--turqueza)] text-sm">/ 58.9 kWh</span></p>
-                                         </td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <div class="flex items-center gap-4">
-                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 45%;"></div>
-                                             </div>
-                                             <p class="text-white text-base ">45% <span class="text-[var(--turqueza)] text-sm">/ 22.4 kWh</span></p>
-                                           </div>
-                                         </td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <div class="flex items-center gap-4">
-                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 90%;"></div>
-                                             </div>
-                                             <p class="text-white text-base ">90% <span class="text-[var(--turqueza)] text-sm">/ 36.5 kWh</span></p>
-                                           </div>
-                                         </td>
-                                         <!-- <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 h-[72px] px-4 py-2 w-60 text-white text-base  leading-normal">
-                                           Available
-                                         </td> -->
-                                       </tr>
-                                       <!-- <tr class="border-t border-t-[#4ABBBD]/50">
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-sm font-normal leading-normal">Zetrabot-003</td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <div class="flex items-center gap-4">
-                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 20%;"></div>
-                                             </div>
-                                             <p class="text-white text-base ">20% <span class="text-[var(--turqueza)] text-sm">/ 16.8 kWh</span></p>
-                                           </div>
-                                         </td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <div class="flex items-center gap-4">
-                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 30%;"></div>
-                                             </div>
-                                             <p class="text-white text-base ">30% <span class="text-[var(--turqueza)] text-sm">/ 24.5 kWh</span></p>
-                                           </div>
-                                         </td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 h-[72px] px-4 py-2 w-60 text-white text-base  leading-normal">
-                                           Charging
-                                         </td>
-                                       </tr> -->
-                                       <tr class="border-t border-t-[#4ABBBD]/50">
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[300px] text-white text-sm font-normal leading-normal">Battery Station</td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-180 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <p class="text-white text-base">100% <span class="text-[var(--turqueza)] text-sm">/ 88 kWh</span></p>
-                                         </td>
-                                         <!-- <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <div class="flex items-center gap-4">
-                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 100%;"></div>
-                                             </div>
-                                             <p class="text-white text-base ">100% <span class="text-[var(--turqueza)] text-sm">/ 44 kWh</span></p>
-                                           </div>
-                                         </td>
-                                         <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                           <div class="flex items-center gap-4">
-                                             <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                               <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 100%;"></div>
-                                             </div>
-                                             <p class="text-white text-base ">100% <span class="text-[var(--turqueza)] text-sm">/ 44 kWh</span></p>
-                                           </div>
-                                         </td> -->
-                                         <!-- <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 h-[72px] px-4 py-2 w-60 text-white text-base  leading-normal">
-                                           Available
-                                         </td> -->
-                                      </tr>
-                                      <!-- <tr class="border-t border-t-[#607afb]">
-                                        <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120 h-[72px] px-4 py-2 w-[400px] text-white text-base font-bold leading-normal">Total</td>
-                                        <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                          <div class="flex items-center gap-4">
-                                            <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                              <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 50%;"></div>
-                                            </div>
-                                            <p class="text-white text-base font-bold">50% <span class="text-[var(--turqueza)] text-sm">/ 74.7 kWh</span></p>
-                                          </div>
-                                        </td>
-                                        <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360 h-[72px] px-4 py-2 w-[400px] text-sm font-normal leading-normal">
-                                          <div class="flex items-center gap-4">
-                                            <div class="w-24 overflow-hidden rounded-sm bg-[var(--turqueza)]/20">
-                                              <div class="h-1 rounded-sm bg-[var(--turqueza)]" style="width: 70%;"></div>
-                                            </div>
-                                            <p class="text-white text-base font-bold">70% <span class="text-[var(--turqueza)] text-sm">/ 132.3 kWh</span></p>
-                                          </div>
-                                        </td>
-                                        <td class="table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600 h-[72px] px-4 py-2 w-60 text-center text-sm font-normal leading-normal">-</td>
-                                      </tr> -->
-                                    </tbody>
-                                  </table>
-                                </div>
-                                <style>
-                                  @container(max-width:120px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-120{display: none;}}
-                                  @container(max-width:240px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-240{display: none;}}
-                                  @container(max-width:360px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-360{display: none;}}
-                                  @container(max-width:480px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-480{display: none;}}
-                                  @container(max-width:600px){.table-bf57a060-251e-4bf7-9af3-40165bfeca1d-column-600{display: none;}}
-                                </style>
-                               </div>
-                             </div>
-                         </div>
-                          
-                          <!-- Div hijo 3: Flex padre de dos hijos, dirección columna -->
-                          <!-- <div class="flex flex-row gap-6 flex-1 items-center justify-around">
-                            
-                           
-                          </div> -->
-                        </div>
                       </div>
                     </div>
 
@@ -4247,7 +4202,7 @@
                   <span id="modalTotalConsumption" class="text-[var(--turqueza)] text-2xl ">-- kWh</span>
                 </div>
                 <div class="mt-6 flex justify-end">
-                  <button onclick="closeConsumptionModal()" class="bg-[var(--azul-oscuro)] text-[var(--turqueza)] px-5 py-2 rounded">Close</button>
+                  <button onclick="closeConsumptionModal()" class="bg-[var(--azul-oscuro)] text-[var(--turqueza)] px-5 py-2 rounded">Continue</button>
                 </div>
               </div>
             </div>
@@ -4566,7 +4521,7 @@
                         </div>
                       </div>
                       <div class="flex justify-end pt-2">
-                        <button id="saveEnergyPrices" class="px-3 py-2 rounded bg-[var(--turqueza)] text-[#0b0e24] text-sm font-semibold">Guardar</button>
+                        <button id="saveEnergyPrices" class="px-3 py-2 rounded bg-[var(--turqueza)] text-[#0b0e24] text-sm font-semibold">Save</button>
                       </div>
                       <p id="energyPricesInfo" class="text-[var(--turqueza)] text-xs"></p>
                     </div>
@@ -4608,6 +4563,10 @@
           btns.forEach(b => b.addEventListener('click', () => {
             current = b.dataset.p;
             setActive(btns, current);
+            // Mostrar notificación cuando se cambia el período de consumo
+            if (typeof showNotification === 'function') {
+              showNotification('Consumption period updated');
+            }
           }));
         }
         if (document.readyState === 'loading') {
@@ -4789,7 +4748,7 @@
             }
             const data = { peak, shoulder, offpeak };
             save(data);
-            els.info.textContent = `Saved: P ${peak.toFixed(3)} / S ${shoulder.toFixed(3)} / O ${offpeak.toFixed(3)} €/kWh`;
+            els.info.textContent = `Energy prices updated`;
             // Mostrar notificación idéntica a la usada en 'Make a Reservation'
             if (typeof showNotification === 'function') {
               showNotification(els.info.textContent);

@@ -1,0 +1,98 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e');
+         /* background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4'); */
+      /* Otras opciones de fondos: */
+      /* background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e');   */
+       /* background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');   */
+      /* background-image: url('https://images.unsplash.com/photo-1514565131-fce0801e5785');      */
+      /* background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564');  */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Capa de blur que cubre TODO */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      filter: blur(0px);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .box {
+      /* Esto "recorta" el blur revelando el fondo nítido */
+      isolation: isolate;
+      mix-blend-mode: normal;
+      
+      padding: 40px;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: white;
+      font-family: Arial, sans-serif;
+      max-width: 350px;
+      
+      /* Fondo oscuro semi-transparente para leer mejor */
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(0px); /* Sin blur en el contenido */
+      
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .box h2 {
+      margin-top: 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    }
+
+    .box p {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="box">
+      <h2>¡Fondo Nítido!</h2>
+      <p>Todo alrededor está borroso, pero aquí se ve la imagen original</p>
+    </div>
+    
+    <div class="box">
+      <h2>Segunda Caja</h2>
+      <p>El efecto se repite en cada caja que agregues</p>
+    </div>
+  </div>
+</body>
+</html>
